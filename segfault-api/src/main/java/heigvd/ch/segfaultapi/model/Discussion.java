@@ -5,6 +5,9 @@ public class Discussion {
     // TODO: 2019-03-18 référence vers message racine
     //private Message& racine;
 
+
+    public Discussion () {}
+
     public Discussion (String sujet) {
         this.sujet = sujet;
     }
