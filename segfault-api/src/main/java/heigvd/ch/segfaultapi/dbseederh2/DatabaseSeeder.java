@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+//
+/*
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
@@ -30,3 +32,4 @@ public class DatabaseSeeder implements CommandLineRunner {
         discussionRepository.saveAll(discussions);
     }
 }
+*/
