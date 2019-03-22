@@ -14,7 +14,7 @@ Equipe de devellopement:
 | Tiago Póvoa (chef de projet)                 | tiago.povoaqui@heig-vd.ch          | tiagoquin         |
 | Yimnaing Crescence(remplaçante cheffe projet)| crescence.yimnaingkamdem@heig-vd.ch| CrescenceK        |
 | Gabrielli Alexandre(Integration Manager)     | alexandre.gabrielli@heig-vd.ch     | AlexandreGabrielli|
-| Lankeu Cedric                                | cedric.lankeugassam@heig-vd.ch     |                   |
+| Lankeu Cedric                                | cedric.lankeugassam@heig-vd.ch     |   cedriclankeu    |
 | Max Caduff                                   | max.caduff@heig-vd.ch              |  Maxcaduff        |
 
 ## Dependencies
