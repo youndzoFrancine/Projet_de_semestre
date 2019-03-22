@@ -1,10 +1,12 @@
--- Database: Forum de discussion
+--Database: Forum
 
--- DROP DATABASE "Forum de discussion";
+DROP DATABASE "Forum";
 
-CREATE DATABASE "Forum de discussion"
+CREATE USER segfaultapi | CREATEDB;
+
+CREATE DATABASE "Forum"
     WITH 
-    OWNER = postgres
+    OWNER = segfaultapi 
     ENCODING = 'UTF8'
     LC_COLLATE = 'French_Switzerland.1252'
     LC_CTYPE = 'French_Switzerland.1252'
@@ -14,12 +16,12 @@ CREATE DATABASE "Forum de discussion"
 CREATE TABLE Departement(
 	departementID	SERIAL PRIMARY KEY,
 	nomDepartement	VARCHAR NOT NULL 
-)
+);
 
 CREATE TABLE Roles(
 	roleID		SERIAL PRIMARY KEY,
 	nomRole		VARCHAR NOT NULL 
-)
+);
 
 CREATE TABLE Utilisateur (
 	utilisateurID	SERIAL PRIMARY KEY,
@@ -28,14 +30,14 @@ CREATE TABLE Utilisateur (
 	motDePasse  	VARCHAR NOT NULL,
 	roleUtilisateur	INTEGER NOT NULL,
     FOREIGN KEY (roleUtilisateur) REFERENCES Roles(roleID) 
-)
+);
 
 CREATE TABLE Discussion (
 	discussionID	SERIAL PRIMARY KEY,
 	msgRacineID		INTEGER, 
 	utilisateurID	INTEGER NOT NULL,
     FOREIGN KEY (utilisateurID) REFERENCES Utilisateur(utilisateurID)
-)
+);
 
 CREATE TABLE Message (
 	messageID		SERIAL PRIMARY KEY,
@@ -46,16 +48,17 @@ CREATE TABLE Message (
 	superMessageID  INTEGER, 
     FOREIGN KEY (utilisateurID) REFERENCES Utilisateur(utilisateurID),
 	FOREIGN KEY (discussionID) REFERENCES discussion(discussionID) 
-)
+);
 
 CREATE TABLE Tag (
 	valeur			VARCHAR,
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
-)
+);
 	
 ALTER TABLE Discussion 
 	ADD CONSTRAINT constraint_name FOREIGN KEY (msgRacineID) REFERENCES Message(messageID);
+
  
 
 
