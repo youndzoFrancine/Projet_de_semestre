@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS Utilisateur (
 
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussionID	SERIAL PRIMARY KEY,
-	msgRacineID		INTEGER, 
-	utilisateurID	INTEGER NOT NULL,
+	sujet			VARCHAR, 
+	msgRacineID		INTEGER,
+	utilisateurID	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
     FOREIGN KEY (utilisateurID) REFERENCES Utilisateur(utilisateurID)
 );
 
