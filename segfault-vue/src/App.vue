@@ -8,6 +8,7 @@
   </div>
 </template>
 
+<!-- Style gobale de l'app -->
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
