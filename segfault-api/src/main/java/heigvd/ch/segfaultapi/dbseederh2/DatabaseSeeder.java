@@ -8,7 +8,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+//
 
+
+/**
+ * Retirer cet autorun si ce n'est pas utilisé
+ */
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
@@ -25,7 +30,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         List<Discussion> discussions  = new ArrayList<>();
 
         discussions.add(new Discussion("Pourquoi ça marche pas :(?"));
-        discussions.add(new Discussion("help avec java de merde"));
+        discussions.add(new Discussion("Pourquoi PSQL c'est si compliqué?"));
 
         discussionRepository.saveAll(discussions);
     }

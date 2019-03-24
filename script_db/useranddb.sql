@@ -1,9 +1,9 @@
---User: segdefaultapi
+--User: segfaultapi
 
 DROP DATABASE IF EXISTS "Forum";
-DROP USER IF EXISTS segdefaultapi;
+DROP USER IF EXISTS segfaultapi;
 
-CREATE USER segdefaultapi WITH ENCRYPTED PASSWORD 'yourpass' 
+CREATE USER segfaultapi WITH ENCRYPTED PASSWORD 'yourpass' 
   LOGIN
   NOSUPERUSER
   INHERIT
@@ -14,11 +14,11 @@ CREATE USER segdefaultapi WITH ENCRYPTED PASSWORD 'yourpass'
 --Database: Forum
 CREATE DATABASE "Forum"
     WITH 
-    OWNER = segdefaultapi
+    OWNER = segfaultapi
     ENCODING = 'UTF8'
-    LC_COLLATE = 'French_Switzerland.1252'
-    LC_CTYPE = 'French_Switzerland.1252'
-    CONNECTION LIMIT = -1;
+    LC_COLLATE = 'fr_CH' /* Avec ça, ça passe sur Mac OS X. Donc Unix ? */
+    CONNECTION LIMIT = -1
+    TEMPLATE template0;
 	
 	
 
