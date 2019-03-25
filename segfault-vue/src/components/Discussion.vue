@@ -3,7 +3,7 @@
     <h1>Dernières questions</h1>
     <div class="holder">
       <ul>
-        <div class="sujet" v-for="(data, sujet) in discu" :key="sujet">{{sujet}}. {{data.sujet}}</div>
+        <div class="sujet" v-for="(data, sujet) in discu" :key="sujet">{{data.sujet}}</div>
       </ul>
     </div>
   </div>
