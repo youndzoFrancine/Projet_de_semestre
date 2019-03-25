@@ -3,7 +3,7 @@
     <h1>Dernières questions</h1>
     <div class="holder">
       <ul>
-        <li v-for="(data, sujet) in discu" :key="sujet">{{sujet}}. {{data.sujet}}</li>
+        <div class="sujet" v-for="(data, sujet) in discu" :key="sujet">{{sujet}}. {{data.sujet}}</div>
       </ul>
     </div>
   </div>
@@ -30,4 +30,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.sujet {
+  height: 2em;
+}
 </style>
