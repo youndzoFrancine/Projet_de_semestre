@@ -13,18 +13,11 @@ CREATE USER segfaultapi WITH ENCRYPTED PASSWORD 'yourpass'
 
 --Database: Forum
 CREATE DATABASE "Forum"
-    WITH 
+    WITH
     OWNER = segfaultapi
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'fr_CH' /* Avec ça, ça passe sur Mac OS X. Donc Unix ? */
+    ENCODING = 'LATIN1'
+    LC_COLLATE = 'fr_CH'
+    LC_CTYPE = 'fr_CH'
+    TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     TEMPLATE template0;
-	
-	
-
-
- 
-
-
-
-
