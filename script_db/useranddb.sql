@@ -15,7 +15,7 @@ CREATE USER segfaultapi WITH ENCRYPTED PASSWORD 'yourpass'
 CREATE DATABASE "Forum"
     WITH
     OWNER = segfaultapi
-    ENCODING = 'LATIN1'
+    ENCODING = 'UTF-8'
     LC_COLLATE = 'fr_CH'
     LC_CTYPE = 'fr_CH'
     TABLESPACE = pg_default
