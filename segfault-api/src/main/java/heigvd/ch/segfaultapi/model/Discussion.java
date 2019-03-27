@@ -11,7 +11,7 @@ public class Discussion {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Long discussionid;
 
     @Getter
     private String sujet;
