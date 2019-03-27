@@ -1,3 +1,12 @@
+/* Nettoyage d'une db existante*/
+DROP TABLE IF EXISTS Departement;
+DROP TABLE IF EXISTS Tag;
+DROP TABLE IF EXISTS Departement;
+DROP TABLE IF EXISTS Utilisateur CASCADE;
+DROP TABLE IF EXISTS Message CASCADE;
+DROP TABLE IF EXISTS Roles;
+
+/* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
 	departementID	SERIAL PRIMARY KEY,
 	nomDepartement	VARCHAR NOT NULL 

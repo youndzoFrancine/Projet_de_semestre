@@ -31,5 +31,7 @@ Equipe de devellopement:
 
 ## Documentation
 
+[wiki](https://github.com/youndzoFrancine/heigvd-pro-a-06/wiki)
+
 ## lien googleDoc
 (https://drive.google.com/drive/folders/1SpNpy3oJzUN6ycbw1vntfkgFc99bKm6g)
