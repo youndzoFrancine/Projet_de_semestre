@@ -1,6 +1,5 @@
 package heigvd.ch.segfaultapi.model;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -13,8 +12,6 @@ public class Utilisateur {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    //declaration des variable
-
     private Long utilisateurId;
     private String nomUtilisateur;
     private String mailUtilisateur;
@@ -30,8 +27,7 @@ public class Utilisateur {
      * @param mailUtilisateur
      * @param motDePasse
      */
-    public Utilisateur (Long utilisateurId, String nomUtilisateur, String mailUtilisateur,String motDePasse) {
-        this.utilisateurId=utilisateurId;
+    public Utilisateur (String nomUtilisateur, String mailUtilisateur,String motDePasse) {
         this.nomUtilisateur=nomUtilisateur;
         this.mailUtilisateur=mailUtilisateur;
         this.motDePasse=motDePasse;
