@@ -1,6 +1,7 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import javax.persistence.*;
 
@@ -12,22 +13,37 @@ public class Utilisateur {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
+
+    @Column(name = "utilisateurId")
+    @NonNull
     private Long utilisateurId;
+
+    @Column(name = "nomUtilisateur")
+    @NonNull
     private String nomUtilisateur;
+
+    @Column(name = "mailUtilisateur")
+    @NonNull
     private String mailUtilisateur;
+
+    @Column(name = "motDePasse")
+    @NonNull
     private String motDePasse;
 
+
     // Obligatoire pour JPA
-    public Utilisateur () {}
+    public Utilisateur () {
+        this.nomUtilisateur = " fefefef";
+    }
 
     /**
      *
-     * @param utilisateurId
      * @param nomUtilisateur
      * @param mailUtilisateur
      * @param motDePasse
      */
-    public Utilisateur (String nomUtilisateur, String mailUtilisateur,String motDePasse) {
+    public Utilisateur (@NonNull String nomUtilisateur, @NonNull String mailUtilisateur,@NonNull String motDePasse) {
         this.nomUtilisateur=nomUtilisateur;
         this.mailUtilisateur=mailUtilisateur;
         this.motDePasse=motDePasse;
@@ -38,7 +54,7 @@ public class Utilisateur {
      *
      * @return
      */
-    public Long getUtilisateurId(){
+  /*  public Long getUtilisateurId(){
         return utilisateurId;
     }
 
