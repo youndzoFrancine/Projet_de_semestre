@@ -1,6 +1,7 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import javax.persistence.*;
 
@@ -11,6 +12,9 @@ public class Discussion {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
+    @Column(name = "discussionId")
+    @NonNull
     private Long id;
 
     @Getter
