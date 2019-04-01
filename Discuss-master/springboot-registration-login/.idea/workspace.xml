@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1f9d96d9-b838-4cc9-bc7f-09cd45ef424e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/ForumApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/service/SecurityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/service/SecurityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/validator/UserValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/java/com/pro/forum/web/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-back-end/forum/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_ecj_3_13_102.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hsqldb_hsqldb_2_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/WebApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/service/SecurityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/service/SecurityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/validator/UserValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/web/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/validation.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/registration.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/welcome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hibernate_hibernate_core_5_2_17_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_12_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_javassist_javassist_3_22_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_jboss_jandex_2_0_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_postgresql_postgresql_42_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_0_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_0_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_0_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_aop_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_beans_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_context_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_core_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_expression_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_orm_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_test_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_tx_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_web_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootJwtAuthentication/SpringBootJwtAuthentication.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_34.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hibernate_hibernate_core_5_2_17_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_12_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_javassist_javassist_3_22_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_jboss_jandex_2_0_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_postgresql_postgresql_42_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_aop_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_beans_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_context_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_core_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_expression_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_orm_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_test_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_tx_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_web_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/spring-boot-restapi-postgresql.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/main/java/com/grokonez/spring/restapi/postgresql/SpringBootRestPostgreSqlApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/main/java/com/grokonez/spring/restapi/postgresql/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/main/java/com/grokonez/spring/restapi/postgresql/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/main/java/com/grokonez/spring/restapi/postgresql/repo/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/src/test/java/com/grokonez/spring/restapi/postgresql/SpringBootRestPostgreSqlApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/components/AddCustomer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/components/Customer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/components/CustomersList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/components/SearchCustomers.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/http-common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/src/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootRestPostgreSQL/vue-springboot/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__ognl_ognl_3_0_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_hibernate_hibernate_core_5_0_12_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_5_0_12_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_jboss_jandex_2_0_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_11_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_security_spring_security_config_4_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_security_spring_security_core_4_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_security_spring_security_web_4_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_aop_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_aspects_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_beans_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_context_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_core_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_expression_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_orm_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_tx_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_web_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_unbescape_unbescape_1_1_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.settings/oracle.eclipse.tools.webtier.ui.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/Rest API URI.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/SpringBootCustomSecurityWithDatabase.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/SpringBootCustomSecurityApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/config/TopicSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/controller/TopicController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/dao/TopicDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/dao/UserInfoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/dao/impl/TopicDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/dao/impl/UserInfoDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/entities/Topic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/entities/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/generate/password/BCryptPasswordEncoderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/service/TopicService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/service/impl/TopicServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/java/com/infotech/app/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/templates/custom-login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/main/resources/templates/topics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringBootSecurityCustomLoginAndLogoutApp-master/SpringBootSecurityCustomLoginAndLogoutApp/src/test/java/com/infotech/app/client/TopicRestClientUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SpringSecurity-Database-master/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/DemoApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/ServletInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/controller/AuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/java/com/webencyclop/demo/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/resources/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/resources/templates/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/DB_Dump.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/SecurityDbExampleApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/model/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/model/Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/repository/UsersRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/resource/HelloResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/java/com/techprimers/security/securitydbexample/service/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../spring-security-db-example-master/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_eclipse_jdt_ecj_3_13_102.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_hsqldb_hsqldb_2_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_aop_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_aspects_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_beans_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_context_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_core_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_expression_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_orm_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_web_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/forumDiscussion.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/WebApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/service/SecurityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/service/SecurityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/validator/UserValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/java/com/pro/forum/web/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/resources/validation.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/registration.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/resources/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/resources/css/common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/resources/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springboot-registration-login/src/main/webapp/welcome.jsp" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/WebApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/Role.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>logou</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/User.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="100" />
+    <option name="y" value="40" />
+    <option name="width" value="2800" />
+    <option name="height" value="1840" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Course" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="auth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springboot-registration-login" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553738640250" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LNC\Projet_de_semestre\Discuss-master\springboot-registration-login\src\main\java\com\hellokoding\auth\model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f9d96d9-b838-4cc9-bc7f-09cd45ef424e" name="Default Changelist" comment="" />
+      <created>1553738195393</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553738195393</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="DB Browser" />
+      <window_info id="UI Designer" />
+      <window_info id="Project Explorer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Capture Tool" />
+      <window_info id="Job Explorer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24948454" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="DB Execution Console" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32977462" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Console" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="UML design tool window" />
+      <window_info anchor="right" id="Snyk" side_tool="true" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/WebApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hellokoding/auth/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
