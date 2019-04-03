@@ -18,13 +18,14 @@ export default {
     return {
       discu: []
     };
-  },
+  }
+  /* ,
   mounted() {
     axios
       .get("http://localhost:8087/discussions/all")
       .then(response => (this.discu = response.data))
       .catch(error => console.log(error));
-  }
+  } */
 };
 </script>
 
