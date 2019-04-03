@@ -1,7 +1,6 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
-
 import javax.persistence.*;
 
 @Entity
