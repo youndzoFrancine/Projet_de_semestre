@@ -1,26 +1,34 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.awt.*;
 
+@NoArgsConstructor
 @Entity
 @Table(name = "tag")
 public class Tag {
 
+    @Getter
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE )
     @Column( name = "tagid" )
     private Long tagId;
 
-    @Column(name = "valeur")
-    private String valeur;
+    @Getter
+    @Column(name = "nom")
+    private String nom;
 
+    @Getter
     @Column(name = "prioritaire")
     private boolean prioritaire;
 
+    @Getter
     @Column(name = "rang")
     private int rang;
+
 
 /*    @ManyToMany
     @JoinTable( name = "JoinDiscussionTag",
@@ -30,13 +38,14 @@ public class Tag {
     private List<Discussion> listeDiscussion = new HashSet<>();*/
 
 
-    public Tag(String valeur, boolean prioritaire,  int rang){
-        this.valeur= valeur;
+    public Tag(String nom, boolean prioritaire,  int rang){
+        this.nom = nom;
         this.prioritaire = prioritaire;
         this.rang = rang;
     }
 
 
+/*
     public String getValeur() {
         return valeur;
     }
@@ -60,6 +69,7 @@ public class Tag {
     public void setRang(int rang) {
         this.rang = rang;
     }
+*/
 
 /*    public List<Discussion> getAllDiscussion() {
         return listeDiscussion;
