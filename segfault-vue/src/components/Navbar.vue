@@ -24,7 +24,7 @@
       <p class="control has-icons-left">
         <input class="input" type="text" placeholder="Chercher une réponse qui sauve la vie">
         <span class="icon is-small is-left">
-          <font-awesome-icon icon="coffee"/>
+          <font-awesome-icon icon="search"/>
         </span>
       </p>
     </div>
