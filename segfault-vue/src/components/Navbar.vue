@@ -20,9 +20,12 @@
       </a>
     </div>
 
-    <div class="field is-horizontal">
-      <p class="control is-expanded">
+    <div class="field">
+      <p class="control has-icons-left">
         <input class="input" type="text" placeholder="Chercher une réponse qui sauve la vie">
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="coffee"/>
+        </span>
       </p>
     </div>
 
@@ -52,8 +55,13 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  background: linear-gradient(to top, #a55eea -10%, #fc5c65 20%, #fd9644 70%);
-  -webkit-background-clip: text;
+  background: linear-gradient(
+    to top,
+    $lighter-purple -10%,
+    $fusion-red 25%,
+    $orange-hibiscus 70%
+  );
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

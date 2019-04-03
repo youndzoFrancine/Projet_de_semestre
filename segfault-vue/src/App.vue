@@ -23,4 +23,5 @@ export default {
 <!-- Style gobale de l'app -->
 <style lang="scss">
 @import "~bulma/bulma.sass";
+@import "@/assets/index.scss";
 </style>
