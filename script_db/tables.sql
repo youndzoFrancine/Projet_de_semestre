@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS Message (
 );
 
 CREATE TABLE IF NOT EXISTS Tag (
-	valeur			VARCHAR,
+	nom				VARCHAR,
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
 );
