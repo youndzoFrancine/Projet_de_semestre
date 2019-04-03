@@ -1,0 +1,17 @@
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\model\Message.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\model\User.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\controller\DiscussionController.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\repository\DiscussionRepository.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\repository\MessageRepository.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\controller\MessageController.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\controller\TagController.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\model\Departement.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\controller\DepartementController.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\model\Discussion.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\repository\UserRepository.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\repository\TagRepository.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\swaggerDoc\SwaggerConfig.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\SpringBootRestPostgreSqlApplication.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\model\Tag.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\repository\DepartementRepository.java
+C:\Users\LNC\Documents\SpringBootRestPostgreSQL\src\main\java\com\pro\forum\controller\UserController.java

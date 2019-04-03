@@ -1,0 +1,17 @@
+com\pro\forum\model\User.class
+com\pro\forum\controller\UserController.class
+com\pro\forum\model\Departement.class
+com\pro\forum\controller\DepartementController.class
+com\pro\forum\model\Discussion.class
+com\pro\forum\repository\DiscussionRepository.class
+com\pro\forum\swaggerDoc\SwaggerConfig.class
+com\pro\forum\controller\TagController.class
+com\pro\forum\repository\MessageRepository.class
+com\pro\forum\controller\DiscussionController.class
+com\pro\forum\model\Message.class
+com\pro\forum\controller\MessageController.class
+com\pro\forum\model\Tag.class
+com\pro\forum\repository\DepartementRepository.class
+com\pro\forum\repository\TagRepository.class
+com\pro\forum\repository\UserRepository.class
+com\pro\forum\SpringBootRestPostgreSqlApplication.class
