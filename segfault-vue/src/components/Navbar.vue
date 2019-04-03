@@ -2,9 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href>
-        <h1 class="title is-1 logo">
-          <strong>Segfault</strong>
-        </h1>
+        <h1 class="title is-1 logo">Segfault</h1>
       </a>
 
       <a
@@ -55,6 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
+  font-weight: 900;
   background: linear-gradient(
     to top,
     $lighter-purple -10%,
