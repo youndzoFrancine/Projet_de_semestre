@@ -7,6 +7,10 @@
           <router-link to="/">Accueil</router-link>
         </li>
         <li>
+          <router-link to="/">Tags</router-link>
+          <!-- Ajouter le lien -->
+        </li>
+        <li>
           <router-link to="/about">About</router-link>
         </li>
       </ul>
