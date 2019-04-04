@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Discussiontabs from "@/components/Discussiontabs.vue";
+import Discussiontabs from "@/components/Discussion/DiscussionTabs.vue";
 
 export default {
   name: "Discussionbar",

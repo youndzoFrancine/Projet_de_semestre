@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Discussionbar from "@/components/Discussionbar.vue";
+import Discussionbar from "@/components/Discussion/DiscussionBar.vue";
 import axios from "axios";
 
 export default {

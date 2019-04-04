@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Searchbar",
+  name: "NavSearchbar",
   components: {}
 };
 </script>

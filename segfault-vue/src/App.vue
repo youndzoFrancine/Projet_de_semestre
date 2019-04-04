@@ -4,7 +4,7 @@
       <!-- Tête -->
       <div class="container has-background-white-bis">
         <div class="hero-head">
-          <Navbar/>
+          <TheNavbar/>
         </div>
       </div>
       <!-- Corps -->
@@ -12,7 +12,7 @@
         <div class="hero-body is-fullheight">
           <div class="columns">
             <div class="column is-1">
-              <Sidemenu/>
+              <TheSidemenu/>
             </div>
             <div class="column">
               <router-view/>
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-import Sidemenu from "@/components/Sidemenu.vue";
+import TheNavbar from "@/components/Navbar/TheNavbar.vue";
+import TheSidemenu from "@/components/TheSidemenu.vue";
 export default {
   name: "App",
   components: {
-    Navbar,
-    Sidemenu
+    TheNavbar,
+    TheSidemenu
   }
 };
 </script>

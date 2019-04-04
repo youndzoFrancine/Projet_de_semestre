@@ -19,22 +19,22 @@
     </div>
 
     <div class="container">
-      <Searchbar/>
+      <NavSearchbar/>
     </div>
 
-    <Logzone/>
+    <NavLogZone/>
   </nav>
 </template>
 
 <script>
-import Searchbar from "@/components/Searchbar.vue";
-import Logzone from "@/components/Logzone.vue";
+import NavSearchbar from "@/components/Navbar/NavSearchbar.vue";
+import NavLogZone from "@/components/Navbar/NavLogZone.vue";
 
 export default {
   name: "Navbar",
   components: {
-    Searchbar,
-    Logzone
+    NavSearchbar,
+    NavLogZone
   }
 };
 </script>
