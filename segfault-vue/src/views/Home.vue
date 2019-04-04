@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <Discussion/>
+    <div class="colums">
+      <div class="column is-9">
+        <Discussion/>
+      </div>
+    </div>
   </div>
 </template>
 
