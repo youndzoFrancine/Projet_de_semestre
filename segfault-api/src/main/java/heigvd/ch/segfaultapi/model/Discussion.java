@@ -1,7 +1,9 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,18 +13,18 @@ import javax.persistence.*;
 public class Discussion {
 
     @Getter
+    @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long discussionid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "discussion_id")
+    @NonNull
+    private Integer id;
 
     @Getter
     private String sujet;
 
     // TODO: 2019-03-18 référence vers message racine
     //private Message& racine;
-
-
-
 
     public Discussion (String sujet) {
         this.sujet = sujet;

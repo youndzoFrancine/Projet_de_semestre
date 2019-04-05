@@ -8,51 +8,52 @@ DROP TABLE IF EXISTS Roles;
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
-	departementID	SERIAL PRIMARY KEY,
-	nomDepartement	VARCHAR NOT NULL 
+	departement_id	SERIAL PRIMARY KEY,
+	nom_departement	VARCHAR NOT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS Roles(
-	roleID		SERIAL PRIMARY KEY,
-	nomRole		VARCHAR NOT NULL 
+	role_id		SERIAL PRIMARY KEY,
+	nom_role		VARCHAR NOT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS Utilisateur (
-	utilisateurID	SERIAL PRIMARY KEY,
-	nomUtilisateur	VARCHAR NOT NULL,
-	mailUtilisateur	VARCHAR NOT NULL,
-	motDePasse  	VARCHAR NOT NULL,
-	roleUtilisateur	INTEGER NOT NULL,
-    FOREIGN KEY (roleUtilisateur) REFERENCES Roles(roleID) 
+	utilisateur_id	SERIAL PRIMARY KEY,
+	nom_utilisateur	VARCHAR NOT NULL,
+	mail_utilisateur	VARCHAR NOT NULL,
+	mot_de_passe  	VARCHAR NOT NULL,
+	role_utilisateur	INTEGER NOT NULL,
+    FOREIGN KEY (role_utilisateur) REFERENCES Roles(role_id) 
 );
 
 CREATE TABLE IF NOT EXISTS Discussion (
-	discussionID	SERIAL PRIMARY KEY,
+	discussion_id	SERIAL PRIMARY KEY,
 	sujet			VARCHAR, 
-	msgRacineID		INTEGER,
-	utilisateurID	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
-    FOREIGN KEY (utilisateurID) REFERENCES Utilisateur(utilisateurID)
+	msgracine_id		INTEGER,
+	utilisateur_id	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
 
 CREATE TABLE IF NOT EXISTS Message (
-	messageID		SERIAL PRIMARY KEY,
-	message			VARCHAR, 
+	message_id		SERIAL PRIMARY KEY,
+	contenu			VARCHAR, 
 	score			INTEGER,
-	utilisateurID	INTEGER NOT NULL,
-	discussionID	INTEGER NOT NULL,
-	superMessageID  INTEGER, 
-    FOREIGN KEY (utilisateurID) REFERENCES Utilisateur(utilisateurID),
-	FOREIGN KEY (discussionID) REFERENCES discussion(discussionID) 
+	utilisateur_id	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
+	discussion_id	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
+	super_message_id  INTEGER, 
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id),
+	FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id) 
 );
 
 CREATE TABLE IF NOT EXISTS Tag (
+	tag_id			SERIAL PRIMARY KEY, /* Peut-être pas utile, test */
 	nom				VARCHAR,
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
 );
 	
 ALTER TABLE Discussion 
-	ADD CONSTRAINT constraint_name FOREIGN KEY (msgRacineID) REFERENCES Message(messageID);
+	ADD CONSTRAINT constraint_name FOREIGN KEY (msgracine_id) REFERENCES Message(message_id);
 	
 	
 
