@@ -1,13 +1,16 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <Discussion/>
+    <div class="colums">
+      <div class="column is-9">
+        <Discussion/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Discussion from "@/components/Discussion.vue";
+import Discussion from "@/components/Discussion/TheDiscussion.vue";
 
 export default {
   name: "home",

@@ -1,20 +1,39 @@
 <template>
   <div id="app">
-    <Navbar/>
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <section class="hero">
+      <!-- Tête -->
+      <div class="container has-background-white-bis">
+        <div class="hero-head">
+          <TheNavbar/>
+        </div>
+      </div>
+      <!-- Corps -->
+      <div class="container has-background-white-bis">
+        <div class="hero-body is-fullheight">
+          <div class="columns">
+            <div class="column is-1">
+              <TheSidemenu/>
+            </div>
+            <div class="column">
+              <router-view/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pied de page -->
+      <div class="hero-foot"></div>
+    </section>
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+import TheNavbar from "@/components/Navbar/TheNavbar.vue";
+import TheSidemenu from "@/components/TheSidemenu.vue";
 export default {
   name: "App",
   components: {
-    Navbar
+    TheNavbar,
+    TheSidemenu
   }
 };
 </script>
