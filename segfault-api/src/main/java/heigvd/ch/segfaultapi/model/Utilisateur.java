@@ -14,27 +14,30 @@ public class Utilisateur {
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
+    //@Column(name = "utilisateurId")
+    //@NonNull
+     private Long utilisateurId;
 
-    @Column(name = "utilisateurId")
-    @NonNull
-    private Long utilisateurId;
+    //@Column(name = "nomUtilisateur")
+    //@NonNull
+     private String nomUtilisateur;
 
-    @Column(name = "nomUtilisateur")
-    @NonNull
-    private String nomUtilisateur;
+    //@Column(name = "mailUtilisateur")
+    //@NonNull
+     private String mailUtilisateur;
 
-    @Column(name = "mailUtilisateur")
-    @NonNull
-    private String mailUtilisateur;
+    //@Column(name = "motDePasse")
+    //@NonNull
+     private String motDePasse;
 
-    @Column(name = "motDePasse")
-    @NonNull
-    private String motDePasse;
+    //@Column(name = "roleUtilisateur")
+    //@NonNull
+    private Long  roleUtilisateur;
+
 
 
     // Obligatoire pour JPA
     public Utilisateur () {
-        this.nomUtilisateur = " fefefef";
     }
 
     /**
@@ -43,10 +46,11 @@ public class Utilisateur {
      * @param mailUtilisateur
      * @param motDePasse
      */
-    public Utilisateur (@NonNull String nomUtilisateur, @NonNull String mailUtilisateur,@NonNull String motDePasse) {
+    public Utilisateur ( String nomUtilisateur, String mailUtilisateur, String motDePasse){
         this.nomUtilisateur=nomUtilisateur;
         this.mailUtilisateur=mailUtilisateur;
         this.motDePasse=motDePasse;
+
 
     }
 
@@ -54,7 +58,7 @@ public class Utilisateur {
      *
      * @return
      */
-  /*  public Long getUtilisateurId(){
+   public Long getUtilisateurId(){
         return utilisateurId;
     }
 
@@ -86,7 +90,7 @@ public class Utilisateur {
      *
      * @return
      */
-    public String getMotDePasse(){
+   public String getMotDePasse(){
         return motDePasse;
     }
 
@@ -94,7 +98,7 @@ public class Utilisateur {
      *
      * @param motDePasse
      */
-    public void setMotDePasse(String motDePasse) {
+   public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
 
