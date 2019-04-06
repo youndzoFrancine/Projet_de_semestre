@@ -2,9 +2,10 @@ package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-
+@NoArgsConstructor
 @Entity
 @Table(name = "Departement")
 public class Departement {

@@ -1,8 +1,10 @@
 package heigvd.ch.segfaultapi.dbseederh2;
 
+import heigvd.ch.segfaultapi.model.Departement;
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Tag;
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.repositories.DepartementRepository;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.TagRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
@@ -19,7 +21,8 @@ import java.util.List;
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
-
+    @Autowired
+    DepartementRepository departementRepository;
 
     @Autowired
     DiscussionRepository discussionRepository;
@@ -31,10 +34,14 @@ public class DatabaseSeeder implements CommandLineRunner {
     TagRepository tagRepository;
 
 
-
     @Override
     public void run(String... args) throws Exception {
         List<Discussion> discussions  = new ArrayList<>();
+        List <Departement> departements = new ArrayList<>();
+
+        departements.add(new Departement("TIC"));
+        departements.add(new Departement("TIN"));
+        departements.add(new Departement("ECG"));
 
         discussions.add(new Discussion("Pourquoi ça marche pas :(?"));
         discussions.add(new Discussion("Pourquoi PSQL c'est si compliqué?"));
@@ -58,6 +65,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 discussionRepository.getOne(1).getId()));
 */
 
+        departementRepository.saveAll(departements);
         discussionRepository.saveAll(discussions);
         messageRepository.saveAll(messages);
         tagRepository.saveAll(tags);
