@@ -1,9 +1,11 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@NoArgsConstructor // Obligatoire pour JPA
 @Entity
 @Table(name = "Discussion")
 public class Discussion {
@@ -19,8 +21,8 @@ public class Discussion {
     // TODO: 2019-03-18 référence vers message racine
     //private Message& racine;
 
-    // Obligatoire pour JPA
-    public Discussion () {}
+
+
 
     public Discussion (String sujet) {
         this.sujet = sujet;

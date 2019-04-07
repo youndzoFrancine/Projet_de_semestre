@@ -1,20 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <section class="hero">
+      <!-- Tête -->
+      <div class="container has-background-white-bis">
+        <div class="hero-head">
+          <TheNavbar/>
+        </div>
+      </div>
+      <!-- Corps -->
+      <div class="container has-background-white-bis">
+        <div class="hero-body is-fullheight">
+          <div class="columns">
+            <div class="column is-1">
+              <TheSidemenu/>
+            </div>
+            <div class="column">
+              <router-view/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pied de page -->
+      <div class="hero-foot"></div>
+    </section>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<script>
+import TheNavbar from "@/components/Navbar/TheNavbar.vue";
+import TheSidemenu from "@/components/TheSidemenu.vue";
+export default {
+  name: "App",
+  components: {
+    TheNavbar,
+    TheSidemenu
+  }
+};
+</script>
+
+
+<!-- Style gobale de l'app -->
+<style lang="scss">
+@import "~bulma/bulma.sass";
+@import "@/assets/index.scss";
 </style>
