@@ -1,5 +1,9 @@
 <template>
-
+<form
+  id="username"
+  @submit="checkForm"
+  method="post"
+>
 
  <div class="Insciption">
    <!--name-->
@@ -16,50 +20,47 @@
 
  
     <!--username-->
-<form
-  id="username"
-  @submit="checkForm"
-  action="https://vuejs.org/"
-  method="post"
->
+
     <div class="columns">
        <div class="column is-1">
         </div>
       <div id="username" class="column is-7"  >
         <label class="label">Username</label>
         <div class="control ">
-          <input class="input is-success" id="user" type="text" placeholder="username">
+          <input class="input is-success"  v-model=user id="user" type="text" placeholder="username">
         </div>
-        <p v-if="errors" class="help is-success">
-            errors
-        </p>
-
+        <p v-if="errors" class="help is-success"> {{errors}}</p>
         <p v-else class="help is-success">  test    </p>
       </div>
     </div>
 
- </form>
-
-
     <!--email-->
+
+ <div class="columns">
+       <div class="column is-1">
+        </div>
+         <div class="column is-4">
+        <label class="label">Email</label>
+         </div>
+ </div>
     <div class="columns">
        <div class="column is-1">
         </div>
-      <div class="column is-7">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="email" placeholder="Email input" value="@heig-vd.ch">
+      <div class="column is-4">
+        <div class="control  has-icons-right">
+          <input class="input is-danger" type="text" placeholder="your.heig-vd.mail">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-exclamation-triangle"></i>
           </span>
-         
         </div>
-      
-
+  
         <p class="help is-danger">This email is invalid</p>
+      </div>
+      <div class="column is-2">
+        <p>@heig-vd.ch</p>
       </div>
     </div>
  
@@ -82,20 +83,27 @@
     </div>
  
  
-  </div>   
+  </div> 
+
+  
+
+ </form>
+
+
 </template>
-
 <script>
-
+/* 
 const username = new Vue({
   el: '#username',
   data: {
     errors: null,
-    user: null,
-    
+    user: null
   },
+
   methods:{
     checkForm: function (e) {
+      return true;
+      
       if (this.user) {
         return true;
       }
@@ -103,17 +111,12 @@ const username = new Vue({
       this.errors = null;
 
       if (!this.user) {
-        this.error ='This pseudo is already taken' ;
-      }
+        this.errors='This pseudo is already taken';
+      }  
       e.preventDefault();
     }
   }
-})
-
-
-
-
-
-
+});
+ */
 
 </script>
