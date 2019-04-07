@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 
@@ -14,27 +15,18 @@ public class Utilisateur {
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
-    //@Column(name = "utilisateurId")
-    //@NonNull
      private Long utilisateurId;
 
-    //@Column(name = "nomUtilisateur")
-    //@NonNull
      private String nomUtilisateur;
 
-    //@Column(name = "mailUtilisateur")
-    //@NonNull
      private String mailUtilisateur;
 
-    //@Column(name = "motDePasse")
-    //@NonNull
      private String motDePasse;
 
-    //@Column(name = "roleUtilisateur")
-    //@NonNull
+
+
+    @ManyToMany
     private Long  roleUtilisateur;
-
-
 
     // Obligatoire pour JPA
     public Utilisateur () {
@@ -56,11 +48,12 @@ public class Utilisateur {
 
     /**
      *
-     * @return
+     * @param roleUtilisateur
      */
-   public Long getUtilisateurId(){
-        return utilisateurId;
+    public void setRoleUtilisateur(Long roleUtilisateur) {
+        this.roleUtilisateur = roleUtilisateur;
     }
+
 
     /**
      *
@@ -70,13 +63,7 @@ public class Utilisateur {
         this.utilisateurId = utilisateurId;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getNomUtilisateur(){
-        return nomUtilisateur;
-    }
+
 
     /**
      *
@@ -86,13 +73,6 @@ public class Utilisateur {
         this.nomUtilisateur = nomUtilisateur;
     }
 
-    /**
-     *
-     * @return
-     */
-   public String getMotDePasse(){
-        return motDePasse;
-    }
 
     /**
      *
@@ -102,13 +82,6 @@ public class Utilisateur {
         this.motDePasse = motDePasse;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getMailUtilisateur(){
-        return mailUtilisateur;
-    }
 
     /**
      *
