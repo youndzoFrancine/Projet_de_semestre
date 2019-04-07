@@ -16,7 +16,12 @@
 
  
     <!--username-->
-
+<form
+  id="username"
+  @submit="checkForm"
+  action="https://vuejs.org/"
+  method="post"
+>
     <div class="columns">
        <div class="column is-1">
         </div>
@@ -28,10 +33,12 @@
         <p v-if="errors" class="help is-success">
             errors
         </p>
+
         <p v-else class="help is-success">  test    </p>
       </div>
     </div>
 
+ </form>
 
 
     <!--email-->
@@ -79,6 +86,31 @@
 </template>
 
 <script>
+
+const username = new Vue({
+  el: '#username',
+  data: {
+    errors: null,
+    user: null,
+    
+  },
+  methods:{
+    checkForm: function (e) {
+      if (this.user) {
+        return true;
+      }
+
+      this.errors = null;
+
+      if (!this.user) {
+        this.error ='This pseudo is already taken' ;
+      }
+      e.preventDefault();
+    }
+  }
+})
+
+
 
 
 
