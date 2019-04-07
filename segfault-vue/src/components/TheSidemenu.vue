@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="sidemenu">
     <aside class="menu">
       <p class="menu-label">Navigation</p>

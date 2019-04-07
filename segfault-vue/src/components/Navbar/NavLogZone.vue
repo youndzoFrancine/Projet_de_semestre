@@ -7,9 +7,11 @@
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-light">Connexion</a>
-            <a class="button is-primary">
+          <router-link to="/TheInscription">
+            <a  class="button is-primary" > 
               <strong>Inscription</strong>
             </a>
+            </router-link>
           </div>
         </div>
       </div>
