@@ -38,8 +38,8 @@
       </div>
       <div class="media-right">
         <div class="buttons">
-          <button class="button is-warning is-small is-fullwidth">10 réponses</button>
-          <button class="button is-warning is-small is-outlined is-fullwidth">100 vues</button>
+          <button class="button purple is-small">10 réponses</button>
+          <button class="button purle is-small is-outlined">100 vues</button>
         </div>
       </div>
     </article>
