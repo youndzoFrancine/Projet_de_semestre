@@ -3,16 +3,11 @@
     <div class="Insciption">
       <h1 class="title">Inscription</h1>
 
-      <!--name-->
-      <label class="label">Name</label>
-      <div id="name" class="control">
-        <input class="input" type="text" placeholder="name">
-      </div>
 
       <!--username-->
 
-      <div id="username">
-        <label class="label">Username</label>
+      <div id="username" class="field">
+        <label class="label">Nom d'utilisateur</label>
         <div class="control">
           <input
             class="input is-success"
@@ -23,18 +18,18 @@
             v-on:input="checkForm"
           >
         </div>
-        <p v-if="errors" class="help is-danger">{{errors}}</p>
+
+        <p v-if="errors" class="help is-success">{{errors}}</p>
         <p v-else class="help is-success">test</p>
       </div>
 
       <!--email-->
-      <label class="label">Email</label>
-
-      <div class="field is-grouped">
-        <div class="control has-icons-right">
-          <input class="input is-danger" type="text" placeholder="your.heig-vd.mail">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="email" placeholder="prenom.nom@heig-vd.ch">
           <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
+            <font-awesome-icon icon="envelope"/>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-exclamation-triangle"></i>
@@ -42,17 +37,20 @@
 
           <p class="help is-danger">This email is invalid</p>
         </div>
-        <p>@heig-vd.ch</p>
+        <p class="help is-danger">Cet email est invalide</p>
       </div>
 
       <!--mot de pass-->
-      <label class="label">Mot de passe</label>
-      <div class="control">
-        <input class="input is-danger" type="email" placeholder="password">
-      </div>
-      <div class="control">
-        <label class="label">Retaper votre mot de passe</label>
-        <input class="input is-danger" type="email" placeholder="password tcheck">
+      <div class="field">
+        <label class="label">Mot de passe</label>
+        <div class="control">
+          <input class="input is-danger" type="password" placeholder="password">
+        </div>
+        <div class="control">
+          <label class="label">Retapez votre mot de passe</label>
+          <input class="input is-danger" type="password" placeholder="password check">
+        </div>
+        <p class="help is-danger">mot de passe différent</p>
       </div>
       <p class="help is-danger">mot de passe différent</p>
     </div>
