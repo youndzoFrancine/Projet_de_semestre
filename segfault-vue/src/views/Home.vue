@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <div class="colums">
-      <div class="column is-9">
-        <Discussion/>
-      </div>
-    </div>
+    <Discussion/>
   </div>
 </template>
 
