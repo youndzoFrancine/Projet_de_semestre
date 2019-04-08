@@ -2,10 +2,12 @@
 <form
   id="username"
   @submit="checkForm"
+  action="https://vuejs.org/"
   method="post"
 >
 
  <div class="Insciption">
+
    <!--name-->
       <div class="columns">
         <div class="column is-1">
@@ -27,9 +29,9 @@
       <div id="username" class="column is-7"  >
         <label class="label">Username</label>
         <div class="control ">
-          <input class="input is-success"  v-model=user id="user" type="text" placeholder="username">
+          <input class="input is-success"  v-model="user" id="user" type="text" placeholder="username"  @change="checkForm">
         </div>
-        <p v-if="errors" class="help is-success"> {{errors}}</p>
+        <p v-if=errors class="help is-success"> {{errors}}</p>
         <p v-else class="help is-success">  test    </p>
       </div>
     </div>
@@ -81,42 +83,35 @@
         <p class="help is-danger">mot de passe différent</p>
       </div>
     </div>
- 
- 
   </div> 
-
-  
-
  </form>
 
 
 </template>
 <script>
-/* 
-const username = new Vue({
-  el: '#username',
-  data: {
+export default {
+  name: "theInscription",
+  components: {}, 
+   data: function() {
+  return {
     errors: null,
-    user: null
-  },
-
-  methods:{
-    checkForm: function (e) {
-      return true;
-      
-      if (this.user) {
+    user:null
+  }
+} , methods :{
+checkForm: function (e) {
+      console.log("passe par ici");
+      this.errors ="bonnn";
+      if (this.user=='papa') {
+              console.log("papa");
         return true;
       }
-
       this.errors = null;
-
       if (!this.user) {
         this.errors='This pseudo is already taken';
-      }  
+      } 
       e.preventDefault();
     }
   }
-});
- */
+}
 
 </script>
