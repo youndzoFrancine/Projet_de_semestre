@@ -37,7 +37,10 @@
         </nav>
       </div>
       <div class="media-right">
-        <button class="delete"></button>
+        <div class="buttons">
+          <button class="button is-warning is-small is-fullwidth">10 réponses</button>
+          <button class="button is-warning is-small is-outlined is-fullwidth">100 vues</button>
+        </div>
       </div>
     </article>
   </div>

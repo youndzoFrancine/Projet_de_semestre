@@ -1,5 +1,5 @@
 <template>
-  <a class="button is-info is-small is-outlined">{{tag.name}}</a>
+  <a class="button is-info is-outlined">{{tag.name}}</a>
 </template>
 
 <script>

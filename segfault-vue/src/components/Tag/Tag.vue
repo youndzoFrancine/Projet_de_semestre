@@ -1,6 +1,6 @@
 <template>
   <div class="tags">
-    <div class="buttons">
+    <div class="buttons are-small">
       <TagItem v-bind:key="tag.id" v-for="tag in tags" v-bind:tag="tag"/>
     </div>
   </div>
