@@ -1,13 +1,7 @@
 package heigvd.ch.segfaultapi.dbseederh2;
 
-import heigvd.ch.segfaultapi.model.Departement;
-import heigvd.ch.segfaultapi.model.Discussion;
-import heigvd.ch.segfaultapi.model.Tag;
-import heigvd.ch.segfaultapi.model.Message;
-import heigvd.ch.segfaultapi.repositories.DepartementRepository;
-import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
-import heigvd.ch.segfaultapi.repositories.TagRepository;
-import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.model.*;
+import heigvd.ch.segfaultapi.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -33,6 +27,8 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Autowired
     TagRepository tagRepository;
 
+    @Autowired
+    RoleRepoitory roleRepoitory;
 
     @Override
     public void run(String... args) throws Exception {
@@ -54,12 +50,19 @@ public class DatabaseSeeder implements CommandLineRunner {
         tags.add(new Tag("netbeans", false,1));
 
 
-
         // Messages
         List<Message> messages = new ArrayList<>();
 
         Discussion d1 = new Discussion("Questions Labo4 PCO");
         discussions.add(d1);
+
+        // Roles
+        List<Role>  roles = new ArrayList<>();
+        roles.add(new Role("Étudiant"));
+        roles.add(new Role("Assistant"));
+        roles.add(new Role("Professeur"));
+
+
 /*
         messages.add(new Message("Je sais pas comment faire et ça me rend triste",
                 discussionRepository.getOne(1).getId()));
@@ -69,5 +72,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         discussionRepository.saveAll(discussions);
         messageRepository.saveAll(messages);
         tagRepository.saveAll(tags);
+        roleRepoitory.saveAll(roles);
     }
 }

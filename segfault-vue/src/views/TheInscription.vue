@@ -3,6 +3,7 @@
     <div class="Insciption">
       <h1 class="title">Inscription</h1>
 
+
       <!--username-->
 
       <div id="username" class="field">
@@ -17,6 +18,7 @@
             v-on:input="checkForm"
           >
         </div>
+
         <p v-if="errors" class="help is-success">{{errors}}</p>
         <p v-else class="help is-success">test</p>
       </div>
@@ -32,6 +34,8 @@
           <span class="icon is-small is-right">
             <i class="fas fa-exclamation-triangle"></i>
           </span>
+
+          <p class="help is-danger">This email is invalid</p>
         </div>
         <p class="help is-danger">Cet email est invalide</p>
       </div>
@@ -48,6 +52,7 @@
         </div>
         <p class="help is-danger">mot de passe différent</p>
       </div>
+      <p class="help is-danger">mot de passe différent</p>
     </div>
   </form>
 </template>
