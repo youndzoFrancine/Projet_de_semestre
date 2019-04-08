@@ -1,0 +1,14 @@
+/* Couleurs */
+$fusion-red: #fc5c65;
+$orange-hibiscus: #fd9644;
+$lighter-purple: #a55eea;
+
+$blue-green: #2bcbba;
+$twinkle-blue: #d1d8e0;
+
+$gradient-sunrise: linear-gradient(
+  to top,
+  $lighter-purple -10%,
+  $fusion-red 25%,
+  $orange-hibiscus 70%
+);
