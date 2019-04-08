@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur (
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id	SERIAL PRIMARY KEY,
 	sujet			VARCHAR, 
-	msgracine_id		INTEGER,
+	msgracine_id	INTEGER,
 	utilisateur_id	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
     FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
@@ -50,6 +50,21 @@ CREATE TABLE IF NOT EXISTS Tag (
 	nom				VARCHAR,
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
+);
+
+CREATE TABLE IF NOT EXISTS Vote (
+  message_id 		INTEGER PRIMARY KEY,  
+  utilisateur_id	INTEGER PRIMARY KEY, 
+  FOREIGN KEY (message_id)     REFERENCES Message(message),
+  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+);
+
+CREATE TABLE IF NOT EXISTS Vote (
+  message_id 	 INTEGER ,  
+  utilisateur_id INTEGER , 
+  PRIMARY KEY (message_id, utilisateur_id),
+  FOREIGN KEY (message_id)     REFERENCES Message(message_id),
+  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
 	
 ALTER TABLE Discussion 
