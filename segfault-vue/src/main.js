@@ -6,10 +6,10 @@ import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faCoffee);
-library.add(faSearch);
+library.add(faCoffee, faSearch, faEnvelope);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

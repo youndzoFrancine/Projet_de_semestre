@@ -27,13 +27,13 @@
         <div class="control has-icons-left has-icons-right">
           <input class="input is-danger" type="email" placeholder="prenom.nom@heig-vd.ch">
           <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
+            <font-awesome-icon icon="envelope"/>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-exclamation-triangle"></i>
           </span>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <p class="help is-danger">Cet email est invalide</p>
       </div>
 
       <!--mot de pass-->
