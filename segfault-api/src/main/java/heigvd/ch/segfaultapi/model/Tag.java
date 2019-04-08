@@ -13,9 +13,9 @@ public class Tag {
 
     @Getter
     @Id
-    @GeneratedValue( strategy = GenerationType.SEQUENCE )
-    @Column( name = "tagid" )
-    private Long tagId;
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "tag_id" )
+    private Integer tagId;
 
     @Getter
     @Column(name = "nom")
