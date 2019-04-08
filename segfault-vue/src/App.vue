@@ -14,7 +14,7 @@
             <div class="column is-1">
               <TheSidemenu/>
             </div>
-            <div class="column is-9">
+            <div class="column is-11">
               <router-view/>
             </div>
           </div>
