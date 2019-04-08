@@ -50,6 +50,7 @@ public class DepartementController {
 
         repository.deleteById(id);
 
+
         return new ResponseEntity<>("departement has been deleted!", HttpStatus.OK);
     }
 }

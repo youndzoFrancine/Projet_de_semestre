@@ -24,6 +24,7 @@ import com.pro.forum.repository.UserRepository;
 @RestController
 @RequestMapping("/api")  // L' @RequestMappingannotation garantit que les demandes HTTP à /api mappées à la class UserController .
 public class UserController {
+	
 
 	@Autowired
 	UserRepository repository;
