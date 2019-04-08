@@ -66,6 +66,14 @@ CREATE TABLE IF NOT EXISTS Vote (
   FOREIGN KEY (message_id)     REFERENCES Message(message_id),
   FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
+
+CREATE TABLE IF NOT EXISTS Appartient (
+  departement_id INTEGER ,  
+  utilisateur_id INTEGER , 
+  PRIMARY KEY (departement_id, utilisateur_id),
+  FOREIGN KEY (departement_id)     REFERENCES Departement(departement_id),
+  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+);
 	
 ALTER TABLE Discussion 
 	ADD CONSTRAINT constraint_name FOREIGN KEY (msgracine_id) REFERENCES Message(message_id);
