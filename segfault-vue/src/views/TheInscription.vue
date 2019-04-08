@@ -2,7 +2,6 @@
 <form
   id="username"
   @submit="checkForm"
-  action="https://vuejs.org/"
   method="post"
 >
 
@@ -29,9 +28,9 @@
       <div id="username" class="column is-7"  >
         <label class="label">Username</label>
         <div class="control ">
-          <input class="input is-success"  v-model="user" id="user" type="text" placeholder="username"  @change="checkForm">
+          <input class="input is-success"  v-model="user" id="user" type="text" placeholder="username" v-on:input="checkForm">
         </div>
-        <p v-if=errors class="help is-success"> {{errors}}</p>
+        <p v-if=errors class="help is-danger"> {{errors}}</p>
         <p v-else class="help is-success">  test    </p>
       </div>
     </div>
@@ -99,7 +98,7 @@ export default {
   }
 } , methods :{
 checkForm: function (e) {
-      console.log("passe par ici");
+      console.log("call checkform control");
       this.errors ="bonnn";
       if (this.user=='papa') {
               console.log("papa");
