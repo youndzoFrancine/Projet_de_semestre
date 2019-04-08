@@ -9,6 +9,7 @@ import java.util.Set;
 @Table( name = "discussion" )
 public class Discussion {
 
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "discussionid" )
@@ -20,9 +21,17 @@ public class Discussion {
     @Column(name = "msgracineid")
     private int msgRacineID;
 
+    @OneToOne  // Pour representer la relation de composition entre discussion et message
+    @JoinColumn(name = "MESSAGE_ID_FK")
+    Message messageDeDiscussion ;
 
     @ManyToMany( mappedBy = "listeDiscussion" )   // nous précision dans l’annotation que le lien est mappé avec l’attribut listeDiscussion qui sera définie dans la classe Tag
     private Set<Tag> listeTag = new HashSet<>();
+
+
+    @ManyToOne
+    @JoinColumn( name = "user_ID_FK" )
+    private User user_discussion;
 
     public Discussion(){
 

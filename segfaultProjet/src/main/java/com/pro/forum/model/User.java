@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "utilisateur ")
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "utilisateurid")
@@ -36,9 +37,15 @@ public class User {
     )
     private Set<Departement> listeDepartement = new HashSet<>();
 
-    @OneToMany
-    @JoinColumn( name = "user_ID_FK")
+
+    @OneToMany( mappedBy = "user_discussion")   //  join de cardinalité "1..*" entre User et Discussion
     private List< Discussion > listeDiscussion;
+
+    @OneToMany( mappedBy = "user_message")  //  join de cardinalité "1..*" entre User et Message
+    private List< Message > listeMessage;
+
+    @OneToMany(mappedBy = "user_vote")
+    private List<Vote> user_lien_message;
 
 
     public User(User users){ }
