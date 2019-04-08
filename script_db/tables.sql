@@ -74,6 +74,14 @@ CREATE TABLE IF NOT EXISTS Appartient (
   FOREIGN KEY (departement_id)     REFERENCES Departement(departement_id),
   FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
+
+CREATE TABLE IF NOT EXISTS Est_lier (
+  discussion_id INTEGER ,  
+  tag_id INTEGER , 
+  PRIMARY KEY (discussion_id, tag_id),
+  FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id),
+  FOREIGN KEY (tag_id)       REFERENCES Tag(tag_id)
+);
 	
 ALTER TABLE Discussion 
 	ADD CONSTRAINT constraint_name FOREIGN KEY (msgracine_id) REFERENCES Message(message_id);
