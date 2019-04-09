@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur (
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id	SERIAL PRIMARY KEY,
 	sujet			VARCHAR, 
-	msgracine_id		INTEGER,
+	msgracine_id	INTEGER,
 	utilisateur_id	INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
     FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
@@ -51,15 +51,32 @@ CREATE TABLE IF NOT EXISTS Tag (
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
 );
+
+
+CREATE TABLE IF NOT EXISTS Vote (
+  message_id 	 INTEGER ,  
+  utilisateur_id INTEGER ,
+  up BOOLEAN,
+  PRIMARY KEY (message_id, utilisateur_id),
+  FOREIGN KEY (message_id)     REFERENCES Message(message_id),
+  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+);
+
+CREATE TABLE IF NOT EXISTS Appartient (
+  departement_id INTEGER ,  
+  utilisateur_id INTEGER , 
+  PRIMARY KEY (departement_id, utilisateur_id),
+  FOREIGN KEY (departement_id)     REFERENCES Departement(departement_id),
+  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+);
+
+CREATE TABLE IF NOT EXISTS Est_lier (
+  discussion_id INTEGER ,  
+  tag_id INTEGER , 
+  PRIMARY KEY (discussion_id, tag_id),
+  FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id),
+  FOREIGN KEY (tag_id)       REFERENCES Tag(tag_id)
+);
 	
 ALTER TABLE Discussion 
 	ADD CONSTRAINT constraint_name FOREIGN KEY (msgracine_id) REFERENCES Message(message_id);
-	
-	
-
-
- 
-
-
-
-
