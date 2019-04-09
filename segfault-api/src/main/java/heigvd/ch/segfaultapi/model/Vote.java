@@ -29,8 +29,8 @@ public class Vote implements Serializable {
     private boolean up;
 
     public Vote(){
-
     }
+
     public Vote(Vote vote){
         this.setUp(vote.isUp());
     }
