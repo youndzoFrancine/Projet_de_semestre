@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Utilisateur ")
-public class User {
+public class Utilisateur {
 
 
     @Id
@@ -48,18 +48,18 @@ public class User {
     private List<Vote> user_lien_message;*/
 
 
-    public User(User users){ }
+    public Utilisateur(Utilisateur users){ }
 
-    public User(String mailUtilisateur, String motDePasse){
+    public Utilisateur(String mailUtilisateur, String motDePasse){
         this.mailUtilisateur = mailUtilisateur;
         this.motDePasse = motDePasse;
     }
-    public User(String nomUtilisateur, String mailUtilisateur, String motDePasse, String confirmMotdepasse){
+    public Utilisateur(String nomUtilisateur, String mailUtilisateur, String motDePasse, String confirmMotdepasse){
         this(mailUtilisateur, motDePasse);
         this.nomUtilisateur = nomUtilisateur;
     }
 
-    public User() {
+    public Utilisateur() {
 
     }
 

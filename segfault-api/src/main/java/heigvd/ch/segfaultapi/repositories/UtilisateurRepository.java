@@ -1,11 +1,11 @@
 package heigvd.ch.segfaultapi.repositories;
 
 
-import heigvd.ch.segfaultapi.model.User;
+import heigvd.ch.segfaultapi.model.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
 
 	//User findById(Integer utilisateurID);
 }

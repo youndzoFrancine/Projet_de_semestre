@@ -1,8 +1,8 @@
 package heigvd.ch.segfaultapi.controller;
 
 
-import heigvd.ch.segfaultapi.model.User;
-import heigvd.ch.segfaultapi.repositories.UserRepository;
+import heigvd.ch.segfaultapi.model.Utilisateur;
+import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,31 +10,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200") // Cette @CrossOrigin annotation active les demandes d'origine croisée uniquement pour cette méthode spécifique.
 @RestController
-@RequestMapping("/api")  // L' @RequestMappingannotation garantit que les demandes HTTP à /api mappées à la class UserController .
-public class UserController {
+@RequestMapping("/utilisateurs")  // L' @RequestMappingannotation garantit que les demandes HTTP à /api mappées à la class UserController .
+public class UtilisateurController {
 	
 
 	@Autowired
-	UserRepository repository;
+	UtilisateurRepository repository;
 
 	@GetMapping("/user")
-	public List<User> showAllUsers() {
+	public List<Utilisateur> showAllUsers() {
 		System.out.println("Get all users...");
 
-		List<User> users = new ArrayList<>();
+		List<Utilisateur> users = new ArrayList<>();
 		repository.findAll().forEach(users::add);
 
 		return users;
 	}
 
 	@PostMapping("/user")
-	public User addUser(@RequestBody User user) {
+	public Utilisateur addUser(@RequestBody Utilisateur user) {
 
-		User _user = repository.save(new User(user.getUsername(), user.getUserEmail(), user.getPassword(), user.getPasswordConfirm()));
+		Utilisateur _user = repository.save(new Utilisateur(user.getUsername(), user.getUserEmail(), user.getPassword(), user.getPasswordConfirm()));
 		return _user;
 	}
 
