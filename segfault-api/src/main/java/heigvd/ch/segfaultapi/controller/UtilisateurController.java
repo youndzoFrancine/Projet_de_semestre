@@ -27,6 +27,7 @@ public class UtilisateurController {
 		List<Utilisateur> users = new ArrayList<>();
 		repository.findAll().forEach(users::add);
 
+
 		return users;
 	}
 
@@ -34,6 +35,7 @@ public class UtilisateurController {
 	public Utilisateur addUser(@RequestBody Utilisateur user) {
 
 		Utilisateur _user = repository.save(new Utilisateur(user.getUsername(), user.getUserEmail(), user.getPassword(), user.getPasswordConfirm()));
+
 		return _user;
 	}
 

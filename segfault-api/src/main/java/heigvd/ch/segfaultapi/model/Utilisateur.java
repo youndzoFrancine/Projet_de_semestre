@@ -47,7 +47,6 @@ public class Utilisateur {
 /*    @OneToMany(mappedBy = "user_vote")
     private List<Vote> user_lien_message;*/
 
-
     public Utilisateur(Utilisateur users){ }
 
     public Utilisateur(String mailUtilisateur, String motDePasse){
