@@ -9,18 +9,25 @@ DROP TABLE IF EXISTS appartient;
 DROP TABLE IF EXISTS est_lier;
 DROP TABLE IF EXISTS vote;
 
-
-
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
 	departement_id		 	SERIAL PRIMARY KEY,
 	nom_departement			VARCHAR NOT NULL 
 );/*tchek*/
+/* serial est equivalent a 
+	id integer NOT NULL DEFAULT nextval('table_name_id_seq')
+);
+ 
+ALTER SEQUENCE table_name_id_seq
+OWNED BY table_name.id;*/
 
 /*test d'insertion !default obligatoire pour respecter le multiversionning)*/
+/*
 INSERT INTO departement VALUES(DEFAULT,'TIN');
 INSERT INTO departement(id,name) VALUES(DEFAULT,'apple');
-DELETE FROM departement WHERE nom_departement ='apple');
+DELETE FROM departement WHERE nom_departement ='apple';
+DELETE FROM departement WHERE nom_departement='TIN';
+*/
 
 CREATE TABLE IF NOT EXISTS Roles(
 	role_id					SERIAL PRIMARY KEY,
