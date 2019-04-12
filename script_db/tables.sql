@@ -13,9 +13,14 @@ DROP TABLE IF EXISTS vote;
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
-	departement_id	SERIAL 	PRIMARY KEY,
+	departement_id		 	SERIAL PRIMARY KEY,
 	nom_departement			VARCHAR NOT NULL 
 );/*tchek*/
+
+/*test d'insertion !default obligatoire pour respecter le multiversionning)*/
+INSERT INTO departement VALUES(DEFAULT,'TIN');
+INSERT INTO departement(id,name) VALUES(DEFAULT,'apple');
+DELETE FROM departement WHERE nom_departement ='apple');
 
 CREATE TABLE IF NOT EXISTS Roles(
 	role_id					SERIAL PRIMARY KEY,
