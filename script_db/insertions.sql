@@ -60,6 +60,18 @@ Values
   ('ci4cb', 'carlos.pena@heig-vd.ch', 'cpa456', 3),
   ('lionel', 'lionel.assistant@heig-vd.ch', 'lionel', 2),
   ('nicole', 'nicole.assistant@heig-vd.ch', 'nicole', 2);
+  ('theo', 'theophile.choffokokougnang@heig-vd.ch', '1234', 1),
+  ('Ahmed', 'Ahmed.dawood@heig-vd.ch', '1234', 1),
+  ('Copx', 'julien.coppex@heig-vd.ch', '1234', 1),
+  ('duprx', 'françois.dupre@heig-vd.ch', '1234', 1),
+  ('gregs', 'gregory.hanggi@heig-vd.ch', '1234', 1),
+  ('jenni', 'xavier.Jenni@heig-vd.ch', '1234', 1),
+  ('laucel', 'laucella.mattia@heig-vd.ch', '1234', 1),
+  ('anto', 'antoine.meckert@heig-vd.ch', '1234', 1),
+  ('yannced', 'yanncedric.bebene@heig-vd.ch', '1234', 1),
+  ('seb', 'sebastien.birchmeier@heig-vd.ch', '1234', 1),
+  ('nils', 'nils.cometta@heig-vd.ch', '1234', 1),
+  ('lemd', 'marie.lemdjo@heig-vd.ch', '1234', 1);
 COMMIT;
 
 -- Insertion dans la classe Discussion faisant abstraction du message racine.

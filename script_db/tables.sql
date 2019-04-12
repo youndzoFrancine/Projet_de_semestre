@@ -4,7 +4,11 @@ DROP TABLE IF EXISTS Tag;
 DROP TABLE IF EXISTS Departement;
 DROP TABLE IF EXISTS Utilisateur CASCADE;
 DROP TABLE IF EXISTS Message CASCADE;
+DROP TABLE IF EXISTS Discussion CASCADE;
 DROP TABLE IF EXISTS Roles;
+DROP TABLE IF EXISTS Appartient;
+DROP TABLE IF EXISTS Est_lier;
+DROP TABLE IF EXISTS Vote;
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
@@ -50,13 +54,6 @@ CREATE TABLE IF NOT EXISTS Tag (
 	nom				VARCHAR,
 	prioritaire		BOOLEAN, 
 	rang			INTEGER 
-);
-
-CREATE TABLE IF NOT EXISTS Vote (
-  message_id 		INTEGER PRIMARY KEY,  
-  utilisateur_id	INTEGER PRIMARY KEY, 
-  FOREIGN KEY (message_id)     REFERENCES Message(message),
-  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
 );
 
 CREATE TABLE IF NOT EXISTS Vote (
