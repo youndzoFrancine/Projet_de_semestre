@@ -1,16 +1,21 @@
 /* Nettoyage d'une db existante*/
 DROP TABLE IF EXISTS Departement;
-DROP TABLE IF EXISTS Tag CASCADE;
-DROP TABLE IF EXISTS Departement CASCADE;
-DROP TABLE IF EXISTS Utilisateur CASCADE;
-DROP TABLE IF EXISTS Message CASCADE;
+DROP TABLE IF EXISTS Tag 			CASCADE;
+DROP TABLE IF EXISTS Utilisateur 	CASCADE;
+DROP TABLE IF EXISTS Message 		CASCADE;
+DROP TABLE IF EXISTS discussion		CASCADE;
 DROP TABLE IF EXISTS Roles;
+DROP TABLE IF EXISTS appartient;
+DROP TABLE IF EXISTS est_lier;
+DROP TABLE IF EXISTS vote;
+
+
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
 	departement_id	SERIAL 	PRIMARY KEY,
 	nom_departement			VARCHAR NOT NULL 
-);
+);/*tchek*/
 
 CREATE TABLE IF NOT EXISTS Roles(
 	role_id					SERIAL PRIMARY KEY,
@@ -58,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Vote (
   utilisateur_id INT NOT NULL,
   up_vote BOOLEAN, /*true si vote positif*/
   PRIMARY KEY (message_id,utilisateur_id),
-  FOREIGN KEY (message_id) 		REFERENCES Message(message) 			ON DELETE CASCADE,
+  FOREIGN KEY (message_id) 		REFERENCES Message(message_id) 			ON DELETE CASCADE,
   FOREIGN KEY (utilisateur_id)	REFERENCES Utilisateur(utilisateur_id) 	ON DELETE CASCADE
 );
 
@@ -67,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Appartient (
   departement_id INTEGER ,  
   utilisateur_id INTEGER , 
   PRIMARY KEY (departement_id, utilisateur_id),
-  FOREIGN KEY (departement_id) REFERENCES Departement(departement_id) ON CASCADE DELETE,
+  FOREIGN KEY (departement_id) REFERENCES Departement(departement_id) ON DELETE CASCADE ,
   FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id) ON CASCADE DELETE
 );
 
@@ -75,7 +80,7 @@ CREATE TABLE IF NOT EXISTS Est_lier (
   discussion_id INTEGER ,  
   tag_id 		INTEGER , 
   PRIMARY KEY (discussion_id, tag_id),
-  FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id) 	ON CASCADE DELETE,
+  FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id) 	ON DELETE CASCADE ,
   FOREIGN KEY (tag_id) 	      REFERENCES Tag(tag_id) 				ON CASCADE DELETE
 );
 	
