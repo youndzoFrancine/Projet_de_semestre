@@ -25,7 +25,7 @@ public class Utilisateur {
 
 
 
-    @ManyToMany
+
     private Long  roleUtilisateur;
 
     // Obligatoire pour JPA
