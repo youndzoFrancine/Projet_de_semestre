@@ -18,7 +18,7 @@ Values
 	('Etudiant'),
 	('Assistant'),
 	('Professeur'),
-	('Administrateur'),  
+	('Administrateur');
 COMMIT;
 
 -- Insertion dans la classe tag.
@@ -59,7 +59,7 @@ Values
   ('grafolytics', 'marcel.graf@heig-vd.ch', 'mgf123', 3),
   ('ci4cb', 'carlos.pena@heig-vd.ch', 'cpa456', 3),
   ('lionel', 'lionel.assistant@heig-vd.ch', 'lionel', 2),
-  ('nicole', 'nicole.assistant@heig-vd.ch', 'nicole', 2);
+  ('nicole', 'nicole.assistant@heig-vd.ch', 'nicole', 2),
   ('theo', 'theophile.choffokokougnang@heig-vd.ch', '1234', 1),
   ('Ahmed', 'Ahmed.dawood@heig-vd.ch', '1234', 1),
   ('Copx', 'julien.coppex@heig-vd.ch', '1234', 1),
