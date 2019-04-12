@@ -4,10 +4,10 @@
       <div class="column is-5">
         <h1 class="title">Questions du moment</h1>
       </div>
-      <div class="column">
+      <div class="column is-4">
         <Discussiontabs/>
       </div>
-      <div class="column">
+      <div class="column is-3">
         <a class="button is-success">Nouv. Question</a>
       </div>
     </div>

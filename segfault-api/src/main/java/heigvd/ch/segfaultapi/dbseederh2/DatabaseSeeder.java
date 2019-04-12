@@ -1,9 +1,7 @@
 package heigvd.ch.segfaultapi.dbseederh2;
 
-import heigvd.ch.segfaultapi.model.Discussion;
-import heigvd.ch.segfaultapi.model.Message;
-import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
-import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.model.*;
+import heigvd.ch.segfaultapi.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,36 +15,63 @@ import java.util.List;
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
+    @Autowired
+    DepartementRepository departementRepository;
+
+    @Autowired
     DiscussionRepository discussionRepository;
+
+    @Autowired
     MessageRepository messageRepository;
 
     @Autowired
-    DatabaseSeeder(DiscussionRepository discussionRepository, MessageRepository messageRepository) {
-        this.discussionRepository = discussionRepository;
-        this.messageRepository = messageRepository;
-    }
+    TagRepository tagRepository;
+
+    @Autowired
+    RoleRepoitory roleRepoitory;
 
     @Override
     public void run(String... args) throws Exception {
         List<Discussion> discussions  = new ArrayList<>();
-        List<Message> messages = new ArrayList<>();
+        List <Departement> departements = new ArrayList<>();
+
+        departements.add(new Departement("TIC"));
+        departements.add(new Departement("TIN"));
+        departements.add(new Departement("ECG"));
 
         discussions.add(new Discussion("Pourquoi ça marche pas :(?"));
         discussions.add(new Discussion("Pourquoi PSQL c'est si compliqué?"));
 
-        //============================ Messages ========================================================================
+        // Tags
+
+        List<Tag> tags  = new ArrayList<>();
+
+        tags.add(new Tag("cpp", true,1000));
+        tags.add(new Tag("netbeans", false,1));
+
+
+        // Messages
+        List<Message> messages = new ArrayList<>();
 
         Discussion d1 = new Discussion("Questions Labo4 PCO");
-        Discussion d2 = new Discussion("Projet de semestre");
         discussions.add(d1);
-        discussions.add(d2);
-        Message m1 = new Message((long)1, d1.getId(), "Quel delai pour le rendu");
-        Message m2 = new Message((long) 2, d2.getId(), "Faut-il normaliser la BD ? ");
 
-        messages.add(m1);
-        messages.add(m2);
+        // Roles
+        List<Role>  roles = new ArrayList<>();
+        roles.add(new Role("Étudiant"));
+        roles.add(new Role("Assistant"));
+        roles.add(new Role("Professeur"));
 
+
+/*
+        messages.add(new Message("Je sais pas comment faire et ça me rend triste",
+                discussionRepository.getOne(1).getId()));
+*/
+
+        departementRepository.saveAll(departements);
         discussionRepository.saveAll(discussions);
         messageRepository.saveAll(messages);
+        tagRepository.saveAll(tags);
+        roleRepoitory.saveAll(roles);
     }
 }
