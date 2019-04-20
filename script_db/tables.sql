@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS Departement (
 	departement_id		 	SERIAL PRIMARY KEY,
 	nom_departement			VARCHAR NOT NULL 
 );/*tchek*/
+ALTER SEQUENCE departement_departement_id_seq RESTART WITH 1;
+
 /* serial est equivalent a 
 	id integer NOT NULL DEFAULT nextval('table_name_id_seq')
 );
@@ -21,7 +23,8 @@ CREATE TABLE IF NOT EXISTS Departement (
 ALTER SEQUENCE table_name_id_seq
 OWNED BY table_name.id;*/
 
-/*test d'insertion !default obligatoire pour respecter le multiversionning)*/
+/*test d'insertion !default obligatoire si on ne renseigne pas les champs que l'on désire remplir
+ pour respecter le multiversionning)*/
 /*
 INSERT INTO departement VALUES(DEFAULT,'TIN');
 INSERT INTO departement(id,name) VALUES(DEFAULT,'apple');
@@ -33,6 +36,16 @@ CREATE TABLE IF NOT EXISTS Roles(
 	role_id					SERIAL PRIMARY KEY,
 	nom_role				VARCHAR NOT NULL 
 );
+ALTER SEQUENCE ROLES_role_id_seq RESTART WITH 1;
+
+/* LES ROLES SONT HARD CODER ICI, A METRE DANS LE RAPPORT */
+
+INSERT INTO ROLES (nom_role)
+VALUES
+	('PROFFESEUR')	,
+	('ASSISTANT')	,
+	('ETUDIANT')	;
+
 
 CREATE TABLE IF NOT EXISTS Utilisateur (
 	utilisateur_id	SERIAL 	PRIMARY KEY,
@@ -98,3 +111,4 @@ CREATE TABLE IF NOT EXISTS Est_lier (
 	
 ALTER TABLE Discussion 
 	ADD CONSTRAINT constraint_name FOREIGN KEY (msgracine_id) REFERENCES Message(message_id);
+
