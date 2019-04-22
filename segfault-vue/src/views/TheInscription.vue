@@ -1,27 +1,45 @@
 <template>
-  <form id="username" @submit="checkForm" method="post">
-    <div class="Insciption">
+  <form id="username" @submit="UserInputControl" method="post">
+
+    <div class="Inscription">
       <h1 class="title">Inscription</h1>
-
-
+    </div>
       <!--username-->
-
-      <div id="username" class="field">
-        <label class="label">Nom d'utilisateur</label>
-        <div class="control">
+       <div id="username" class="field">
+       <label class="label">Nom d'utilisateur</label>
+       <template v-if="errors">
+         <div class="control has-icons-left has-icons-right">
+          <input
+            class="input is-danger"
+            v-model="user"
+            id="user"
+            type="text"
+            placeholder="username"
+            v-on:input="UserInputControl"
+          >
+         <span class="icon is-small is-left">
+           <font-awesome-icon icon="user"/>
+    </span>
+         </div>
+        <p class="help is-danger">{{errors}}</p>
+       </template>
+      <template v-else>
+  <div class="control has-icons-left has-icons-right">
           <input
             class="input is-success"
             v-model="user"
             id="user"
             type="text"
             placeholder="username"
-            v-on:input="checkForm"
+            v-on:input="UserInputControl"
           >
-        </div>
+         <span class="icon is-small is-left">
+           <font-awesome-icon icon="user"/>
+    </span>
+         </div>
+      </template>
 
-        <p v-if="errors" class="help is-success">{{errors}}</p>
-        <p v-else class="help is-success">test</p>
-      </div>
+
 
       <!--email-->
       <div class="field">
@@ -56,6 +74,10 @@
     </div>
   </form>
 </template>
+
+
+
+
 <script>
 export default {
   name: "theInscription",
@@ -67,16 +89,12 @@ export default {
     };
   },
   methods: {
-    checkForm: function(e) {
-      console.log("call checkform control");
-      this.errors = "bonnn";
-      if (this.user == "papa") {
-        console.log("papa");
-        return true;
-      }
-      this.errors = null;
-      if (!this.user) {
+    UserInputControl: function(e) {
+      console.log("call UserInputControl control");
+      if (this.user=="Admin") {
         this.errors = "This pseudo is already taken";
+      } else {
+        this.errors = null;
       }
       e.preventDefault();
     }
