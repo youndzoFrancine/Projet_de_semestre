@@ -52,7 +52,6 @@ DELETE FROM Utilisateur WHERE nom_utilisateur = 'Student';
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id			SERIAL PRIMARY KEY,
 	sujet					VARCHAR, 
-	score					INTEGER DEFAULT 100,
 	msgracine_id			INTEGER,
 	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
 		
@@ -79,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Message (
 ALTER SEQUENCE message_message_id_seq RESTART WITH 1;
 
 
-CREATE TABLE IF NOT EXISTS Tag (
+CREATE TABLE IF NOT EXISTS Tag ( 
 	tag_id					SERIAL PRIMARY KEY, 
 	nom						VARCHAR,
 	prioritaire				BOOLEAN, 
