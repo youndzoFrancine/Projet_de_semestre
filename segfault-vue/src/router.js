@@ -23,6 +23,11 @@ export default new Router({
     path: '/TheInscription',
     name : 'TheInscription',
     component: () => import( './views/TheInscription.vue')
+  },
+  {
+  path: '/TheConnexion',
+  name : 'TheConnexion',
+  component: () => import( './views/TheConnexion.vue')
   }
   ]
 })

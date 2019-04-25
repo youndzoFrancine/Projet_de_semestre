@@ -18,12 +18,16 @@
       </a>
     </div>
 
-    <div class="container">
+      <div class="columns">
+  <div class ="column  is-four-fifths">
       <NavSearchbar/>
-    </div>
-
+  </div>
+  <div class="column is-narrow">
     <NavLogZone/>
+  </div>
+    </div>
   </nav>
+
 </template>
 
 <script>
