@@ -10,7 +10,7 @@
               <label class="label">Email</label>
            <template v-if="emailInputErrors">
           <div class="field has-addons">
-          <div class="control is-expanded has-icons-left has-icons-right has-addons" type="email" >
+          <div class="control is-expanded  has-icons-left has-icons-right has-addons" type="email" >
                <input
             class="input is-danger"
             v-model="email"
@@ -19,7 +19,6 @@
             placeholder="prenom.nom"
             v-on:input="emailInputControl"       
           >
-          <!--  v-on:focus="UserInputControl" C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
           <span class="icon is-small is-left">
             <font-awesome-icon icon="envelope"/>
           </span>
@@ -28,9 +27,10 @@
           </span>
         </div>
         <p class="control">
-    <a class="button is-static">
+            <!--
+          <a class="button is-static">
      <font style="text-transform: lowercase;"> @heig-vd.ch</font>
-    </a>
+    </a> -->
   </p>
   </div>
         <p class="help is-danger">{{emailInputErrors}}</p>
@@ -55,9 +55,10 @@
 <font-awesome-icon icon="check"/>
        </span>
         </div>
+        <!--
           <a class="button is-static">
      <font style="text-transform: lowercase;"> @heig-vd.ch</font>
-    </a>
+    </a> -->
                     </div>
             </template>
       </div>
@@ -104,9 +105,6 @@
 
          </div>
       </template>
-
-
-
 
       <!--mot de pass entrer-->
       <div class="field">
@@ -179,8 +177,9 @@
           <span class="icon is-small is-left">
             <font-awesome-icon icon="lock"/>
           </span>
+           </div>        
+           <p class="help is-danger">{{passwordInputErrors}}</p>
 
-           </div>
         </template>
 
         <!-- terms and conditions-->
@@ -203,14 +202,10 @@
   </p>
     </div>
   <div class= "column">
-
   <label class="label">Déjà un compte?</label>
   <p> <a href="Hom"> se connecter </a></p>
   </div>
-   
-
 </div>
-
         </div>
       </div>
     </div>
@@ -221,18 +216,17 @@
 
 
 <script>
-
 export default {
   name: "theInscription",
   components: {},
   data: function() {
     return {
       UserInputErrors: null,
-      user: null,
-      emailInputErrors: "Une adresse mail de la Heig-vd est requise",
+      user: new String(),
+      emailInputErrors: null,
       email : null,
-      password: null,
-      passwordTcheck : null,
+      password: new String(),
+      passwordTcheck : new String(),
       passwordInputErrors: null,
       booleanChangeFocus: new Boolean(false),
       terms : null
@@ -243,7 +237,14 @@ export default {
       console.log("call UserInputControl function");
       //cancel auto-completion
       this.cancelAutoCompletion();
-      if (this.user=="Admin") {
+      let test;
+      test = this.user.split(' ');
+      if(test[1]){
+        this.UserInputErrors ="espace blanc interdit";
+      } else if (user.length <5){
+        this.UserInputErrors= "plus de 5 caractères requis";
+      } else if (this.user=="Admin") {
+        /* appel a la bd*/
         this.UserInputErrors = "This pseudo is already taken";
       } else {
         this.UserInputErrors = null;
@@ -252,35 +253,37 @@ export default {
     },
     emailInputControl: function(e){
       console.log("call emailInputcontrol function");
-      var split = this.email.split('@');
+      let split = this.email.split('@');
       console.log(split[0]);
       console.log(split[1]);
-      if (split[1]!=null){
+      this.user = split[0];
+      if (split[1]!="heig-vd.ch"){
         console.log("parse @");
-        this.email = split[0];
-        if (split[1]!="heig-vd.ch"){
         this.emailInputErrors = "Seul les adresses finnisant par @heig-vd.ch sont autorise";
-      }
+      } else if (this.email == "root.admin@heig-vd.ch"){
+        /* appel a la bd*/
+        this.emailInputErrors = "cette adresse mail est déjà prise";
       } else {
         this.emailInputErrors = null;
-      }
-      if (this.booleanChangeFocus !=true){
-        console.log("auto_indent option ");
-        this.user = this.email;
       }
       e.preventDefault();
     },
     passwordInputControl: function(e){
       console.log("call passwordInputControl function");
       if(this.passwordTcheck != this.password){
-        this.passwordInputErrors = "mdp different";
+        this.passwordInputErrors = "mot de passe different";
       } else {
         this.passwordInputErrors = null;
       }
     },
     passwordBasicTcheck:function(e){
       console.log("call passwordBasicTcheck");
-      if (this.passwordTcheck != null){
+      this.passwordTcheck.split(' ');
+      if (this.password.length < 6 ){
+        console.log("taille pas assez importante");
+        this.passwordInputErrors = "plus de 6 caractères sont demander";
+        
+      } else {
         this.passwordInputControl();
       }
     },
