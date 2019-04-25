@@ -4,7 +4,65 @@
       <h1 class="title">Inscription</h1>
     </div>
 
-      <!--username-->
+      
+      <!--email-->
+      <div class="field">
+              <label class="label">Email</label>
+           <template v-if="emailInputErrors">
+          <div class="field has-addons">
+          <div class="control is-expanded has-icons-left has-icons-right has-addons" type="email" >
+               <input
+            class="input is-danger"
+            v-model="email"
+            id="email"
+            type="text"
+            placeholder="prenom.nom"
+            v-on:input="emailInputControl"       
+          >
+          <!--  v-on:focus="UserInputControl" C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="envelope"/>
+          </span>
+          <span class="icon is-small is-right">
+            <font-awesome-icon icon="exclamation"/>
+          </span>
+        </div>
+        <p class="control">
+    <a class="button is-static">
+     <font style="text-transform: lowercase;"> @heig-vd.ch</font>
+    </a>
+  </p>
+  </div>
+        <p class="help is-danger">{{emailInputErrors}}</p>
+        </template>
+      <template v-else>
+                    <div class="field has-addons">
+             <div class="control is-expanded has-icons-left has-icons-right" type="email" >
+               <input
+            class="input is-success"
+            v-model="email"
+            id="email"
+            type="text"
+            placeholder="prenom.nom"
+            v-on:input="emailInputControl"
+          >
+          <!--C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="envelope"/>
+          </span>
+         
+           <span class="icon is-small is-right">
+<font-awesome-icon icon="check"/>
+       </span>
+        </div>
+          <a class="button is-static">
+     <font style="text-transform: lowercase;"> @heig-vd.ch</font>
+    </a>
+                    </div>
+            </template>
+      </div>
+
+<!--username-->
        <div id="username" class="field">
        <label class="label">Nom d'utilisateur</label>
        <template v-if="UserInputErrors">
@@ -47,61 +105,9 @@
          </div>
       </template>
 
-      <!--email-->
-      <div class="field">
-              <label class="label">Email</label>
 
-          
-           <template v-if="emailInputErrors">
-          <div class="field has-addons">
-          <div class="control is-expanded has-icons-left has-icons-right has-addons" type="email" >
-               <input
-            class="input is-danger"
-            v-model="email"
-            id="email"
-            type="text"
-            placeholder="prenom.nom"
-            v-on:input="emailInputControl"       
-          >
-          <!--  v-on:focus="UserInputControl" C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
-          <span class="icon is-small is-left">
-            <font-awesome-icon icon="envelope"/>
-          </span>
-          <span class="icon is-small is-right">
-            <font-awesome-icon icon="exclamation"/>
-          </span>
-        </div>
-        <p class="control">
-    <a class="button is-static">
-     <font style="text-transform: lowercase;"> @heig-vd.ch</font>
-    </a>
-  </p>
-  </div>
-        <p class="help is-danger">{{emailInputErrors}}</p>
-        </template>
-      <template v-else>
-                    <div class="field has-addons">
-             <div class="control has-icons-left has-icons-right" type="email" >
-               <input
-            class="input is-success"
-            v-model="email"
-            id="email"
-            type="text"
-            placeholder="prenom.nom"
-            v-on:input="emailInputControl"
-          >
-          <!--C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
-          <span class="icon is-small is-left">
-            <font-awesome-icon icon="envelope"/>
-          </span>
-         
-           <span class="icon is-small is-right">
-<font-awesome-icon icon="check"/>
-       </span>
-        </div>
-                    </div>
-            </template>
-      </div>
+
+
       <!--mot de pass entrer-->
       <div class="field">
         <label class="label">Mot de passe</label>
@@ -199,7 +205,7 @@
   <div class= "column">
 
   <label class="label">Déjà un compte?</label>
-  <p> <a href=""> se connecter </a></p>
+  <p> <a href="Hom"> se connecter </a></p>
   </div>
    
 
@@ -228,12 +234,15 @@ export default {
       password: null,
       passwordTcheck : null,
       passwordInputErrors: null,
+      booleanChangeFocus: new Boolean(false),
       terms : null
     };
   },
   methods: {
     UserInputControl: function(e) {
       console.log("call UserInputControl function");
+      //cancel auto-completion
+      this.cancelAutoCompletion();
       if (this.user=="Admin") {
         this.UserInputErrors = "This pseudo is already taken";
       } else {
@@ -246,11 +255,18 @@ export default {
       var split = this.email.split('@');
       console.log(split[0]);
       console.log(split[1]);
-      if (split[1]!="heig-vd.ch"){
-        console.log("erreur");
+      if (split[1]!=null){
+        console.log("parse @");
+        this.email = split[0];
+        if (split[1]!="heig-vd.ch"){
         this.emailInputErrors = "Seul les adresses finnisant par @heig-vd.ch sont autorise";
+      }
       } else {
         this.emailInputErrors = null;
+      }
+      if (this.booleanChangeFocus !=true){
+        console.log("auto_indent option ");
+        this.user = this.email;
       }
       e.preventDefault();
     },
@@ -267,6 +283,10 @@ export default {
       if (this.passwordTcheck != null){
         this.passwordInputControl();
       }
+    },
+    cancelAutoCompletion:function(e){
+      console.log("call cancelAutoCompletion");
+      this.booleanChangeFocus = true;
     }
   }
 };
