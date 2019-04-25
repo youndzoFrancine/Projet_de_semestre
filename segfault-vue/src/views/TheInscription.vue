@@ -210,7 +210,10 @@
     </div>
   <div class= "column">
   <label class="label">Déjà un compte?</label>
-  <p> <a href="Home"> se connecter </a></p>
+                <router-link to='/TheConnexion'>
+
+  <p> <a href="TheConnexion"> se connecter </a></p>
+                </router-link>
   </div>
 </div>
         </div>
