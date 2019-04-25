@@ -6,7 +6,9 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+                        <router-link to="/TheConnexion">
             <a class="button is-primary is-outlined">Connexion</a>
+            </router-link>
             <router-link to="/TheInscription">
               <a class="button is-primary">
                 <strong>Inscription</strong>
