@@ -189,6 +189,9 @@
       <input type="checkbox" v-model="terms">
       I agree to the <a href="#">terms and conditions</a>
     </label>
+    <template v-if="termsErrors">
+    <p class="help is-danger">Veuillez accepter les conditions</p>
+    </template>
   </div>
 </div>
 <!--login-->
@@ -196,14 +199,18 @@
   <div class= "column">
 
   <p class="control">
-    <button class="button is-success">
+    <button class="button is-success"
+    v-on:click ="registration">
       register
     </button>
   </p>
+  <template v-if="RegistrationFaillure">
+    <p class="help is-danger">{{RegistrationFaillure}}</p>
+  </template>
     </div>
   <div class= "column">
   <label class="label">Déjà un compte?</label>
-  <p> <a href="Hom"> se connecter </a></p>
+  <p> <a href="Home"> se connecter </a></p>
   </div>
 </div>
         </div>
@@ -229,7 +236,9 @@ export default {
       passwordTcheck : new String(),
       passwordInputErrors: null,
       booleanChangeFocus: new Boolean(false),
-      terms : null
+      RegistrationFaillure: null,
+      terms : null,
+      termsErrors: null
     };
   },
   methods: {
@@ -257,6 +266,7 @@ export default {
       console.log(split[0]);
       console.log(split[1]);
       this.user = split[0];
+      this.UserInputErrors = null;
       if (split[1]!="heig-vd.ch"){
         console.log("parse @");
         this.emailInputErrors = "Seul les adresses finnisant par @heig-vd.ch sont autorise";
@@ -290,6 +300,43 @@ export default {
     cancelAutoCompletion:function(e){
       console.log("call cancelAutoCompletion");
       this.booleanChangeFocus = true;
+    },registration: function(e){
+      console.log("call registration");
+      let mistake = new Boolean(false);
+ 
+      if ((this.passwordInputErrors==null && this.emailInputErrors==null && this.UserInputErrors==null)){
+      if ( this.email==null){
+        this.emailInputErrors = "champs non rempli";
+        mistake = true;
+      } 
+       if (this.password==null){
+        this.passwordInputErrors = "champs non rempli";
+        mistake = true;
+      } 
+       if (this.user==null){
+        this.UserInputErrors = "champs non rempli";
+        mistake = true;
+      }
+      if (this.terms == null){
+        this.termsErrors = "true";
+        mistake = true;
+      } else {
+        this.termsErrors= null;
+      }
+      if (mistake==true){
+        console.log("mistake");
+          this.RegistrationFaillure = "tout les champs ne sont pas rempli correctement";
+
+      } else {
+          /*enregistrement dans la db*/
+      this.RegistrationFaillure =null;
+      return;
+      }
+   }
+       else {
+          this.RegistrationFaillure = "tout les champs ne sont pas rempli correctement";
+      }
+
     }
   }
 };
