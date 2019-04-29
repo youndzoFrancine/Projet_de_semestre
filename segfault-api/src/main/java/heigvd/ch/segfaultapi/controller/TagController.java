@@ -49,7 +49,7 @@ public class TagController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public List<Tag> delete (@PathVariable("id") Integer id) {
+    public List<Tag> delete (@PathVariable("id") Long id) {
         tagRepository.deleteById(id);
 
         return tagRepository.findAll();
