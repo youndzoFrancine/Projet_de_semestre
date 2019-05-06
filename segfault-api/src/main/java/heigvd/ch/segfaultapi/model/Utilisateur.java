@@ -15,7 +15,7 @@ public class Utilisateur {
     @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
-     private Long utilisateurId;
+     private Integer utilisateurId;
 
      private String nomUtilisateur;
 
@@ -26,7 +26,7 @@ public class Utilisateur {
 
 
 
-    private Long  roleUtilisateur;
+    private Integer  roleUtilisateur;
 
     // Obligatoire pour JPA
     public Utilisateur () {
@@ -50,7 +50,7 @@ public class Utilisateur {
      *
      * @param roleUtilisateur
      */
-    public void setRoleUtilisateur(Long roleUtilisateur) {
+    public void setRoleUtilisateur(Integer roleUtilisateur) {
         this.roleUtilisateur = roleUtilisateur;
     }
 
@@ -59,7 +59,7 @@ public class Utilisateur {
      *
      * @param utilisateurId
      */
-    public void setUtilisateurId(Long utilisateurId) {
+    public void setUtilisateurId(Integer utilisateurId) {
         this.utilisateurId = utilisateurId;
     }
 
