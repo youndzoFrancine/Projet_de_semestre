@@ -53,6 +53,7 @@ public class Message {
         this.discussionId = discussionId;
     }
 
+
 /*public Message(Long utilisateurId, Long discussionId, String message, Long messageParentId){
         this( utilisateurId, discussionId, message);
         this.superMessageId = messageParentId;

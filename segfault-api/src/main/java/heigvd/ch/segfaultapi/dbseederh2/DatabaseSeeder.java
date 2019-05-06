@@ -30,10 +30,14 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Autowired
     RoleRepoitory roleRepoitory;
 
+    @Autowired
+    UtilisateurRepository utilisateurRepository;
+
     @Override
     public void run(String... args) throws Exception {
         List<Discussion> discussions  = new ArrayList<>();
         List <Departement> departements = new ArrayList<>();
+        List <Utilisateur> utilisateurs = new ArrayList<>();
 
         departements.add(new Departement("TIC"));
         departements.add(new Departement("TIN"));
@@ -41,6 +45,13 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         discussions.add(new Discussion("Pourquoi ça marche pas :(?"));
         discussions.add(new Discussion("Pourquoi PSQL c'est si compliqué?"));
+
+
+        //Utilisateurs
+
+        utilisateurs.add(new Utilisateur("Francine","francine.heigvd.ch","1234",2));
+        utilisateurs.add(new Utilisateur("Crescence","Crescence.heigvd.ch","hello",9));
+        utilisateurs.add(new Utilisateur("Tiago","tiago.heigvd.ch","abcd",10));
 
         // Tags
 
@@ -52,6 +63,9 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         // Messages
         List<Message> messages = new ArrayList<>();
+
+       /* messages.add(new Message("coucou je suis la", 29));
+        messages.add(new Message("i m working hard",36));*/
 
         Discussion d1 = new Discussion("Questions Labo4 PCO");
         discussions.add(d1);
@@ -73,5 +87,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         messageRepository.saveAll(messages);
         tagRepository.saveAll(tags);
         roleRepoitory.saveAll(roles);
+        utilisateurRepository.saveAll(utilisateurs);
+        //messageRepository.saveAll(messages);
     }
 }

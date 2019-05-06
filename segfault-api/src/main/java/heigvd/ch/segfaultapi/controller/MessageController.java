@@ -1,7 +1,10 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Message;
+
+import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,8 @@ public class MessageController {
 
 
     private MessageRepository messageRepository;
+
+
 
     @Autowired
     public MessageController(MessageRepository messageRepository) {
