@@ -52,12 +52,7 @@ CREATE TABLE IF NOT EXISTS Tag (
 	rang			INTEGER 
 );
 
-CREATE TABLE IF NOT EXISTS Vote (
-  message_id 		INTEGER PRIMARY KEY,  
-  utilisateur_id	INTEGER PRIMARY KEY, 
-  FOREIGN KEY (message_id)     REFERENCES Message(message),
-  FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
-);
+
 
 CREATE TABLE IF NOT EXISTS Vote (
   message_id 	 INTEGER ,  
