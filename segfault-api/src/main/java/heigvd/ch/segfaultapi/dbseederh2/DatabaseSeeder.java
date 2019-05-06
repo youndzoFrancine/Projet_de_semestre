@@ -8,10 +8,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //
 /**
  * Retirer cet autorun si ce n'est pas utilisé
  */
+/*
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
@@ -67,7 +69,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         messages.add(new Message("Je sais pas comment faire et ça me rend triste",
                 discussionRepository.getOne(1).getId()));
 */
-
+/*
         departementRepository.saveAll(departements);
         discussionRepository.saveAll(discussions);
         messageRepository.saveAll(messages);
@@ -75,3 +77,5 @@ public class DatabaseSeeder implements CommandLineRunner {
         roleRepoitory.saveAll(roles);
     }
 }
+/*
+ */
