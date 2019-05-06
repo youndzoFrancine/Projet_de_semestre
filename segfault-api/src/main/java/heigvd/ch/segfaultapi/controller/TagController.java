@@ -9,7 +9,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/tags")
+@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping("tags")
 public class TagController {
 
     private TagRepository tagRepository;

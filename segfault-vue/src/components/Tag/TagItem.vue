@@ -3,7 +3,7 @@
     class="button is-info"
     v-on:click="clickTag"
     v-bind:class="{'is-outlined':!isActive}"
-  >{{tag.name}}</a>
+  >{{tag.nom}}</a>
 </template>
 
 <script>

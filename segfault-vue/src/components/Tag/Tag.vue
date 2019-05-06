@@ -8,6 +8,7 @@
 
 <script>
 import TagItem from "@/components/Tag/TagItem.vue";
+import axios from "axios";
 
 export default {
   name: "Tag",
@@ -17,14 +18,19 @@ export default {
   data() {
     return {
       tags: [
-        { id: 1, name: "java" },
-        { id: 2, name: "cpp" },
-        { id: 3, name: "c" },
-        { id: 4, name: "ruby" },
-        { id: 5, name: "python" },
-        { id: 6, name: "haskell" }
+        { id: 1, nom: "java" },
+        { id: 2, nom: "cpp" },
+        { id: 3, nom: "c" },
+        { id: 4, nom: "ruby" },
+        { id: 5, nom: "python" },
+        { id: 6, nom: "haskell" }
       ]
     };
+  },
+  mounted() {
+    axios.get("http://localhost:8087/tags/all").then(response => {
+      this.tags = response.data;
+    });
   }
 };
 </script>
