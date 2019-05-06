@@ -2,6 +2,7 @@ package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,82 +13,40 @@ import java.util.Set;
 public class Utilisateur {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Setter
+    @Column(name = "utilisateur_id")
+    private Integer utilisateurID;
 
-     private Long utilisateurId;
+    @Column(name = "nom_utilisateur")
+    @Getter
+    @Setter
+    private String nomUtilisateur;
 
-     private String nomUtilisateur;
+    @Column(name = "mail_utilisateur")
+    @Getter
+    @Setter
+    private String mailUtilisateur;
 
-     private String mailUtilisateur;
+    @Column(name = "mot_de_passe")
+    @Getter
+    @Setter
+    private String motDePasse;
 
-     private String motDePasse;
+    @Column(name = "role_utilisateur")
+    @Getter
+    @Setter
+    private int roleUtilisateur;
 
 
-
-
-    private Long  roleUtilisateur;
-
-    // Obligatoire pour JPA
     public Utilisateur () {
     }
 
-    /**
-     *
-     * @param nomUtilisateur
-     * @param mailUtilisateur
-     * @param motDePasse
-     */
     public Utilisateur ( String nomUtilisateur, String mailUtilisateur, String motDePasse){
         this.nomUtilisateur=nomUtilisateur;
         this.mailUtilisateur=mailUtilisateur;
         this.motDePasse=motDePasse;
-
-
     }
 
-    /**
-     *
-     * @param roleUtilisateur
-     */
-    public void setRoleUtilisateur(Long roleUtilisateur) {
-        this.roleUtilisateur = roleUtilisateur;
-    }
-
-
-    /**
-     *
-     * @param utilisateurId
-     */
-    public void setUtilisateurId(Long utilisateurId) {
-        this.utilisateurId = utilisateurId;
-    }
-
-
-
-    /**
-     *
-     * @param nomUtilisateur
-     */
-    public void setNomUtilisateur(String nomUtilisateur) {
-        this.nomUtilisateur = nomUtilisateur;
-    }
-
-
-    /**
-     *
-     * @param motDePasse
-     */
-   public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
-
-
-    /**
-     *
-     * @param mailUtilisateur
-     */
-    public void setMailUtilisateur(String mailUtilisateur) {
-        this.mailUtilisateur = mailUtilisateur;
-    }
 }
