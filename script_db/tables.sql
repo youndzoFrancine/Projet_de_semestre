@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS Tag (
 ALTER SEQUENCE tag_tag_id_seq RESTART WITH 1;
 
 
+
 CREATE TABLE IF NOT EXISTS Vote (
   message_id INT NOT NULL,
   utilisateur_id INT NOT NULL,

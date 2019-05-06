@@ -1,6 +1,7 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
+import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
