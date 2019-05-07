@@ -246,14 +246,15 @@ export default {
   },
   methods: {
     UserInputControl: function(e) {
-      console.log("call UserInputControl function");
+      /*debug console
+      console.log("call UserInputControl function"); */
       //cancel auto-completion
       this.cancelAutoCompletion();
       let test;
       test = this.user.split(' ');
       if(test[1]){
         this.UserInputErrors ="espace blanc interdit";
-      } else if (user.length <5){
+      } else if (this.user.length <5){
         this.UserInputErrors= "plus de 5 caractères requis";
       } else if (this.user=="Admin") {
         /* appel a la bd*/
@@ -264,14 +265,17 @@ export default {
       e.preventDefault();
     },
     emailInputControl: function(e){
-      console.log("call emailInputcontrol function");
+       /*debug console
+      console.log("call emailInputcontrol function");*/
       let split = this.email.split('@');
+       /*debug console
       console.log(split[0]);
-      console.log(split[1]);
+      console.log(split[1]);*/
       this.user = split[0];
       this.UserInputErrors = null;
       if (split[1]!="heig-vd.ch"){
-        console.log("parse @");
+         /*debug console
+        console.log("parse @");*/
         this.emailInputErrors = "Seul les adresses finnisant par @heig-vd.ch sont autorise";
       } else if (this.email == "root.admin@heig-vd.ch"){
         /* appel a la bd*/
@@ -281,30 +285,35 @@ export default {
       }
       e.preventDefault();
     },
-    passwordInputControl: function(e){
-      console.log("call passwordInputControl function");
+    passwordInputControl: function(){
+       /*debug console
+      console.log("call passwordInputControl function");*/
       if(this.passwordTcheck != this.password){
         this.passwordInputErrors = "mot de passe different";
       } else {
         this.passwordInputErrors = null;
       }
     },
-    passwordBasicTcheck:function(e){
-      console.log("call passwordBasicTcheck");
+    passwordBasicTcheck:function(){
+       /*debug console
+      console.log("call passwordBasicTcheck");*/
       this.passwordTcheck.split(' ');
       if (this.password.length < 6 ){
-        console.log("taille pas assez importante");
+         /*debug console
+        console.log("taille pas assez importante");*/
         this.passwordInputErrors = "plus de 6 caractères sont demander";
         
       } else {
         this.passwordInputControl();
       }
     },
-    cancelAutoCompletion:function(e){
-      console.log("call cancelAutoCompletion");
+    cancelAutoCompletion:function(){
+       /*debug console
+      console.log("call cancelAutoCompletion");*/
       this.booleanChangeFocus = true;
-    },registration: function(e){
-      console.log("call registration");
+    },registration: function(){
+        /*debug console
+      console.log("call registration");*/
       let mistake = new Boolean(false);
  
       if ((this.passwordInputErrors==null && this.emailInputErrors==null && this.UserInputErrors==null)){
@@ -327,7 +336,8 @@ export default {
         this.termsErrors= null;
       }
       if (mistake==true){
-        console.log("mistake");
+          /*debug console
+        console.log("mistake");*/
           this.RegistrationFaillure = "tout les champs ne sont pas rempli correctement";
 
       } else {
