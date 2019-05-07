@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
@@ -36,6 +37,22 @@ public class Message {
     @JoinColumn(name = "super_message_id", referencedColumnName = "message_id")
     private Message superMessageId;
 
+    /*
+    @OneToMany(mappedBy = "Message")
+    private Set<Vote> voteSet;
+*/
+    /*
+
+    @Getter
+    @Setter
+    @ManyToMany
+    @JoinTable(
+            name = "Vote",
+            joinColumns = @JoinColumn(name ="message_id"),
+            inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+    )
+    Set<Utilisateur> utilisateurSet;
+*/
     // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
 
 

@@ -1,5 +1,6 @@
 package heigvd.ch.segfaultapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -32,6 +33,7 @@ public class Utilisateur {
     @Column(name = "mot_de_passe")
     @Getter
     @Setter
+    @JsonIgnore // Cacher mot de passe
     private String motDePasse;
 
     @Column(name = "role_utilisateur")
@@ -53,6 +55,22 @@ public class Utilisateur {
     @ManyToOne
     @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
     private Role role;
+
+    /*
+    @OneToMany(mappedBy = "Utilisateur")
+    private Set<Vote> voteSet;
+*/
+/*
+    @Getter
+    @Setter
+    @ManyToMany
+    @JoinTable(
+            name = "Vote",
+            joinColumns = @JoinColumn(name ="utilisateur_id"),
+            inverseJoinColumns = @JoinColumn(name = "message_id")
+    )
+    private Set<Message> messageSet;
+*/
 
     public Utilisateur () {
     }
