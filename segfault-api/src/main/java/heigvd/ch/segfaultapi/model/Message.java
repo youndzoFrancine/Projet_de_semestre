@@ -1,5 +1,6 @@
 package heigvd.ch.segfaultapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.xml.bind.v2.TODO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,13 +31,22 @@ public class Message {
     //@NonNull //Il mettait un warning :o ?
     private int score = 0;
 
+    @Getter
+    @Setter
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "super_message_id", referencedColumnName = "message_id")
+    private Message superMessageId; // Todo, is it worth using?
 
     @Getter
     @Setter
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "super_message_id", referencedColumnName = "message_id")
-    private Message superMessageId;
-
+    @ManyToMany
+    @JoinTable(
+            name = "Message_Family",
+            joinColumns = @JoinColumn(name ="message_parent"),
+            inverseJoinColumns = @JoinColumn(name = "message_fils")
+    )
+    private Set<Message> messageSet;
     /*
     @OneToMany(mappedBy = "Message")
     private Set<Vote> voteSet;
