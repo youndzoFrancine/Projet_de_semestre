@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS Discussion (
 	sujet					VARCHAR, 
 	msgracine_id			INTEGER,
 	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
+
 		
 	CONSTRAINT fk_discussion
     FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id) ON DELETE SET NULL,
