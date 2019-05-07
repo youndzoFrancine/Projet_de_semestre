@@ -39,14 +39,21 @@ public class Utilisateur {
     @Setter
     private int roleUtilisateur;
 
+    @Getter
+    @Setter
+    @ManyToMany
+    @JoinTable(
+            name = "Appartient",
+            joinColumns = @JoinColumn(name ="departement_id"),
+            inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+    )
+    private Set<Departement> departementSet;
+
+    @Getter
+    @ManyToOne
+    @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
+    private Role role;
 
     public Utilisateur () {
     }
-
-    public Utilisateur ( String nomUtilisateur, String mailUtilisateur, String motDePasse){
-        this.nomUtilisateur=nomUtilisateur;
-        this.mailUtilisateur=mailUtilisateur;
-        this.motDePasse=motDePasse;
-    }
-
 }

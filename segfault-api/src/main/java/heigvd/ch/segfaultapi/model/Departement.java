@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
@@ -19,6 +20,9 @@ public class Departement {
     @Getter
     @Column(name = "nom_departement")
     private String nomDepartement;
+
+    @ManyToMany(mappedBy = "departementSet")
+    private Set<Utilisateur> utilisateurSet;
 
     public Departement(String nom_Departement){
         this.nomDepartement = nom_Departement;
