@@ -24,6 +24,11 @@ public class Departement {
     @ManyToMany(mappedBy = "departementSet")
     private Set<Utilisateur> utilisateurSet;
 
+    @Override
+    public boolean equals(Object obj) {
+        return obj.getClass() == this.getClass() && nomDepartement.equals(((Departement) obj).nomDepartement);
+    }
+
     public Departement(String nom_Departement){
         this.nomDepartement = nom_Departement;
     }
