@@ -28,9 +28,16 @@ public class DepartementController {
     public List<Departement> create (@RequestBody Departement departement) {
 
         // todo verify it doesn't exist already
+        for (Departement departement1 : getAll()) {
+            if (departement.equals(departement1)) {
+                return departementRepository.findAll();
+            }
+        }
 
-        departementRepository.save(departement);
-        return departementRepository.findAll();
+
+            departementRepository.save(departement);
+            return departementRepository.findAll();
+
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
