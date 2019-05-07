@@ -31,22 +31,12 @@ public class Message {
 
 
     @Getter
-    @JoinColumn(name = "super_message_id")
-    @OneToOne(targetEntity = Message.class)
-    private Integer superMessageId;
+    @Setter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "super_message_id", referencedColumnName = "message_id")
+    private Message superMessageId;
 
     // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
-    
-/*    //@OneToOne
-    @Getter
-    @Column(name = "utilisateurId")
-    //@NonNull
-    private Long utilisateurId;*/
 
-
-/*public Message(Long utilisateurId, Long discussionId, String message, Long messageParentId){
-        this( utilisateurId, discussionId, message);
-        this.superMessageId = messageParentId;
-    }*/
 
 }

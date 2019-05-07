@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor // Obligatoire pour JPA
 @Entity
@@ -23,7 +24,6 @@ public class Discussion {
     @Getter
     private String sujet;
 
-    // TODO: 2019-03-18 référence vers message racine
     @Setter
     @Getter
     @OneToOne(cascade = CascadeType.ALL)
@@ -35,6 +35,17 @@ public class Discussion {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "msgracine_id", referencedColumnName = "message_id")
     private Message msgracine;
+
+    @Getter
+    @Setter
+    @ManyToMany
+    @JoinTable(
+            name = "Est_lier",
+            joinColumns = @JoinColumn(name ="tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "discussion_id")
+    )
+    private Set<Tag> tagSet;
+
 
     public Discussion (String sujet) {
         this.sujet = sujet;
