@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS Roles;
 DROP TABLE IF EXISTS appartient;
 DROP TABLE IF EXISTS est_lier;
 DROP TABLE IF EXISTS vote;
+DROP TABLE IF EXISTS message_family CASCADE;
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
@@ -48,6 +49,21 @@ ALTER SEQUENCE utilisateur_utilisateur_id_seq RESTART WITH 1;
 DELETE FROM Utilisateur WHERE nom_utilisateur = 'Student';
 */
 
+
+CREATE TABLE IF NOT EXISTS Discussion (
+	discussion_id			SERIAL PRIMARY KEY,
+	sujet					VARCHAR, 
+	msgracine_id			INTEGER,
+	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
+		
+	CONSTRAINT fk_disc_utilisateur_id
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+	 ON DELETE SET NULL
+);
+
+ALTER SEQUENCE discussion_discussion_id_seq RESTART WITH 1;
+
+
 CREATE TABLE IF NOT EXISTS Message (
 	message_id				SERIAL PRIMARY KEY,
 	contenu					VARCHAR, 
@@ -57,27 +73,10 @@ CREATE TABLE IF NOT EXISTS Message (
 	super_message_id  		INTEGER, 
 	
 	CONSTRAINT fk_message
-    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id) ON DELETE SET NULL
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id) ON DELETE SET NULL	,
+	FOREIGN KEY (discussion_id)	 REFERENCES Discussion(discussion_id) 	ON DELETE RESTRICT 	
 );
 ALTER SEQUENCE message_message_id_seq RESTART WITH 1;
-
-
-CREATE TABLE IF NOT EXISTS Discussion (
-	discussion_id			SERIAL PRIMARY KEY,
-	sujet					VARCHAR, 
-	msgracine_id			INTEGER,
-	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
-
-		
-	CONSTRAINT fk_discussion
-    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id) ON DELETE SET NULL,
-		FOREIGN KEY (msgracine_id) REFERENCES Message(message_id) ON DELETE CASCADE
-);
-
-ALTER SEQUENCE discussion_discussion_id_seq RESTART WITH 1;
-
-
-
 
 
 CREATE TABLE IF NOT EXISTS Tag ( 
@@ -120,6 +119,18 @@ CREATE TABLE IF NOT EXISTS Est_lier (
   CONSTRAINT fk_liaison
 	  FOREIGN KEY (discussion_id) REFERENCES Discussion(discussion_id) 	ON DELETE CASCADE,
 	  FOREIGN KEY (tag_id) 		  REFERENCES Tag(tag_id)			  	ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Message_Family(
+  message_parent INTEGER,
+  message_fils   INTEGER UNIQUE,  /* Meilleur moyen possible? */
+  
+  PRIMARY KEY (message_parent, message_fils),
+  
+  CONSTRAINT fk_mess_Family
+  FOREIGN KEY (message_parent) REFERENCES Message(message_id) ON DELETE CASCADE,
+  FOREIGN KEY (message_fils) REFERENCES Message(message_id) ON DELETE CASCADE
+  
 );
 
 /* pour les tests:

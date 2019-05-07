@@ -105,3 +105,9 @@ Values
 INSERT INTO Vote(utilisateur_id,up_vote,message_id)
 VALUES 
   (1,TRUE,1);
+
+INSERT INTO  Message_Family(message_parent , message_fils)
+VALUES
+  (1,2),
+	(1,3),
+	(2,4);
