@@ -26,6 +26,9 @@ public class DepartementController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Departement> create (@RequestBody Departement departement) {
+
+        // todo verify it doesn't exist already
+
         departementRepository.save(departement);
         return departementRepository.findAll();
     }

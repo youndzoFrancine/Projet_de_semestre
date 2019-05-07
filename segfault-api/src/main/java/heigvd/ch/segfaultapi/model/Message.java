@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
@@ -31,22 +32,28 @@ public class Message {
 
 
     @Getter
-    @JoinColumn(name = "super_message_id")
-    @OneToOne(targetEntity = Message.class)
-    private Integer superMessageId;
+    @Setter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "super_message_id", referencedColumnName = "message_id")
+    private Message superMessageId;
 
-    // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
-    
-/*    //@OneToOne
+    /*
+    @OneToMany(mappedBy = "Message")
+    private Set<Vote> voteSet;
+*/
+    /*
+
     @Getter
-    @Column(name = "utilisateurId")
-    //@NonNull
-    private Long utilisateurId;*/
+    @Setter
+    @ManyToMany
+    @JoinTable(
+            name = "Vote",
+            joinColumns = @JoinColumn(name ="message_id"),
+            inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+    )
+    Set<Utilisateur> utilisateurSet;
+*/
+    // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
 
-
-/*public Message(Long utilisateurId, Long discussionId, String message, Long messageParentId){
-        this( utilisateurId, discussionId, message);
-        this.superMessageId = messageParentId;
-    }*/
 
 }
