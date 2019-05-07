@@ -29,11 +29,6 @@ public class Message {
     //@NonNull //Il mettait un warning :o ?
     private int score = 0;
 
-    @Getter
-    @JoinColumn(name ="utilisateur_id") // Nécessaire au lieu de Colum car lien
-    @OneToOne(fetch = FetchType.LAZY,
-            targetEntity = Discussion.class)
-    private Integer discussionId;
 
     @Getter
     @JoinColumn(name = "super_message_id")
@@ -48,10 +43,6 @@ public class Message {
     //@NonNull
     private Long utilisateurId;*/
 
-    public Message(String contenu, Integer discussionId) {
-        this.contenu = contenu;
-        this.discussionId = discussionId;
-    }
 
 /*public Message(Long utilisateurId, Long discussionId, String message, Long messageParentId){
         this( utilisateurId, discussionId, message);

@@ -24,7 +24,17 @@ public class Discussion {
     private String sujet;
 
     // TODO: 2019-03-18 référence vers message racine
-    //private Message& racine;
+    @Setter
+    @Getter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
+    private Utilisateur utilisateur;
+
+    @Setter
+    @Getter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "msgracine_id", referencedColumnName = "message_id")
+    private Message msgracine;
 
     public Discussion (String sujet) {
         this.sujet = sujet;
