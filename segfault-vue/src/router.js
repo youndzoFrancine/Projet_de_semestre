@@ -28,6 +28,10 @@ export default new Router({
   path: '/TheConnexion',
   name : 'TheConnexion',
   component: () => import( './views/TheConnexion.vue')
+  },{
+  path: '/TheNewTopic',
+  name : 'TheNewTopic',
+  component: () => import( './views/TheNewTopic.vue')
   }
   ]
 })
