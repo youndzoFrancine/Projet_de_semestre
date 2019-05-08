@@ -10,12 +10,10 @@ Values
 
 -- Insertion dans la classe Roles
 
-INSERT INTO roles (nom_role)
-Values 
-  ('Etudiant'),
-  ('Assistant'),
-  ('Professeur'),
-  ('Administrateur');  
+INSERT INTO Roles(nom_role) VALUES('ETUDIANT');
+INSERT INTO Roles(nom_role) VALUES('ASSISTANT');
+INSERT INTO Roles(nom_role) VALUES('PROFESSEUR');
+INSERT INTO Roles(nom_role) VALUES('ADMIN');
 
 -- Insertion dans la classe tag
 

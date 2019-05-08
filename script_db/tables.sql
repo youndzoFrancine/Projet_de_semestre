@@ -4,11 +4,13 @@ DROP TABLE IF EXISTS Tag 			CASCADE;
 DROP TABLE IF EXISTS Utilisateur 	CASCADE;
 DROP TABLE IF EXISTS Message 		CASCADE;
 DROP TABLE IF EXISTS discussion		CASCADE;
-DROP TABLE IF EXISTS Roles;
+DROP TABLE IF EXISTS user_roles     CASCADE;
+DROP TABLE IF EXISTS Roles			CASCADE;
 DROP TABLE IF EXISTS appartient;
 DROP TABLE IF EXISTS est_lier;
 DROP TABLE IF EXISTS vote;
 DROP TABLE IF EXISTS message_family CASCADE;
+
 
 /* Créations */
 CREATE TABLE IF NOT EXISTS Departement (
@@ -30,17 +32,19 @@ CREATE TABLE IF NOT EXISTS Roles(
 );
 ALTER SEQUENCE ROLES_role_id_seq RESTART WITH 1;
 
+
 CREATE TABLE IF NOT EXISTS Utilisateur (
 	utilisateur_id	SERIAL 	PRIMARY 	KEY		,
 	nom_utilisateur			VARCHAR 	NOT NULL UNIQUE,
 	mail_utilisateur		VARCHAR 	NOT NULL UNIQUE,
-	/* md5 => 32 byte*/
-	mot_de_passe  			VARCHAR(32) NOT NULL,
-	role_utilisateur		INTEGER 	NOT NULL,
 	
-	CONSTRAINT fk_role_utilisateur
+	mot_de_passe  			VARCHAR NOT NULL,
+	role_utilisateur		INTEGER 	NOT NULL
+	
+	/* TODO */
+	/*CONSTRAINT fk_role_utilisateur
 		FOREIGN KEY (role_utilisateur) REFERENCES Roles(role_id) 
-		ON DELETE CASCADE /*quand on suprime un departement on supprime tout ces etudiant,prof,...*/
+		ON DELETE CASCADE *//*quand on suprime un departement on supprime tout ces etudiant,prof,...*/
 );
 
 ALTER SEQUENCE utilisateur_utilisateur_id_seq RESTART WITH 1;
@@ -49,6 +53,13 @@ ALTER SEQUENCE utilisateur_utilisateur_id_seq RESTART WITH 1;
 DELETE FROM Utilisateur WHERE nom_utilisateur = 'Student';
 */
 
+CREATE TABLE user_roles (
+  user_id SERIAL,
+  role_id SERIAL,
+  FOREIGN KEY (user_id) REFERENCES Utilisateur (utilisateur_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (role_id) REFERENCES Roles (role_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (user_id, role_id)
+);
 
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id			SERIAL PRIMARY KEY,

@@ -1,16 +1,16 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.NoArgsConstructor;
+
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
+
 @Entity
 @Table(name = "Roles")
 public class Role {
-    @Getter
+    /*@Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
@@ -30,7 +30,27 @@ public class Role {
 
     public void setNomRole(String nomRole) {
         this.nomRole = nomRole;
+    }*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
+    @Column(name = "role_id")
+    private Integer roleID;
+
+    @Enumerated(EnumType.STRING)
+    @Getter
+    @Setter
+    @Column(name = "nom_role")
+    private RoleName nomRole;
+
+    public Role() {}
+
+    public Role(RoleName name) {
+        this.nomRole = name;
     }
+
+
 
 
 }

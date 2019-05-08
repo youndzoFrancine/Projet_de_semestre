@@ -1,7 +1,7 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Role;
-import heigvd.ch.segfaultapi.repositories.RoleRepoitory;
+import heigvd.ch.segfaultapi.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +14,7 @@ import java.util.List;
 public class RoleController {
 
     @Autowired
-    private RoleRepoitory roleRepoitory;
+    private RoleRepository roleRepoitory;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Role> getAll() {

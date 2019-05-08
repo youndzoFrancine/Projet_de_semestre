@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -51,10 +52,17 @@ public class Utilisateur {
     )
     private Set<Departement> departementSet;
 
-    @Getter
+    /*@Getter
     @ManyToOne
+    @Setter
     @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
-    private Role role;
+    private Role role;*/
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Getter
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     /*
     @OneToMany(mappedBy = "Utilisateur")
@@ -73,5 +81,14 @@ public class Utilisateur {
 */
 
     public Utilisateur () {
+    }
+
+    public Utilisateur ( String nomUtilisateur, String mailUtilisateur, String motDePasse){
+        this.nomUtilisateur=nomUtilisateur;
+        this.mailUtilisateur=mailUtilisateur;
+        this.motDePasse=motDePasse;
+    }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
