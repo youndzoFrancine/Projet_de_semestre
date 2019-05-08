@@ -14,7 +14,7 @@
           <router-link to="/about">About</router-link>
         </li>
         <li>
-          <router-link to="/TheMessage">Message</router-link>
+          <router-link :to="{name: 'TheMessage', params:{idtofetch:1}}">Message</router-link>
         </li>
       </ul>
     </aside>

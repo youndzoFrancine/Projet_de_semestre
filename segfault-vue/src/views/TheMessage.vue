@@ -12,6 +12,7 @@ import axios from "axios";
 
 export default {
   name: "TheMessage",
+  props: { idtofetch: 2 },
   components: {
     MessageItem
   },
@@ -19,7 +20,7 @@ export default {
     return {
       message: {
         messageId: 1,
-        contenu: "Message de test",
+        contenu: "Message en cours de chargement",
         score: 30,
         MessageSet: []
       }

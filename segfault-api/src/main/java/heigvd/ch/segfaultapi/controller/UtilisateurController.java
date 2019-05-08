@@ -3,10 +3,7 @@ package heigvd.ch.segfaultapi.controller;
 import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +29,18 @@ public class UtilisateurController {
         utilisateurRepository.save(utilisateur);
 
         return utilisateurRepository.findAll();
+    }
+
+    /**
+     * Cette méthode retourne une liste de tous les Utilisateurs qui
+     * commencent par un nom donné
+     * @param nom
+     * @return
+     */
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    public List<Utilisateur> getStartingWith (@RequestParam("nom") String nom) {
+        System.out.print(nom);
+
+        return utilisateurRepository.findBynomUtilisateurStartingWith(nom);
     }
 }

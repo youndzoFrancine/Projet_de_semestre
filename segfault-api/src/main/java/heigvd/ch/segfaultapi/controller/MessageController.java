@@ -38,5 +38,14 @@ public class MessageController {
     public Optional<Message> getById (@PathVariable("id") Integer id) {
         return messageRepository.findById(id);
     }
+
+    // todo il faut pouvoir chercher par nom
+/*
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    public Optional<Message> getByName (@PathVariable("id") Integer id) {
+        return messageRepository.findById(id);
+    }
+
+ */
 }
 
