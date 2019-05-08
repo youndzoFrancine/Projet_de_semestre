@@ -30,8 +30,7 @@ export default {
     axios.get("http://localhost:8087/messages/1").then(response => {
       this.message = response.data;
     });
-  },
-  props: []
+  }
 };
 </script>
 
