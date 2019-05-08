@@ -1,6 +1,7 @@
 <template>
   <div class="messages">
-    test
+    Page de test, il faut passer par une route avec argument pour
+    avoir les réponses d'une discussion comme y faut
     <MessageItem v-bind:message="message"/>
   </div>
 </template>
