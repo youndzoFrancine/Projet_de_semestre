@@ -8,9 +8,9 @@
       </figure>
       <div class="media-content">
         <div class="content">
-          <p>{{post.title}}</p>
+          <p>{{post.sujet}}</p>
           <p>
-            <strong>posté par @shellmaster</strong>
+            <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
           </p>
           <p>
             <small>dernière réponse 14 avril</small>
