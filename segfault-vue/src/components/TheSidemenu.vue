@@ -13,6 +13,9 @@
         <li>
           <router-link to="/about">About</router-link>
         </li>
+        <li>
+          <router-link to="/TheMessage">Message</router-link>
+        </li>
       </ul>
     </aside>
   </div>
