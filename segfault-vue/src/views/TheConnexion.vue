@@ -106,7 +106,7 @@ export default {
         /* debug console
         console.log("connexion");*/
         /*attention a gerer après la connexion*/
-        this.$router.push("Home");
+        this.$router.push({name: 'home'});
       } else {
         ++this.tentative;
       }

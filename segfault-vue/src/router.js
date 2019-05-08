@@ -34,6 +34,11 @@ export default new Router({
       path: "/TheMessage",
       name: "TheMessage",
       component: () => import("./views/TheMessage.vue")
+    },
+    {
+      path: "/TheNewTopic",
+      name: "TheNewTopic",
+      compnent: () => import("./views/TheNewTopic.vue")
     }
   ]
 });
