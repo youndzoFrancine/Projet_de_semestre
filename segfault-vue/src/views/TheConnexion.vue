@@ -62,7 +62,7 @@
           </div>
           <div class="column">
             <label class="label">Pas encore de compte?</label>
-            <router-link to="/theInscription">
+            <router-link to="/inscription">
               <p>
                 <a>s'inscrire</a>
               </p>
@@ -83,7 +83,7 @@ export default {
     return {
       email: null,
       password: null,
-      ConnexionError: null,
+      ConnexionError: null
     };
   },
   methods: {
@@ -106,7 +106,7 @@ export default {
         /* debug console
         console.log("connexion");*/
         /*attention a gerer après la connexion*/
-        this.$router.push({name: 'home'});
+        this.$router.push({ name: "home" });
       } else {
         ++this.tentative;
       }

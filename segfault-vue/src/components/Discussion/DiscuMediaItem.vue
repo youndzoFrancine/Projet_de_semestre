@@ -8,14 +8,14 @@
       </figure>
       <div class="media-content">
         <div class="content">
-          <router-link to="/TheMessage">
+          <router-link to="/message">
             <p>{{post.sujet}}</p>
           </router-link>
           <p>
-            <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
-          </p>
-          <p>
-            <small>dernière réponse 14 avril</small>
+            <small>
+              <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
+              dernière réponse 14 avril
+            </small>
           </p>
         </div>
         <nav class="level is-mobile">

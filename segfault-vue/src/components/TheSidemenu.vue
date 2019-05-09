@@ -11,7 +11,7 @@
           <!-- Ajouter le lien -->
         </li>
         <li>
-          <router-link to="/about">À propos</router-link>
+          <router-link to="/about">About</router-link>
         </li>
       </ul>
     </aside>
