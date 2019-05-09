@@ -8,8 +8,8 @@
         <Discussiontabs/>
       </div>
       <div class="column is-3">
-        <router-link to = "TheNewTopic">
-        <a class="button is-success">Nouv. Question</a>
+        <router-link to="TheNewTopic">
+          <a class="button is-success">Nouv. Question</a>
         </router-link>
       </div>
     </div>
@@ -28,4 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.discussion-bar {
+  margin-bottom: 30px;
+}
 </style>

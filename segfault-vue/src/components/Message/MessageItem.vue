@@ -15,7 +15,8 @@
           <small>
             <a>++Vote</a> ·
             <a>Vote--</a> ·
-            <a>Répondre</a> · Dernière réponse le 14 Avril 2019
+            <a>Répondre</a>
+            · Réponse {{message.dateCreation}}
           </small>
         </p>
       </div>
