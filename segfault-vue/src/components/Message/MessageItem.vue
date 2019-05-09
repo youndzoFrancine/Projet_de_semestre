@@ -12,7 +12,11 @@
           <strong>posté par @</strong>
         </p>
         <p>
-          <small>dernière réponse 14 avril</small>
+          <small>
+            <a>++Vote</a> ·
+            <a>Vote--</a> ·
+            <a>Répondre</a> · Dernière réponse le 14 Avril 2019
+          </small>
         </p>
       </div>
       <MessageResponse

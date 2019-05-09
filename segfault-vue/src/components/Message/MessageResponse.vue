@@ -13,8 +13,9 @@
           {{unereponse.contenu}}
           <br>
           <small>
-            <a>Like</a> ·
-            <a>Reply</a> · 2 hrs
+            <a>++Vote</a> ·
+            <a>Vote--</a> ·
+            <a>Répondre</a> · Dernière réponse le 14 Avril 2019
           </small>
         </p>
       </div>

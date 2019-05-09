@@ -1,14 +1,13 @@
 <template>
   <div class="messages">
-    Page de test, il faut passer par une route avec argument pour
-    avoir les réponses d'une discussion comme y faut
-    <MessageItem v-bind:message="message"/>
+    <MessageItem v-bind:message="getOneMessage"/>
   </div>
 </template>
 
 <script>
 import MessageItem from "@/components/Message/MessageItem.vue";
-import axios from "axios";
+// import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TheMessage",
@@ -16,6 +15,15 @@ export default {
   components: {
     MessageItem
   },
+  methods: {
+    ...mapActions(["fetchMessage"])
+  },
+  computed: mapGetters(["getOneMessage"]),
+  created() {
+    this.fetchMessage();
+  }
+  /*
+  ,
   data() {
     return {
       message: {
@@ -30,7 +38,7 @@ export default {
     axios.get("http://localhost:8087/messages/1").then(response => {
       this.message = response.data;
     });
-  }
+  }*/
 };
 </script>
 

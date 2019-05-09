@@ -8,7 +8,9 @@
       </figure>
       <div class="media-content">
         <div class="content">
-          <p>{{post.sujet}}</p>
+          <router-link to="/TheMessage">
+            <p>{{post.sujet}}</p>
+          </router-link>
           <p>
             <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
           </p>
