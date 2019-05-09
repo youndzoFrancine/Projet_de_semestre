@@ -52,7 +52,6 @@ DELETE FROM Utilisateur WHERE nom_utilisateur = 'Student';
 
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id			SERIAL PRIMARY KEY,
-	date_creation			TIMESTAMP ,
 	sujet					VARCHAR, 
 	msgracine_id			INTEGER,
 	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */
@@ -67,6 +66,7 @@ ALTER SEQUENCE discussion_discussion_id_seq RESTART WITH 1;
 
 CREATE TABLE IF NOT EXISTS Message (
 	message_id				SERIAL PRIMARY KEY,
+	date_creation			TIMESTAMP,
 	contenu					VARCHAR, 
 	score					INTEGER DEFAULT 100,
 	utilisateur_id			INTEGER, /* peu être null (supression d'un user mais pas de ces messages*/
