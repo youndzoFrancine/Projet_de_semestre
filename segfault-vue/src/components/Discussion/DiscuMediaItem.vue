@@ -14,7 +14,7 @@
           <p>
             <small>
               <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
-              dernière réponse 14 avril
+              posté le {{post.msgracine.dateCreation}}
             </small>
           </p>
         </div>

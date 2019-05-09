@@ -1,5 +1,6 @@
 package heigvd.ch.segfaultapi.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.xml.bind.v2.TODO;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -30,6 +32,12 @@ public class Message {
     @Column(name = "score")
     //@NonNull //Il mettait un warning :o ?
     private int score = 0;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="Europe/Paris")
+    @Getter
+    @Setter
+    @Column(name = "date_creation")
+    private LocalDateTime dateCreation;
 
     @Getter
     @Setter
