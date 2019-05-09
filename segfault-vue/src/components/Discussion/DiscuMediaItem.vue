@@ -41,7 +41,7 @@
       <div class="media-right">
         <div class="buttons">
           <button class="button purple is-small">10 réponses</button>
-          <button class="button purle is-small is-outlined">100 vues</button>
+          <button class="button purle is-small is-outlined">score {{post.msgracine.score}}</button>
         </div>
       </div>
     </article>
