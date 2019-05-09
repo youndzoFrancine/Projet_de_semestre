@@ -8,12 +8,14 @@
       </figure>
       <div class="media-content">
         <div class="content">
-          <p>{{post.sujet}}</p>
+          <router-link to="/message">
+            <p>{{post.sujet}}</p>
+          </router-link>
           <p>
-            <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
-          </p>
-          <p>
-            <small>dernière réponse 14 avril</small>
+            <small>
+              <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
+              dernière réponse 14 avril
+            </small>
           </p>
         </div>
         <nav class="level is-mobile">
@@ -39,7 +41,7 @@
       <div class="media-right">
         <div class="buttons">
           <button class="button purple is-small">10 réponses</button>
-          <button class="button purle is-small is-outlined">100 vues</button>
+          <button class="button purle is-small is-outlined">score {{post.msgracine.score}}</button>
         </div>
       </div>
     </article>

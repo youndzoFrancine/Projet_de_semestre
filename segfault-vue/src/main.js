@@ -1,14 +1,29 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/index.js";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faEnvelope ,faUser,faSearch,faCoffee, faLock, faExclamation } 
-from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faEnvelope,
+  faUser,
+  faSearch,
+  faCoffee,
+  faLock,
+  faExclamation
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faCoffee, faSearch, faEnvelope,faUser,faCheck,faLock,faExclamation);
+library.add(
+  faCoffee,
+  faSearch,
+  faEnvelope,
+  faUser,
+  faCheck,
+  faLock,
+  faExclamation
+);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

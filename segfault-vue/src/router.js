@@ -21,22 +21,22 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: "/TheInscription",
+      path: "/inscription",
       name: "TheInscription",
       component: () => import("./views/TheInscription.vue")
     },
     {
-      path: "/TheConnexion",
+      path: "/connexion",
       name: "TheConnexion",
       component: () => import("./views/TheConnexion.vue")
     },
     {
-      path: "/TheMessage",
+      path: "/message",
       name: "TheMessage",
       component: () => import("./views/TheMessage.vue")
     },
     {
-      path: "/TheNewTopic",
+      path: "/nouveau",
       name: "TheNewTopic",
       compnent: () => import("./views/TheNewTopic.vue")
     }
