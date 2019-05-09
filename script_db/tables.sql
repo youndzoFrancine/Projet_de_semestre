@@ -52,6 +52,7 @@ DELETE FROM Utilisateur WHERE nom_utilisateur = 'Student';
 
 CREATE TABLE IF NOT EXISTS Discussion (
 	discussion_id			SERIAL PRIMARY KEY,
+	date_creation			TIMESTAMP ,
 	sujet					VARCHAR, 
 	msgracine_id			INTEGER,
 	utilisateur_id			INTEGER, /* NOT NULL enlevé pour les tests, à remettre après */

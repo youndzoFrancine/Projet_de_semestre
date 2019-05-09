@@ -73,12 +73,13 @@ Values
   ('Quels sont les objectifs pour ce rendu ?', 0, 5),
   ('verfie l inclusion de toutes les bibliothéques', 0, 3);
   
-  -- Insertion dans la classe Discussion faisant abstraction du message racine.
 
-INSERT into discussion(sujet,msgracine_id, utilisateur_id)
+INSERT into discussion(sujet, msgracine_id, utilisateur_id, date_creation)
 Values
-  ('Rendu intermediaire PRO', 2,1),
-  ('Pourquoi ca ne marche pas ?', 1,2);
+  ('Rendu intermediaire PRO', 2,1,'2003/02/22 01:30:00'),
+  ('Pourquoi ca ne marche pas ?', 1,2,'2003/06/22 01:45:00'),
+    ('Quels sont les prochains conges', 6, 3,'2003/01/22 01:00:00');
+
 
 
 -- Insertion dans la classe Message, cas ou un message est en réponse à un autre.
@@ -94,12 +95,6 @@ Values
 INSERT into message(contenu, score, utilisateur_id)
 Values
   ('Conges de paques', 0, 5);
-
--- Insertion dans la classe Discussion, au travers d'un message existant.
-
-INSERT into discussion(sujet, msgracine_id, utilisateur_id)
-Values
-  ('Quels sont les prochains conges', 6, 3);
 
 
 INSERT INTO Vote(utilisateur_id,up_vote,message_id)
