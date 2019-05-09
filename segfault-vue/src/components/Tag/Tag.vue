@@ -1,20 +1,29 @@
 <template>
   <div class="tags">
     <div class="buttons are-small">
-      <TagItem v-bind:key="tag.id" v-for="tag in tags" v-bind:tag="tag"/>
+      <TagItem v-bind:key="tag.id" v-for="tag in getAllTags" v-bind:tag="tag"/>
     </div>
   </div>
 </template>
 
 <script>
 import TagItem from "@/components/Tag/TagItem.vue";
-import axios from "axios";
+// import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Tag",
   components: {
     TagItem
   },
+  methods: {
+    ...mapActions(["fetchTags"])
+  },
+  computed: mapGetters(["getAllTags"]),
+  created() {
+    this.fetchTags();
+  }
+  /*,
   data() {
     return {
       tags: [
@@ -32,6 +41,7 @@ export default {
       this.tags = response.data;
     });
   }
+  */
 };
 </script>
 

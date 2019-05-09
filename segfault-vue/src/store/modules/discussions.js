@@ -1,5 +1,5 @@
 /**
- * Ce fichier gère l'état Vuex dans l'app
+ * Ce fichier gère l'état Vuex dans l'app des discussions
  */
 
 import axios from "axios";
@@ -28,12 +28,22 @@ const getters = {
 // actions
 const actions = {
   async fetchDiscussions({ commit }) {
+    await axios.get("http://localhost:8087/discussions/all").then(response => {
+      if (response.status == 200) {
+        commit("setDiscussions", response.data);
+      }
+    });
+  }
+  /*
+    Si on fait comme ça, c'est synchrone donc ça créé des erreurs ^^'
+    async fetchDiscussions({ commit }) {
     const response = await axios.get("http://localhost:8087/discussions/all");
 
     if (response.status == 200) {
       commit("setDiscussions", response.data);
     }
   }
+   */
 };
 
 // mutations

@@ -22,7 +22,6 @@ export default {
   },
   computed: mapGetters(["getAllDiscussions"]),
   created() {
-    console.log("yollloo");
     this.fetchDiscussions();
   }
 };
