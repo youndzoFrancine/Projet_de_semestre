@@ -18,16 +18,9 @@
       </a>
     </div>
 
-      <div class="columns">
-  <div class ="column  is-four-fifths">
-      <NavSearchbar/>
-  </div>
-  <div class="column is-narrow">
+    <NavSearchbar/>
     <NavLogZone/>
-  </div>
-    </div>
   </nav>
-
 </template>
 
 <script>
