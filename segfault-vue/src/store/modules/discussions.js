@@ -11,13 +11,13 @@ const state = {
       id: 1,
       sujet: "Avez-vous déjà vu des discussions par défaut?",
       utilisateur: { nomUtilisateur: "Shellmaster" },
-      msgracine: { dateCreation: "January 1, 1995 01:02:03" }
+      msgracine: { dateCreation: "January 1, 1995 01:02:03", score: 404 }
     },
     {
       id: 2,
       sujet: "Est-ce que quelqu'un sait pourquoi la page ne charge pas?",
       utilisateur: { nomUtilisateur: "Shellmaster" },
-      msgracine: { dateCreation: "January 1, 1995 01:02:03" }
+      msgracine: { dateCreation: "January 1, 1995 01:02:03", score: 404 }
     }
   ]
 };
