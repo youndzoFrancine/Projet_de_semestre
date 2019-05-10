@@ -47,10 +47,13 @@ public class Message {
             inverseJoinColumns = @JoinColumn(name = "message_fils")
     )
     private Set<Message> messageSet;
-    /*
-    @OneToMany(mappedBy = "Message")
+
+    @Getter
+    @Setter
+    @JsonIgnore
+    @OneToMany(mappedBy = "message")
     private Set<Vote> voteSet;
-*/
+
     /*
 
     @Getter
