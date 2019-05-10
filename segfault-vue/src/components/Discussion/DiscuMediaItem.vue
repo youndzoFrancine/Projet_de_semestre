@@ -2,8 +2,15 @@
   <div>
     <article class="media">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <img src="https://bulma.io/images/placeholders/128x128.png">
+        <p>
+          <span class="icon is-medium">
+            <font-awesome-icon icon="arrow-up"/>
+          </span>
+        </p>
+        <p class="icon is-medium">
+          <span class="icon is-medium">
+            <font-awesome-icon icon="arrow-down"/>
+          </span>
         </p>
       </figure>
       <div class="media-content">
@@ -16,6 +23,9 @@
               <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
               posté le {{post.msgracine.dateCreation}}
             </small>
+          </p>
+          <p>
+            <Tag v-bind:tags="post.tagSet"/>
           </p>
         </div>
         <nav class="level is-mobile">
@@ -35,7 +45,6 @@
                 <i class="fas fa-heart"></i>
               </span>
             </a>
-            <Tag/>
           </div>
         </nav>
       </div>
@@ -57,7 +66,8 @@ export default {
   props: ["post"],
   components: {
     Tag
-  }
+  },
+  computed: {}
 };
 </script>
 
