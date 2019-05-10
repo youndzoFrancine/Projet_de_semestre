@@ -1,6 +1,7 @@
 package heigvd.ch.segfaultapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -59,6 +60,7 @@ public class Utilisateur {
     @Getter
     @Setter
     @OneToMany(mappedBy = "utilisateur")
+    @JsonIgnore
     private Set<Vote> voteSet;
 /*
     @Getter
