@@ -11,7 +11,9 @@ import {
   faSearch,
   faCoffee,
   faLock,
-  faExclamation
+  faExclamation,
+  faArrowUp,
+  faArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -22,7 +24,9 @@ library.add(
   faUser,
   faCheck,
   faLock,
-  faExclamation
+  faExclamation,
+  faArrowUp,
+  faArrowDown
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
