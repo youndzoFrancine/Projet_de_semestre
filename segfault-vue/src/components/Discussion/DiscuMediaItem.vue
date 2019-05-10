@@ -35,6 +35,7 @@
                 <i class="fas fa-heart"></i>
               </span>
             </a>
+            <Tag/>
           </div>
         </nav>
       </div>
@@ -49,9 +50,14 @@
 </template>
 
 <script>
+import Tag from "@/components/Tag/Tag.vue";
+
 export default {
   name: "DiscuMediaItem",
-  props: ["post"]
+  props: ["post"],
+  components: {
+    Tag
+  }
 };
 </script>
 

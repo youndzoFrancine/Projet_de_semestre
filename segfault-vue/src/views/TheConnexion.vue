@@ -106,7 +106,9 @@ export default {
         /* debug console
         console.log("connexion");*/
         /*attention a gerer après la connexion*/
-        this.$router.push({ name: "home" });
+        this.$store
+          .dispatch("changeStatus") // Should pass the status in connected
+          .then(this.$router.push({ name: "home" }));
       } else {
         ++this.tentative;
       }

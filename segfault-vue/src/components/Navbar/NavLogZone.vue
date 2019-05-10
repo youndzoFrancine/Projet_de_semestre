@@ -1,30 +1,23 @@
 <template>
-  <div class="logzone">
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start"></div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <router-link to="/connexion">
-              <a class="button is-primary is-outlined">Connexion</a>
-            </router-link>
-            <router-link to="/inscription">
-              <a class="button is-primary">
-                <strong>Inscription</strong>
-              </a>
-            </router-link>
-          </div>
-        </div>
+  <div class="navbar-end logzone">
+    <div class="navbar-item">
+      <p v-if="isAuthenticated">Connecté en tant que FAKE_USER</p>
+      <div v-else class="buttons">
+        <router-link to="/connexion" class="button is-primary is-outlined">Connexion</router-link>
+        <router-link to="/inscription" class="button is-primary">Inscription</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "LogZone",
-  components: {}
+  components: {},
+  methods: {},
+  computed: mapGetters(["isAuthenticated"])
 };
 </script>
 
