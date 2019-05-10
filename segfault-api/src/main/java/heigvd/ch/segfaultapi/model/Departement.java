@@ -21,8 +21,10 @@ public class Departement {
     @Column(name = "nom_departement")
     private String nomDepartement;
 
+    /*
     @ManyToMany(mappedBy = "departementSet")
     private Set<Utilisateur> utilisateurSet;
+    */
 
     @Override
     public boolean equals(Object obj) {

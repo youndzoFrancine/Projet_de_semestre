@@ -56,10 +56,10 @@ public class Utilisateur {
     @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
     private Role role;
 
-    /*
-    @OneToMany(mappedBy = "Utilisateur")
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "utilisateur")
     private Set<Vote> voteSet;
-*/
 /*
     @Getter
     @Setter
@@ -74,4 +74,5 @@ public class Utilisateur {
 
     public Utilisateur () {
     }
+
 }

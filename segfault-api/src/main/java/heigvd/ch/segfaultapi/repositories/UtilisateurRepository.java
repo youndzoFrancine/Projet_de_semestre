@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findBynomUtilisateurStartingWith(String nomUtilisateur);
+    //public Utilisateur findOne(Integer id);
+    //public Utilisateur findById(Integer id);
 }
