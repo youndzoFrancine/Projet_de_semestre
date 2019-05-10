@@ -4,21 +4,29 @@
 
 // initial state
 const state = {
-  token: localStorage.getItem("user-token") || "",
-  status: ""
+  //token: localStorage.getItem("user-token") || "",
+  //status: ""
+  auth: false
 };
 
 // getters
 const getters = {
-  isAuthenticated: state => !!state.token,
-  authStatus: state => state.status
+  //isAuthenticated: state => !!state.token,
+  //authStatus: state => state.status
+  isAuthenticated: state => state.auth
 };
 
 // actions
-const actions = {};
+const actions = {
+  changeStatus: ({ commit }) => {
+    commit("setAuthStatus", !state.auth);
+  }
+};
 
 // mutations
-const mutations = {};
+const mutations = {
+  setAuthStatus: (state, payload) => (state.auth = payload)
+};
 
 export default {
   state,

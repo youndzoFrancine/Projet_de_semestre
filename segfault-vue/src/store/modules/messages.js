@@ -22,11 +22,16 @@ const getters = {
 // actions
 const actions = {
   async fetchMessage({ commit }) {
-    await axios.get("http://localhost:8087/messages/1").then(response => {
-      if (response.status == 200) {
-        commit("setMessage", response.data);
-      }
-    });
+    await axios
+      .get("http://localhost:8087/messages/1")
+      .then(response => {
+        if (response.status == 200) {
+          commit("setMessage", response.data);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 

@@ -8,9 +8,7 @@
         <Discussiontabs/>
       </div>
       <div class="column is-3">
-        <router-link to="TheNewTopic">
-          <a class="button is-success">Nouv. Question</a>
-        </router-link>
+        <router-link to="nouveau" class="button is-success">Nouv. Question</router-link>
       </div>
     </div>
   </div>

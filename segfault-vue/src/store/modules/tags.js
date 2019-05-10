@@ -24,11 +24,16 @@ const getters = {
 // actions
 const actions = {
   async fetchTags({ commit }) {
-    await axios.get("http://localhost:8087/tags/all").then(response => {
-      if (response.status == 200) {
-        commit("setTags", response.data);
-      }
-    });
+    await axios
+      .get("http://localhost:8087/tags/all")
+      .then(response => {
+        if (response.status == 200) {
+          commit("setTags", response.data);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 
