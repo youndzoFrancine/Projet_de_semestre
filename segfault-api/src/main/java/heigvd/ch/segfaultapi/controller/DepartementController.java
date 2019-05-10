@@ -42,6 +42,7 @@ public class DepartementController {
         return new ResponseEntity<List<Departement>>(departements, HttpStatus.OK);
     }
 
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Departement> create(@RequestBody Departement departement) {
 
