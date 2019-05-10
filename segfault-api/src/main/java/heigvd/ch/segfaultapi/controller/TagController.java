@@ -22,8 +22,6 @@ public class TagController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Tag> getAll() {
-        System.out.println("Get all tags...");
-
     /*    List<Tag> tags = new ArrayList<>();
         tagRepository.findAll().forEach(tags::add);*/
 

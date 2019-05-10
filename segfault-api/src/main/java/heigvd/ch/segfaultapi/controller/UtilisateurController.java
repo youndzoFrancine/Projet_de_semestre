@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +33,19 @@ public class UtilisateurController {
         utilisateurRepository.save(utilisateur);
 
         return utilisateurRepository.findAll();
+    }
+
+    /**
+     * Cette méthode retourne une liste de tous les Utilisateurs qui
+     * commencent par un nom donné
+     * @param nom
+     * @return
+     */
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    public List<Utilisateur> getStartingWith (@RequestParam("nom") String nom) {
+        System.out.print(nom);
+
+        return utilisateurRepository.findBynomUtilisateurStartingWith(nom);
     }
 
     @PutMapping("/users/{id}")

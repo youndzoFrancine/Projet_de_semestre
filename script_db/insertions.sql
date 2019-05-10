@@ -68,38 +68,33 @@ Values
 
 -- Insertion dans la classe Message, dans le cas d'un message pas en réponse à un autre.
 
-INSERT into message(contenu, score, utilisateur_id )
+INSERT into message(contenu, score, utilisateur_id, date_creation) 
 Values
-  ('Quels sont les objectifs pour ce rendu ?', 0, 5),
-  ('verfie l inclusion de toutes les bibliothéques', 0, 3);
-  
-  -- Insertion dans la classe Discussion faisant abstraction du message racine.
+  ('Quels sont les objectifs pour ce rendu ?', 0, 5,'2003/01/22 01:00:00'),
+  ('verfie l inclusion de toutes les bibliothéques', 0, 3 ,'2003/06/22 01:45:00'),
+    ('Conges de paques', 0, 5,'2003/02/22 01:30:00');
 
-INSERT into discussion(sujet,msgracine_id, utilisateur_id)
+  
+
+INSERT into discussion(sujet, msgracine_id, utilisateur_id)
 Values
   ('Rendu intermediaire PRO', 2,1),
-  ('Pourquoi ca ne marche pas ?', 1,2);
+  ('Pourquoi ca ne marche pas ?', 1,2),
+    ('Quels sont les prochains conges', 6, 3);
+
 
 
 -- Insertion dans la classe Message, cas ou un message est en réponse à un autre.
 
-INSERT into message(contenu, score, utilisateur_id,  super_message_id)
+INSERT into message(contenu, score, utilisateur_id,  super_message_id,date_creation)
 Values
-  ('On doit pouvoir tester la DB avec des scripts en SQL', 0, 4, 1),
-  ('faire les anotations JPA pour les jointures (spring boot)', 0, 2, 1),
-  ('Merci ca marche', 0, 6,  2);
+  ('On doit pouvoir tester la DB avec des scripts en SQL', 0, 4, 1,'2003/06/22 01:45:55'),
+  ('faire les anotations JPA pour les jointures (spring boot)', 0, 2, 1,'2003/06/22 01:45:09'),
+  ('Merci ca marche', 0, 6,  2,'2003/06/22 11:45:00');
 
 -- Insertion dans la classe Message, devant ensuite etre lié à une discussion.
 
-INSERT into message(contenu, score, utilisateur_id)
-Values
-  ('Conges de paques', 0, 5);
 
--- Insertion dans la classe Discussion, au travers d'un message existant.
-
-INSERT into discussion(sujet, msgracine_id, utilisateur_id)
-Values
-  ('Quels sont les prochains conges', 6, 3);
 
 
 INSERT INTO Vote(utilisateur_id,up_vote,message_id)

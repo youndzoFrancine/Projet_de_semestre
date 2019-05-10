@@ -66,6 +66,7 @@ ALTER SEQUENCE discussion_discussion_id_seq RESTART WITH 1;
 
 CREATE TABLE IF NOT EXISTS Message (
 	message_id				SERIAL PRIMARY KEY,
+	date_creation			TIMESTAMP,
 	contenu					VARCHAR, 
 	score					INTEGER DEFAULT 100,
 	utilisateur_id			INTEGER, /* peu être null (supression d'un user mais pas de ces messages*/
