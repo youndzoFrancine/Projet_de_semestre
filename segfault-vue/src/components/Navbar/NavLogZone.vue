@@ -1,7 +1,14 @@
 <template>
   <div class="navbar-end logzone">
     <div class="navbar-item">
-      <p v-if="isAuthenticated">Connecté en tant que FAKE_USER</p>
+      <div v-if="isAuthenticated" class="buttons">
+        <div>Connecté en tant que FAKE_USER</div>
+        <router-link
+          to="/"
+          v-on:click="seDeconnecter"
+          class="button is-primary is-outlined"
+        >Se déconnecter</router-link>
+      </div>
       <div v-else class="buttons">
         <router-link to="/connexion" class="button is-primary is-outlined">Connexion</router-link>
         <router-link to="/inscription" class="button is-primary">Inscription</router-link>
@@ -16,7 +23,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "LogZone",
   components: {},
-  methods: {},
+  methods: {
+    seDeconnecter: () => {
+      this.$store.dispatch("changeStatus");
+    }
+  },
   computed: mapGetters(["isAuthenticated"])
 };
 </script>
