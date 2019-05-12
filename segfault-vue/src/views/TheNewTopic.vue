@@ -1,16 +1,16 @@
 <template>
     <div class="New Topic">
-     <AddComment/>
+     <AddMessage isQuestion="true"/>
     </div>
 </template>
 
 <script>
-import AddComment from "@/components/Discussion/AddComment.vue";
+import AddMessage from "@/components/Discussion/AddMessage.vue";
  
 export default {
   name: "New_Topic",
   components: {
-    AddComment
+    AddMessage
   }
 };
 

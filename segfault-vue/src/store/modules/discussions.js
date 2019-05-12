@@ -9,18 +9,16 @@ const state = {
   discussions: [
     {
       id: 1,
-      sujet: "Avez-vous déjà vu des discussions par défaut?",
-      utilisateur: { nomUtilisateur: "Shellmaster" },
-      msgracine: { dateCreation: "January 1, 1995 01:02:03", score: 404 },
-      tagSet: [
+      title: "Avez-vous déjà vu des discussions par défaut?",
+      tags: [
         {
-          tagId: 404,
+          id: 404,
           nom: "fake",
           prioritaire: false,
           rang: 1
         },
         {
-          tagId: 405,
+          id: 405,
           nom: "offline",
           prioritaire: false,
           rang: 5
@@ -29,18 +27,16 @@ const state = {
     },
     {
       id: 2,
-      sujet: "Est-ce que quelqu'un sait pourquoi la page ne charge pas?",
-      utilisateur: { nomUtilisateur: "Shellmaster" },
-      msgracine: { dateCreation: "January 1, 1995 01:02:03", score: 404 },
-      tagSet: [
+      title: "Est-ce que quelqu'un sait pourquoi la page ne charge pas?",
+      tags: [
         {
-          tagId: 404,
+          id: 404,
           nom: "fake",
           prioritaire: false,
           rang: 1
         },
         {
-          tagId: 405,
+          id: 405,
           nom: "offline",
           prioritaire: false,
           rang: 5
@@ -52,9 +48,9 @@ const state = {
 
 // getters
 const getters = {
-  getAllDiscussions: state => state.discussions, // Fonction flêché qui renvoie les discussions
+  getAllDiscussions: state => state.discussions, // Fonction flêchée qui renvoie les discussions
   getTagsById: state => id => {
-    return state.discussions.find(discussion => discussion.id === id).tagSet;
+    return state.discussions.find(discussion => discussion.id === id).tags;
   }
 };
 
@@ -78,7 +74,11 @@ const actions = {
 
 // mutations
 const mutations = {
-  setDiscussions: (state, payload) => (state.discussions = payload)
+  setDiscussions: (state, payload) => {state.discussions = payload},
+  
+  addDiscussion: (state, payload) => {state.discussions.push(payload); console.log(state)}
+  
+  
 };
 
 export default {

@@ -39,7 +39,14 @@ const actions = {
 
 // mutations
 const mutations = {
-  setTags: (state, payload) => (state.tags = payload)
+  setTags: (state, payload) => (state.tags = payload),
+    // TODO: edit to push tags to db (local for now)
+  addTags: (state, payload) => {
+    let nextNum = state.tags.length;
+    const table = payload.trim().split(" ")
+    table.forEach(newTag => state.tags.push({id: ++nextNum, nom: newTag}) );
+//      console.log(state.tags);
+  }
 };
 
 export default {

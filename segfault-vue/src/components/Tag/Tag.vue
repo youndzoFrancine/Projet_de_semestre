@@ -14,6 +14,17 @@ export default {
   props: ["tags"],
   components: {
     TagItem
+  },
+  computed:{
+    getActivatedTags: function() {
+      let active = []
+      for (let tag of this.$children)
+        if (tag.isActive) 
+          active.push({nom: tag.tag.nom})
+        
+//      console.log("activated tags: "+active)
+      return active
+    }
   }
 };
 </script>

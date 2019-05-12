@@ -8,15 +8,16 @@
       </figure>
       <div class="media-content">
         <div class="content">
-          <router-link to="/message">
-            <p>{{post.sujet}}</p>
+          <router-link :to="{path: '/message/'+post.id}">
+            <p>{{post.title}}</p>
           </router-link>
           <p>
             <small>
-              <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
-              posté le {{post.msgracine.dateCreation}}
+              <strong>posté par: @{{this.baseMsg.author}}</strong>
+               le: {{this.baseMsg.date}}
             </small>
           </p>
+          <Tag :tags="post.tags"/>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
@@ -35,14 +36,13 @@
                 <i class="fas fa-heart"></i>
               </span>
             </a>
-            <Tag/>
           </div>
         </nav>
       </div>
       <div class="media-right">
         <div class="buttons">
-          <button class="button purple is-small">10 réponses</button>
-          <button class="button purle is-small is-outlined">score {{post.msgracine.score}}</button>
+          <button class="button purple is-small">{{this.baseMsg.childMsg.length}} réponses</button>
+          <button class="button purle is-small is-outlined">score: {{this.baseMsg.score}}</button>
         </div>
       </div>
     </article>
@@ -57,6 +57,11 @@ export default {
   props: ["post"],
   components: {
     Tag
+  },
+  computed: { 
+    baseMsg () {
+      return this.$store.getters.getOneMessage(this.post.id)
+    }
   }
 };
 </script>

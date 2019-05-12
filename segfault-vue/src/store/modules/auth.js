@@ -6,14 +6,18 @@
 const state = {
   //token: localStorage.getItem("user-token") || "",
   //status: ""
-  auth: false
+  auth: false,
+    // TODO: remettre à "" comme valeur init
+  username: "test",
+  role: ""
 };
 
 // getters
 const getters = {
   //isAuthenticated: state => !!state.token,
   //authStatus: state => state.status
-  isAuthenticated: state => state.auth
+  isAuthenticated: state => state.auth,
+  user: state => state.username
 };
 
 // actions

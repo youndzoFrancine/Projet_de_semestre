@@ -7,35 +7,47 @@
     </figure>
     <div class="media-content">
       <div class="content">
-        <p>{{message.contenu}}</p>
         <p>
-          <strong>posté par @</strong>
+          <strong>posté par @{{message.author}}</strong>
         </p>
+        <p>{{message.text}}</p>
         <p>
           <small>
             <a>++Vote</a> ·
             <a>Vote--</a> ·
-            <a>Répondre</a>
-            · Réponse {{message.dateCreation}}
+            <span @click="toggle">Répondre</span>
+            · posté le: {{message.date}}
           </small>
         </p>
       </div>
-      <MessageResponse
-        v-bind:key="reponse.messageId"
-        v-for="reponse in message.messageSet"
-        v-bind:unereponse="reponse"
+      <div>
+        <AddMessage v-if="comment" :parent="message.id"/>
+      </div>
+      <MessageItem
+        v-for="reponse in message.childMsg"
+        :message="reponse"
+        :key="reponse.id"
+        :name="reponse.id"           
       />
     </div>
   </article>
 </template>
 
 <script>
-import MessageResponse from "@/components/Message/MessageResponse.vue";
+import MessageItem from "@/components/Message/MessageItem.vue";
+import AddMessage from "@/components/Discussion/AddMessage.vue";
 
 export default {
   name: "MessageItem",
+  data: function() {
+    return {comment: false}
+  },
   props: ["message"],
-  components: { MessageResponse }
+  methods: {
+      toggle: function () {this.comment = !this.comment}
+  },
+  components: { MessageItem, AddMessage },
+  created() {this.$root.$on('msgSent', () => this.comment = false)}
 };
 </script>
 
