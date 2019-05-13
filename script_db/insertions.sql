@@ -1,4 +1,4 @@
--- Insertion dans la classe Departement.
+-- Insertion dans la table departement. -----
 
 INSERT INTO departement(nom_departement)
 Values 
@@ -8,39 +8,18 @@ Values
   ('EC+G'),  
   ('COMEN');
 
--- Insertion dans la classe Roles
+-- Insertion dans la table roles. ----------
 
 INSERT INTO roles (nom_role)
 Values 
   ('Etudiant'),
   ('Assistant'),
   ('Professeur'),
-  ('Administrateur');  
+  ('Administrateur'); 
 
--- Insertion dans la classe tag
+-- Insertion dans la table utilisateur. --------------------------------------
 
-INSERT INTO tag(nom, prioritaire, rang)
-Values
-  ('debian', false, 1),
-  ('poo', true, 5),
-  ('pro', true, 8),
-  ('assembleur', false, 2),
-  ('numerisation', true, 4),
-  ('signauxetsysteme', true, 5),
-  ('gen', true, 7),
-  ('scapy', false, 2),
-  ('cpp', true, 3),
-  ('netbeans', true, 5),
-  ('postgresql', true, 5),
-  ('nodejs', true, 6),
-  ('securite', true, 9),
-  ('get', false, 2),
-  ('angular', true, 7),
-  ('wireshark', false, 2);
-
--- Insertion dans la classe Utilisateur.
-
-INSERT into utilisateur(nom_utilisateur, mail_utilisateur, mot_de_passe, role_utilisateur)
+INSERT INTO utilisateur(nom_utilisateur, mail_utilisateur, mot_de_passe, role_utilisateur)
 Values
     /*md5('root1234') = e8bc632a8955b067e4f57824d5954690*/
   ('Admin', 'admin.administrateur@heig-vd.ch', 'aabb2100033f0352fe7458e412495148', 4),
@@ -63,46 +42,263 @@ Values
     /*md5('lionel') = 8670948c5a87999218c67b098ed43883*/
   ('lionel', 'lionel.assistant@heig-vd.ch', '800a0e21225906fe82d141def1a9202d', 2),
     /*md5('nicole') = fc63f87c08d505264caba37514cd0cfd*/
-  ('nicole', 'nicole.assistant@heig-vd.ch', 'fc63f87c08d505264caba37514cd0cfd', 2);
-
-
--- Insertion dans la classe Message, dans le cas d'un message pas en réponse à un autre.
-
-INSERT into message(contenu, score, utilisateur_id, date_creation) 
-Values
-  ('Quels sont les objectifs pour ce rendu ?', 0, 5,'2003/01/22 01:00:00'),
-  ('verfie l inclusion de toutes les bibliothéques', 0, 3 ,'2003/06/22 01:45:00'),
-    ('Conges de paques', 0, 5,'2003/02/22 01:30:00');
-
+  ('nicole', 'nicole.assistant@heig-vd.ch', 'fc63f87c08d505264caba37514cd0cfd', 2);  
   
-
-INSERT into discussion(sujet, msgracine_id, utilisateur_id)
-Values
-  ('Rendu intermediaire PRO', 2,1),
-  ('Pourquoi ca ne marche pas ?', 1,2),
-    ('Quels sont les prochains conges', 6, 3);
-
-
-
--- Insertion dans la classe Message, cas ou un message est en réponse à un autre.
-
-INSERT into message(contenu, score, utilisateur_id,  super_message_id,date_creation)
-Values
-  ('On doit pouvoir tester la DB avec des scripts en SQL', 0, 4, 1,'2003/06/22 01:45:55'),
-  ('faire les anotations JPA pour les jointures (spring boot)', 0, 2, 1,'2003/06/22 01:45:09'),
-  ('Merci ca marche', 0, 6,  2,'2003/06/22 11:45:00');
-
--- Insertion dans la classe Message, devant ensuite etre lié à une discussion.
-
-
-
-
-INSERT INTO Vote(utilisateur_id,up_vote,message_id)
-VALUES 
-  (1,TRUE,1);
-
-INSERT INTO  Message_Family(message_parent , message_fils)
-VALUES
-  (1,2),
+ -- Insertion dans la table appartient. -------------------------------------------
+ 
+INSERT INTO appartient(departement_id, utilisateur_id)
+values
+	(1,2),
 	(1,3),
-	(2,4);
+	(2,4),
+	(2,5),
+	(3,6),
+	(3,7),
+	(4,8),
+	(4,9),
+	(2,8),
+	(2,9),
+	(5,10),
+	(5,11);
+
+-- Insertion dans la table tag. -----------------------------------------------------------------------------
+
+INSERT INTO tag (nom, prioritaire, rang) 
+values 
+	('debian', true, 6),
+	('assembleur',true,4),
+	('numeristaion', false, 6),
+	('signaux',false,1),
+	('systeme',true,10),
+	('gen',false,7),
+	('scapy',false,9),
+	('cpp' ,true,1),
+	('netbeans' ,true,7),
+	('postgresql',true,9),
+	('nodejs',false,8),
+	('securite',true,8),
+	('get',false,10),
+	('angular',false,5),
+	('wireshark',false,9),
+	('tic',false,3),
+	('swi',false,4),
+	('pro',true,5),
+	('poo1',false,2),
+	('poo2',false,5),
+	('aro1^',false,7),
+	('aro2',true,8),
+	('info',false,8),
+	('labo',false,2),
+	('pco',true,10),
+	('ser',true,6),
+	('res',false,3),
+	('srx',true,4),
+	('gen',false,5),
+	('slo',false,2),
+	('cloud',true,7),
+	('get',false,1),
+	('signaux',true,5),
+	('analogique',false,4),
+	('numerique',true,6),
+	('inf1',true,1),
+	('inf2',true,3),
+	('inf01',true,9),
+	('info2',true,4),
+	('progoo',false,9),
+	('economie',false,5),
+	('c++',false,5),
+	('c',true,4),
+	('c#',true,1),
+	('java',false,1),
+	('intellij',false,1),
+	('vscode',true,6),
+	('socket',true,9),
+	('trigger',false,6),
+	('proccedure',false,5);
+
+-- Insertion dans la table message, (message racine )-------------------------------.
+
+ INSERT INTO message(date_creation, contenu, score, utilisateur_id)
+ VALUES
+	('6/10/2018', 'J ai un problème lorsque je veux lire des données de la base de données PostgreSQL Author et écrire dans la base de données de livres PostgreSQL. Je crée des configurations pour les deux bases de données et cela fonctionne bien. Mon problème est dans ItemReader. Voici mon erreur: Une erreur s est produite lors de l exécution de l étape ETL-file-load dans le travail ETL-Load error: exception java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: l auteur n est pas mappé [sélectionnez id, prénom, nom de famille de l auteur]', 0, 6),
+	('9/2/2018', 'Je pensais que toute action provoquerait l appel des fonctions mapState par react-redux-connect mais lorsqu une action ne change rien, ce n est pas le cas. J ai un module localStorage qui distribue des actions mais ne change pas d état, mais il écrira à localStorage. Le module comporte des sélecteurs utilisés dans les conteneurs, mais ils ne seront pas appelés tant que l état n aura pas été modifié. L interface utilisateur s affichera correctement après l envoi d une autre action modifiant l état. Problème : Lorsque je mets le magasin sur window (window.store = store), ajoute un console.log dans le mapStateToProps, puis dans la console, je dépose une action: store.dispatch ({type: une action}), puis sur la console. journal de la mapStateToProps ne montre pas.', 0, 3),
+	('26/11/2018', 'J aimerais créer des actions d événement pour avertir les autres classes lorsqu un événement survient. internal class Third{public event Action Updated;public Third(){if(Updated != null)}}', 0, 5),
+	('26/4/2019', 'I am working on doing some statistical analysis in python however I am new to the field and have been stuck on an error.For background, I am computing a set of sample_means for each sample size, 200 times. I am then calculating the mean and standard deviation for each sample size, which are then stored in arrays. This is my code: in[] = sample_sizes = np.arange(1,1001,1) number_of_samples = 200 mean_of_sample_means = [] std_dev_of_sample_means = [] for x in range (number_of_samples): mean_of_sample_means.append(np.mean(sample_sizes)) std_dev_of_sample_means.append(np.std(sample_sizes)) in[] = # mean and std of 200 means from 200 replications, each of size 10 trials[0], mean_of_sample_means[0], std_dev_of_sample_means[0] out[] = (10, 500.5, 288.67499025720952) ', 0, 3),
+	('18/2/2019', 'Bonjour, est-ce que la VM est la même que celle utilisée pour SYE et ASM au premier semestre?', 0, 3),
+	('9/4/2018', 'Bonjour, je vous prie de m excuser mais j ai oublié de signer la feuille hier mais j etais bien present et j ai noté que vous m avez mis absent sur gaps', 0, 11),
+	('19/9/2018', 'Bonjour, nous avons un problème pour le premier labo. Sans avoir touché à une seule ligne de code nous n avons quasiment aucune erreurs sur le résultat du compteur. Nous devons lance au moins 50 000 threads et 1 000 000 000 d itérations pour avoir 1% d erreurs, il est donc difficile de faire des tests et de se rendre compte si ce que nous faisons a un impact positif ou négatif sur le résultat.', 0, 11),
+	('16/5/2018', 'Bonjour, nous avons essayé d’utiliser la libraire <atomic> pour effectuer un compare_exchange_strong pour une récupération d’un token juste avant l’incrémentation du compteur globale. Cependant nous avons aucune amélioration, il semblerait qu’il existe un bug sur ce fonctionnement qui n’est pas thread-safe, mais nous utilisons une version plus récente. Nous avons aussi testé de rendre le compteur atomic pour avoir une post incrémentation atomic, cela à un effet ~90% avec 10’000 thread avec un compteur de 10’000 sur 4 processeurs mais cela ne dure par car à 100 000 thread on chute à ~35%.Il y a une raison que la classe atomic n’effectue pas vraiment des operations totalement atomic ?', 0, 6),
+	('8/11/2018', 'Peut-être que quelqu un a eu un problème similaire -> lorsque je tente de relancer (bouton start) une deuxième fois un comptage, j ai un SIGABRT. Une idée? Au débug ça a l air de se produire dans une des boucles du dialog.cppEdit: j ai trouvé la solution grâce à quelqu un. Au cas où vous avez ce problème: peut-être que vous distribuez des identifiants à vos threads. Si vous utilisez un compteur il ne faut pas oublier de le reset à 0. J espère que ça peut aider quelqu un, désolé de la question pourrie.', 0, 1),
+	('9/7/2018', 'Pour le labo courant, a-t-on le droit de déplacer le code de la fonction `startHacking` dans la fonction run de nos threads ? Merci', 0, 7),
+	('18/9/2018', 'Bonsoir, j ai un souci pour la validation. Après avoir rajouté socket.write("\r\n") et socket.end(), j exécute la validaction, mais j ai un message d erreur qui s affiche et je ne comprends pas d où ça peut venir.', 0, 7),
+	('9/6/2018', 'Bonsoir,Je suis en train de faire le labo Orchestre, et j essaie de valider mon travail. Mes 2 containers fonctionne, et à la main, je les vois communiquer. En lançant le script de validation, je n arrive cependant que jusqu ici, et je ne sais pas comment me sortir de cette erreur. Auriez-vous une suggestion ? Merci d avance.', 0, 8),
+	('29/12/2018', 'Comment gérer l erreur de mailtrap: Requested action not taken: too many emails per second? Faire des sleep?', 0, 11),
+	('27/8/2018', 'Bonjour, j ai un problème cette fois avec Maven : lorsque j exécute la commande mvn clean install sur mon projet, il génère bien le smtpServer-1.0-SNAPSHOT.jar dans le dossier target, mais lorsque je l exécute avec java -jar, il me met une erreur no main manifest attribute, in smtpClient-1.0-SNAPSHOT.jar. J ai pris le même pom.xml que le projet Chill et j ai essayé de rajouter des choses trouvés sur Internet pour indiquer la classe Main, mais il me génère pleins d erreurs. Pouvez-vous me donner des pistes svp?', 0, 3),
+	('16/5/2018', 'Hello, Est-ce que c est normal que sur netcat quand j essaie d envoyer des commandes smtp au MockMock, il reçoit aucune réponse mais par contre avec telnet ça marche normalement', 0, 10),
+	('26/2/2019', 'je me demandais, comment détermine-t-on simplement qu un serveur smtp force à utiliser le protocol esmtp. Peut-être ai-je mal compris ce qui se passe, mais il me semble smtp.mailtrap.io oblige à passer par une authentification. Y a t il moyen d anticiper cela, ou bien faut il tenter sans authentification, puis après réception d un message d erreur comprendre qu il faut utiliser l authentification?', 0, 2),
+	('9/6/2018', 'Bonjour, nous sommes en train de refaire l exercice 15. Nous comprenons pas pourquoi le producteur fait 2 `waitEmpty.acquire()` et aussi que le `waitEmpty.acquire()` dans le producteur est un appel bloquant et il doit attendre le `waitEmpty.release()` dans le consommateur pour continuer, et que dans le consommateur, il y a le `waitFull.acquire(); et le` waitFull.release()` se situe vers la fin du producteur, mais comme le producteur est bloqué par un `waitEmpty.acquire()`, comment le producteur peut exécuter le `waitFull.release()`?', 0, 1),
+	('12/7/2018', 'Bonsoir, j aurai une question à propos du laboratoire. Lorsque je teste mon implémentation, 100 Threads et 1000 itérations. Ca fonctionne parfaitement mais dès le moment où je mets plus par exemple 1000 Threads et 10000 itérations, le programme crash. Est-ce que c est normal, je veux dire est-ce que c est naturel que ça se produise à ce stade où il faudrait s attendre à ce genre de comportement avec des valeurs quand même bien plus grandes ?', 0, 8),
+	('3/12/2019', 'Bonsoir, pour implémenter l authentification CRAM-MD5, j ai pris une classe complète qui calcule des HMACS. Est-ce que c est bon tant que je précise dans les commentaires que cette classe ne m appartient pas? Merci.', 0, 7),
+	('18/7/2018', 'Un lien utile pour les problèmes d encodage avec SMTP: https://ncona.com/2011/06/using-utf-8-characters-on-an-e-mail-subject/', 0, 6),
+	('26/4/2019', 'Pour le labo, on doit pouvoir aussi envoyer des mails à smtp.heig-vd.ch ?', 0, 4);
+
+-- Insertion dans la table discussion. -------------------------------
+
+INSERT INTO discussion (sujet, msgracine_id, utilisateur_id) 
+values 
+	('Problème avec le lecteur Spring Batch de PostgreSQL DB1 pour écrire dans PostgreSQL DB2', 1, 6),
+	('redux connect mapStateToProps n est appelé lors de la distribution de laction', 2, 3),
+	('Initialiser les actions d événement pour générer des notifications d événement', 3, 5),
+	('Data science error python - ValueError: x et y doivent avoir la même première dimension', 4, 3),
+	('Environement de travail pour PCO', 5, 3),
+	('Absence sur gaps', 6, 11),
+	('Laboratoire1 PCO', 7, 11),
+	('Laboratoire1 PCO', 8, 6),
+	('Laboratoire 2 PCO', 9, 1),
+	('Modification structure des fichiers du labo', 10, 7),
+	('Soucis avec lors de l execution du fichier validation.sh ', 11, 7),
+	('Laboratoire Orchestra', 12, 8),
+	('SMTP Mock mock server', 13, 11),
+	('Dependances maven', 14, 3),
+	('Mock mock server et netcat', 15, 10),
+	('SMTP mailtrap.io avec ou sans authentification pour le labo en cours ? ', 16, 2),
+	('Exercice 15 sur les threads', 17, 1),
+	('Labo sur les threads.', 18, 8),
+	('Implementation de l authentification Labo SMTP', 19, 7),
+	('Documentation pour le labo SMTP.', 20, 6),
+	('Nom de domaine', 21, 4);
+
+
+
+-- Insertion dans la table message (réponse aux messages racine). ------------------------
+
+INSERT INTO message (date_creation, contenu, score, utilisateur_id, super_message_id) 
+values 
+	('6/10/2018', 'Assure toi de fournir le bon type d arguments.', 0, 6, 1),
+    ('7/10/2018', 'Fais voir ton code', 0, 3, 1),
+    ('9/3/2018', 'Votre exemple codepen fonctionne très bien, il vous suffit de déclencher une action qui dépasse de votre niveau le plus bas et qui est conforme à la structure attendue, afin de ne générer aucune erreur de suivi: Publiez-le dans la console de votre code: store.dispatch ({emittedBy: "COUNTER", tapez: "COUNTER -> AUGMENTER", id: "counter1", charge utile: {type: "INCREASE", id: ["counter1" ]}})', 0, 4, 2),
+    ('9/4/2018', 'Ce problème était dû au fait que j avais un module localStorage qui distribuait des actions sans modifier l état, mais qu il écrivait dans localStorage.Le module avait des sélecteurs qui obtiendraient les bonnes données et les conteneurs les utiliseraient pour construire l’état correct, mais puisque l’action envoyée ne modifiait pas l’état dans le magasin Redux, reak-redux ignorerait l’appel de mes fonctions mapState (probablement un état mémoizing dans Provider). ). La solution consiste à laisser le réducteur racine renvoyer une nouvelle référence d état {... state} afin que toute action provoque l appel des fonctions mapState.', 0, 10, 2),
+    ('27/11/2018', 'Le problème ici est que vous essayez de faire cela dans le constructeur, où à ce moment-là, rien n a (encore) été affecté à l événement Updated. Vous pouvez "résoudre" ceci en vérifiant la valeur null: internal class Third { public event Action Updated,public Third(){// ...if(Updated != null) Updated(); }} Mais cela ne veut pas dire que votre code "fonctionne" maintenant, car vous n attribuez à l événement qu un gestionnaire après l appel du constructeur.', 0, 4, 3),
+    ('27/11/2018', 'Vous appelez Update () avant que les classes puissent s abonner aux événements, en raison du constructeur de l objet sous-jacent appelé en premier. Je l ai changé pour que le constructeur prenne la classe associée et abonne l événement lui-même.', 0, 9, 3),
+    ('26/4/2019', 'Cette ligne a besoin des deux arguments pour avoir la même forme (parce que vous avez besoin de x et y pour votre tracé sur un système de coordonnées cartésien, pour être plus précis: la même taille en ce qui concerne la première dimension telle que vue dans l erreur: if x.shape [ 0]! = Y.shape [0]). Mais: sample_sizes = np.arange (1.1001,1) # 1000!', 0, 6, 4),
+    ('18/2/2019', 'Bonjour non.La version 2019_02 est une mise à jour de la précédente avec Qt Creator installé et pré-configuré pour les labos.', 0, 10, 5),
+    ('9/4/2018', 'Bonjour, pareil pour moi. J ai zappé la feuille en sortant du cours hier alors que j étais présent.', 0, 9, 6),
+    ('9/4/2018', 'ok, pas de soucis je corrige', 0, 1, 6),
+    ('21/11/2018', 'Le problème est très probablement que vous êtes en mode "Release" dans Qt Creator au lieu du mode "Debug". Je ne connais pas la source du problème, mais on pourrait suspecter que certaines options d optimisation à la compilation ont un effet sur le comportement du programme.', 0, 6, 7), 
+    ('28/8/2018', 'En effet plus les instructions seront rapides a faire le travail moins il y aura de risque de contention - mais cela ne veut pas dire que les problemes ne vont pas apparaitre. Il est aussi interessant d observer combien de coeurs sont utilises: plus le parallelisme sera important, plus les risques d acces concurrents à la memoire seront éléves', 0, 8, 7), 
+    ('16/5/2018', 'Attention, sauf erreur l attribut `counter` est stockée dans un `unsigned long`. Il ne faut donc pas que le produit nbThread*nbIncrementation soit plus grand que ULONG_MAX (probablement 4294967295 sur votre machine http://www.cplusplus.com/reference/climits/)', 0, 4, 8), 
+    ('17/5/2018', 'utiliser la libraire <atomic> bonne idée, les operations atomiques sont effectivement interessantes et permettent de la synchonisation sans bloquer les thread ce qui peut etre tres performant dans certaines situtations, a classer un peu dans la meme "famille" que les algorithmes d exclusion mutuels que nous allons commencer a regarder. Qt a meme des operations atomiques (https://doc.qt.io/archives/qt-4.8/qatomicint.html). Mais nous n allons pas les aborder directement pendant le cours, cependant libre a vous de les essayer', 0, 2, 8),
+    ('9/8/2018', 'Bonjour,Nous vous demandons seulement de ne pas créer de nouveau fichier dans le projet Qt du labo comme indiqué dans la donnée. Justifiez vos choix d implémentation en commentaire et dans le Readme.', 0, 8, 10),
+    ('18/9/2018', 'c est du json malformé vous n envoyez pas un tableau de musiciens (entre [ ])', 0, 1, 11),
+    ('19/5/2019', 'comme ça, ça ne me dit rien...', 0, 2, 12),
+    ('19/5/2019', 'Je ne pense pas que ça ait de rapport, mais depuis que mon auditor est dockerisé, je n arrive plus à me connecter en TCP dessus (avec `telnet 192.168.99.100 2205`)', 0, 8, 12),
+    ('19/5/2019', 'vous avez fait un run avec -p 2205:2205 ?', 0, 2, 12),
+    ('20/5/2019', 'Oui, pour être exact ', 0, 8, 12),
+    ('20/5/2019', 'ajoutez sock.write("\r\n");sock.end();ce qui devrait débloquer le client tcp dans validation', 0, 8, 12),
+    ('2/1/2019', 'Victoire, merci pour votre grande aide, et désolé pour ça, je ne suis pas encore à l aise avec NodeJS.', 0, 2, 12),
+    ('29/12/2018', 'Moi j ai fait ça. Des Sleep de 5 secondes et ça marche pico bello', 0, 1, 13),
+    ('29/12/2018', 'Entre chaque groupe ou entre chaque RCPT TO?', 0, 4, 13),
+    ('30/12/2018', 'Entre chaque rcp to', 0, 1, 13), 
+    ('27/8/2018', 'Tu dois spécifier le main qu il doit exécuter. Perso j avais ce soucis, le plus simple, c est de te baser sur le pom.xml du labo javaIO précédent. Tu verras qu il spécifie le main (ou la classe). Après tu recompiles et ça devrait être ok', 0, 8, 14),
+    ('25/2/2019', 'Merci beaucoup ça marche du tonnerre', 0, 3, 14),
+    ('26/2/2019', ' C est à cause des \n vs \r\n: sur linux (ou mac), netcat va envoyer par défaut des \n, ce qui viole le rfc. Vous pouvez passer un flag en démarrant netcat pour lui dire de faire le contraire. -c sur mac os', 0, 11, 15),
+    ('26/2/2019', ' Oui ça marche merci! Mais du coup cette erreur se reproduit dans le code? Je vais regarder mes séparateurs', 0, 11, 15),
+    ('26/2/2019', 'Le RFC (et le protocole) ne prévoit rien pour annoncer que l auth. est obligatoire pour la soumission de mails (il y a des entêtes pour indiquer les méthodes d auth. qui PEUVENT être utilisées). S il n y a aucune méthode d auth, alors on peut en déduire que l auth n est pas nécessaire, mais pas l inverse. Comme vous le dites, c est après la réception du message d erreur qu on le sait. Ceci dit, vous utilisez esmtp dans tous les cas (c est le mécanisme avec la liste plus ou moins longue d options, dont celles liées à l auth.)', 0, 6, 16),
+    ('9/6/2018', 'Bonsoir, j ai mis la solution sur `general` j avais oublié de le faire. L idée est que le producteur doit attendre que les deux consommateurs ont lu, et inversément le producteur doit libérer deux consommateurs une fois l élément écrit', 0, 7, 17),
+    ('9/6/2018', 'Okay. Merci', 0, 1, 17),
+    ('12/7/2018', '100 threads et 100 000 itérations passent aussi mais je voulais savoir si ce sont des valeurs correctes ou il faudrait pouvoir entrer bien plus grand ?', 0, 8, 18),
+    ('12/7/2018', 'Bonjour, qu entendez-vous par crash? Est-ce que l application crash réellement ou freeze?Concernant le nombre de thread, je pense qu il n est pas pertinent de monter au delà de 100. Suivant l algorithme choisis, 100 000 itérations sur 100 threads peut être relativement long à calculer. Je vous suggère de monter votre nombre d itérations petit à petit. Sachez cependant que 100 threads et 100 000 itérations sont des valeurs tout à fait corrects.', 0, 2, 18),
+    ('12/8/2018', 'Bonjour, alors ça freeze plutôt. Du coup, je comprends mieux. Merci bien', 0, 8, 18),
+    ('3/12/2019', 'Tu testes avec quel serveur? Parce que la seule manipulation que j ai du faire c est de coder en base64 le password et le username.', 0, 3, 19),
+    ('3/12/2019', 'Oui, ça c est AUTH LOGIN, mais j ai implémenté les 2 ^^.', 0, 6, 19),
+    ('3/12/2019', 'C est obligatoire ?', 0, 3, 19),
+    ('8/2/2018', 'Non, il faut produire un .jar executable.', 0, 9, 19),
+    ('8/3/2018', 'On est d accord que le chemin du fichier de config est codé en dur, et que s il le modifie, il rebuild le jar avec mvn clean install?', 0, 3, 19),
+    ('3/12/2019', 'ça doit passer avec MockMock ? De notre côté une erreur 500: commande pas implémentée', 0, 6, 20),
+    ('2/3/2019', 'Pour moi ça passe bien si jamais', 0, 9, 20),
+    ('26/4/2019', 'vous pouvez faire le test, mais alors utilisez une config avec 1-2 groupes - sinon vous risquez de vous faire blacklister', 0, 2, 21),
+    ('26/4/2019', 'Il y a besoin d une étape en plus? Le serveur me refuse la connexion', 0, 4, 21),
+    ('26/4/2019', 'vous êtes sur quel réseau? Les politiques réseau du SI appliquent des règles différents en fonction de votre connexion au réseau heig-vd, educanet, ou externe.', 0, 2, 21),
+    ('26/4/2019', 'sur heig-vd. Mais il s attend à une authentification ou quelque chose?', 0, 4, 21),
+    ('26/4/2019', 'essayez aussi le port 587 (qui normalement devrait être utilisé par le client mail pour délivrer au premier serveur smtp... mais le SI semble avoir bloqué 25)', 0, 2, 21),
+    ('26/4/2019', 'Oui c est celui que j avais essayé en effet.', 0, 4, 21),
+    ('26/4/2019', 'Notez que c est peut-être EDUROAM qui bloque le trafic (de la même manière qu un ISP comme swisscom reroute le trafic TCP/25 sur le serveur SMTP pour lutter contre le spam) en effet: https://community.jisc.ac.uk/library/janet-services-documentation/implementing-eduroam-roadmap-part-2', 0, 2, 21),
+    ('26/4/2019', 'Okay, merci!', 0, 4, 21);
+ 
+-- Insertion dans la table message (réponse aux réponses des messages racines). ------------------------
+
+INSERT INTO message (date_creation, contenu, score, utilisateur_id, super_message_id) 
+ values 	
+	('7/10/2018', '@Override public Book process(Author item) throws Exception { Book book = newBook();book.setName(item.getFirstname());return book;}', 0, 9, 52),
+	('7/10/2018', 'J ai bien respecté les types', 0, 11, 51),
+    ('10/2/2018', 'Ca marche merci', 0, 2, 53),
+    ('28/11/2018', 'Bien vu merci', 0, 5, 55),
+    ('18/2/2019', 'Parfait merci bien ! ', 0, 4, 58),
+    ('9/8/2018', 'Dac! ca marche.', 0, 7, 65);
+
+	
+
+-- Insertion dans la table message_family -------------------------
+
+
+-- Insertion dans la table message_family -------------------------
+
+INSERT INTO  message_Family(message_parent , message_fils)
+VALUES
+	-- reponse aux messages racines
+	(1,22),
+	(1,23),
+	(2,24),
+	(2,25),
+	(3,26),
+	(3,27),
+	(4,28),
+	(5,29),
+	(6,30),
+	(6,31),
+	(7,32),
+	(7,33),
+	(8,34),
+	(8,35),
+	(10,36),
+	(11,37),
+	(12,38),
+	(12,39),
+	(12,40),
+	(12,41),
+	(12,42),
+	(12,43),
+	(13,45),
+	(13,46),
+	(13,47),
+	(14,48),
+	(14,49),
+	(15,50),
+	(15,51),
+	(16,52),
+	(17,53),
+	(18,54),
+	(18,55),
+	(18,56),
+	(19,57),
+	(19,58),
+	(19,59),
+	(19,60),
+	(19,61),
+	(20,62),
+	(20,63),
+	(21,64),
+	(21,65),
+	(21,66),
+	(21,67),
+	(21,68),
+	(21,69),
+	(21,70),
+	(21,71),
+	-- reponse de reponse 
+	(52,72),
+	(51,73),
+	(53,74),
+	(55,75),
+	(58,76),
+	(65,77);
