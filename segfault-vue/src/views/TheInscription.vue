@@ -218,9 +218,11 @@
 
 
 <script>
+import axios from "axios"
+import { mapGetters } from "vuex"; // pas marche u____U
+
 export default {
   name: "theInscription",
-  components: {},
   data: function() {
     return {
       UserInputErrors: null,
@@ -236,6 +238,7 @@ export default {
       termsErrors: null
     };
   },
+  computed: mapGetters(["apiURL"]), // pas marche....
   methods: {
     UserInputControl: function(e) {
       /*debug console
@@ -304,7 +307,7 @@ export default {
       console.log("call cancelAutoCompletion");*/
       this.booleanChangeFocus = true;
     },
-    registration: function() {
+    registration: async function() {
       /*debug console
       console.log("call registration");*/
       let mistake = new Boolean(false);
@@ -339,9 +342,32 @@ export default {
             "tout les champs ne sont pas rempli correctement";
         } else {
           /*enregistrement dans la db*/
-          this.$router.push({ name: "home" });
-          this.RegistrationFaillure = null;
-          return;
+          await axios
+            .post( this.$store.getters.apiURL + "users/new", {
+              username: this.user,
+              email: this.email,
+              passwors: this.password
+            })
+            .then(response => {
+              if (response.status == 200) {
+                this.RegistrationFaillure = null;
+                this.$store.commit("login", {role: "user", name: this.user})
+                this.$router.push({ name: "home" });
+              }
+              else {
+                this.RegistrationFaillure = "pb d'accès à l'api."
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            
+              // bypass for tests TODO: remove.
+              if (this.email == "Admin.root@heig-vd.ch") {
+                this.$store.commit("login", {role: "admin", name: this.user})
+                this.$router.push({ name: "home" });
+              }
+            });
+          
         }
       } else {
         this.RegistrationFaillure =

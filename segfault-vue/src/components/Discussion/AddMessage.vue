@@ -53,21 +53,21 @@ export default {
   props: ["isQuestion", "parent", "time"],
   methods: {
       submitMsg: function () {
-          // ajouter tags pas présents
+          // TODO: protect against empty fields! 
           if (this.isQuestion) {
             let tags = document.getElementById("newTags").value
             if (tags)
               this.$store.commit("addTags", tags)
-          }
         
           // TODO envoyer requête à l'api: msg -> /discussions/new ou comment -> /messages/new
-          if (this.isQuestion) {
+          
               this.$store.commit("addMessage", {newText: document.getElementById("newText").value, user: this.$store.getters.user, parentMsg: null})
               let tagsTab = []
               document.getElementById("newTags").value.trim().split(" ").forEach((name) => tagsTab.push({nom: name}))
-              tagsTab = tagsTab.concat(this.$children[0].getActivatedTags)
+              tagsTab = tagsTab.concat(this.$store.getters.getActivatedTags)
               this.$store.commit("addDiscussion", {id: this.$store.getters.lastId, title: document.getElementById("newTitle").value, tags: tagsTab})
 //              console.log("tagsTab: " + tagsTab);
+              this.$store.commit("resetActive")
               this.$router.push('/')
           }
           else { 

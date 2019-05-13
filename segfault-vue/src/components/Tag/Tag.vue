@@ -1,33 +1,29 @@
 <template>
   <div class="tags">
     <div class="buttons are-small">
-      <TagItem v-bind:key="tag.id" v-for="tag in tags" v-bind:tag="tag"/>
+<!--      <TagItem v-bind:key="tag.id" v-for="tag in tags" v-bind:tag="tag"/>-->
+      <div :key="tag.id" v-for="tag in tags">
+        <a
+          class="button is-info"
+          v-on:click="clickTag(tag.nom)"
+          v-bind:class="{'is-outlined':!tag.isActive}"
+        >#{{tag.nom}}</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import TagItem from "@/components/Tag/TagItem.vue";
+
 
 export default {
   name: "Tag",
   props: ["tags"],
-  components: {
-    TagItem
-  },
-  computed:{
-    getActivatedTags: function() {
-      let active = []
-      for (let tag of this.$children)
-        if (tag.isActive) 
-          active.push({nom: tag.tag.nom})
-        
-//      console.log("activated tags: "+active)
-      return active
-    }
+  methods: {
+    clickTag(tagName) { this.$store.commit("clicTag", {nom: tagName} ) }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>

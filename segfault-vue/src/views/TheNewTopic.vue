@@ -11,7 +11,9 @@ export default {
   name: "New_Topic",
   components: {
     AddMessage
-  }
+  },
+  mounted() {
+    this.$store.commit("resetActive")}
 };
 
 </script>

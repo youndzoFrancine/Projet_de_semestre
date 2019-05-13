@@ -2,14 +2,16 @@
  * Ce fichier gère l'état Vuex dans l'app de l'authentification
  */
 
+
 // initial state
 const state = {
   //token: localStorage.getItem("user-token") || "",
-  //status: ""
+
   auth: false,
-    // TODO: remettre à "" comme valeur init
-  username: "test",
-  role: ""
+  username: "",
+  role: "",
+  
+  apiUrl: "http://localhost:8087/"
 };
 
 // getters
@@ -17,7 +19,8 @@ const getters = {
   //isAuthenticated: state => !!state.token,
   //authStatus: state => state.status
   isAuthenticated: state => state.auth,
-  user: state => state.username
+  user: state => state.username,
+  apiURL: state => state.apiUrl
 };
 
 // actions
@@ -29,7 +32,18 @@ const actions = {
 
 // mutations
 const mutations = {
-  setAuthStatus: (state, payload) => (state.auth = payload)
+  setAuthStatus: (state, payload) => (state.auth = payload),
+  
+  login: (state, {name, role}) => {
+    state.username = name
+    state.role = role
+    state.auth = true
+  },
+  logout: (state) => {
+    state.username = null
+    state.role = null
+    state.auth = false
+  }
 };
 
 export default {

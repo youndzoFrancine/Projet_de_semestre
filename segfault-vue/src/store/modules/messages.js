@@ -39,9 +39,9 @@ const getters = {
 
 // actions
 const actions = {
-  async fetchMessage({ commit }) {
+  async fetchMessage ({commit, getters}, msgNb) {
     await axios
-      .get("http://localhost:8087/messages/1")
+      .get(getters.apiURL + "messages/" + msgNb)
       .then(response => {
         if (response.status == 200) {
           commit("setMessage", response.data);
@@ -78,7 +78,6 @@ const mutations = {
     else // comment
       for (let message of state.messages)
         addMsgRec (newText, user, parentMsg, message, ++state.lastId)
-    console.log(state);
     }
 };
 

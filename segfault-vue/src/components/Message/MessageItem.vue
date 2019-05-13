@@ -15,8 +15,8 @@
           <small>
             <a>++Vote</a> ·
             <a>Vote--</a> ·
-            <span @click="toggle">Répondre</span>
-            · posté le: {{message.date}}
+            <span v-if="isAuthenticated" @click="toggle">Répondre · </span>
+            posté le: {{message.date}}
           </small>
         </p>
       </div>
@@ -36,6 +36,8 @@
 <script>
 import MessageItem from "@/components/Message/MessageItem.vue";
 import AddMessage from "@/components/Discussion/AddMessage.vue";
+import { mapGetters } from "vuex";
+
 
 export default {
   name: "MessageItem",
@@ -47,7 +49,8 @@ export default {
       toggle: function () {this.comment = !this.comment}
   },
   components: { MessageItem, AddMessage },
-  created() {this.$root.$on('msgSent', () => this.comment = false)}
+  created() {this.$root.$on('msgSent', () => this.comment = false)},
+  computed: mapGetters(["isAuthenticated"])
 };
 </script>
 
