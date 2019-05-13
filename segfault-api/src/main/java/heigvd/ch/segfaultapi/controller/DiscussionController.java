@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Discussion controller.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("discussions")
@@ -18,11 +21,21 @@ public class DiscussionController {
 
     private DiscussionRepository discussionRepository;
 
+    /**
+     * Instantiates a new Discussion controller.
+     *
+     * @param discussionRepository the discussion repository
+     */
     @Autowired
     public DiscussionController(DiscussionRepository discussionRepository) {
         this.discussionRepository = discussionRepository;
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
         List<Discussion> discussions = discussionRepository.findAll();
@@ -33,6 +46,12 @@ public class DiscussionController {
 
     }
 
+    /**
+     * Create list.
+     *
+     * @param discussion the discussion
+     * @return the list
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Discussion> create(@RequestBody Discussion discussion) {
 

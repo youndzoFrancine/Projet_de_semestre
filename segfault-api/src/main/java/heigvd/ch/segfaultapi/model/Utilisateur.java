@@ -9,6 +9,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * The type Utilisateur.
+ */
 @Entity
 
 @Table(name = "Utilisateur")
@@ -37,11 +40,6 @@ public class Utilisateur {
     @JsonIgnore // Cacher mot de passe
     private String motDePasse;
 
-    @Column(name = "role_utilisateur")
-    @Getter
-    @Setter
-    private int roleUtilisateur;
-
     @Getter
     @Setter
     @ManyToMany
@@ -53,9 +51,12 @@ public class Utilisateur {
     private Set<Departement> departementSet;
 
     @Getter
-    @ManyToOne
-    @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
-    private Role role;
+    @Setter
+    /*@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)*/
+    @Column(name = "role_utilisateur")
+    private Integer role;
+
 
     @Getter
     @Setter
@@ -74,7 +75,23 @@ public class Utilisateur {
     private Set<Message> messageSet;
 */
 
+    /**
+     * Instantiates a new Utilisateur.
+     */
     public Utilisateur () {
+    }
+
+    /**
+     * Instantiates a new Utilisateur.
+     *
+     * @param nomUtilisateur  the nom utilisateur
+     * @param mailUtilisateur the mail utilisateur
+     * @param motDePasse      the mot de passe
+     */
+    public Utilisateur ( String nomUtilisateur, String mailUtilisateur, String motDePasse){
+        this.nomUtilisateur=nomUtilisateur;
+        this.mailUtilisateur=mailUtilisateur;
+        this.motDePasse=motDePasse;
     }
 
 }

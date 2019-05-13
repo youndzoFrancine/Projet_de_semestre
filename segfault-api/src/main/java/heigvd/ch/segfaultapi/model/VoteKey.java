@@ -11,18 +11,33 @@ import java.io.Serializable;
 
 import heigvd.ch.segfaultapi.model.*;
 
+/**
+ * The type Vote key.
+ */
 @Embeddable
 public class VoteKey implements Serializable {
+    /**
+     * The Message id.
+     */
     @Getter
     @Setter
     @Column(name = "message_id")
     Integer messageId;
 
+    /**
+     * The Utilisateur id.
+     */
     @Getter
     @Setter
     @Column(name = "utilisateur_id")
     Integer utilisateurId;
 
+    /**
+     * Equals boolean.
+     *
+     * @param obj the obj
+     * @return the boolean
+     */
     @Override
     public boolean equals(Object obj) {
         return obj.getClass() == this.getClass();

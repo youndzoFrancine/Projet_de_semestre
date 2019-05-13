@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.awt.*;
 
+/**
+ * The type Tag.
+ */
 @NoArgsConstructor
 @Entity
 @Table(name = "tag")
@@ -38,6 +41,13 @@ public class Tag {
     private List<Discussion> listeDiscussion = new HashSet<>();*/
 
 
+    /**
+     * Instantiates a new Tag.
+     *
+     * @param nom         the nom
+     * @param prioritaire the prioritaire
+     * @param rang        the rang
+     */
     public Tag(String nom, boolean prioritaire,  int rang){
         this.nom = nom;
         this.prioritaire = prioritaire;

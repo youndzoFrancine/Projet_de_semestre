@@ -8,12 +8,21 @@ import java.io.Serializable;
 import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.model.Message;
 
+/**
+ * The type Vote.
+ */
 @Entity
 public class Vote {
 
+    /**
+     * The Id.
+     */
     @EmbeddedId
     VoteKey id;
 
+    /**
+     * The Message.
+     */
     @Getter
     @Setter
     @ManyToOne
@@ -21,6 +30,9 @@ public class Vote {
     @JoinColumn(name = "message_id")
     Message message;
 
+    /**
+     * The Utilisateur.
+     */
     @Getter
     @Setter
     @ManyToOne
@@ -28,10 +40,16 @@ public class Vote {
     @JoinColumn(name = "utilisateur_id")
     Utilisateur utilisateur;
 
+    /**
+     * The Up vote.
+     */
     @Getter
     @Setter
     Boolean upVote;
 
+    /**
+     * Instantiates a new Vote.
+     */
     Vote() {}
 
 }

@@ -8,6 +8,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * The type Discussion.
+ */
 @NoArgsConstructor // Obligatoire pour JPA
 @Entity
 @Table(name = "Discussion")
@@ -47,6 +50,11 @@ public class Discussion {
     private Set<Tag> tagSet;
 
 
+    /**
+     * Instantiates a new Discussion.
+     *
+     * @param sujet the sujet
+     */
     public Discussion (String sujet) {
         this.sujet = sujet;
     }

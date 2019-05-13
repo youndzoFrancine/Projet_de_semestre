@@ -13,6 +13,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+/**
+ * The type Message.
+ */
 @NoArgsConstructor
 @Entity
 @Table (name = "Message")

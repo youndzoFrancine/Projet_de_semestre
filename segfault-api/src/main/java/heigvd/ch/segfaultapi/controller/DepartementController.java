@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+/**
+ * The type Departement controller.
+ */
 @RestController
 //@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("departements")
 public class DepartementController {
 
+    /**
+     * The constant logger.
+     */
     public static final Logger logger = LoggerFactory.getLogger(DepartementController.class);
 
     //@Autowired
@@ -26,11 +32,21 @@ public class DepartementController {
 
     private DepartementRepository departementRepository;
 
+    /**
+     * Instantiates a new Departement controller.
+     *
+     * @param departementRepository the departement repository
+     */
     @Autowired
     DepartementController(DepartementRepository departementRepository) {
         this.departementRepository = departementRepository;
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Departement>> getAll() {
         List<Departement> departements = departementRepository.findAll();
@@ -43,6 +59,12 @@ public class DepartementController {
     }
 
 
+    /**
+     * Create list.
+     *
+     * @param departement the departement
+     * @return the list
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Departement> create(@RequestBody Departement departement) {
 
@@ -59,6 +81,12 @@ public class DepartementController {
 
     }
 
+    /**
+     * Delete list.
+     *
+     * @param id the id
+     * @return the list
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public List<Departement> delete(@PathVariable("id") Integer id) {
         departementRepository.deleteById(id);

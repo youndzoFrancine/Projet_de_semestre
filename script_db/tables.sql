@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur (
 	nom_utilisateur			VARCHAR 	NOT NULL UNIQUE,
 	mail_utilisateur		VARCHAR 	NOT NULL UNIQUE,
 	/* md5 => 32 byte*/
-	mot_de_passe  			VARCHAR(32) NOT NULL,
+	mot_de_passe  			VARCHAR(64) NOT NULL,
 	role_utilisateur		INTEGER 	NOT NULL,
 	
 	CONSTRAINT fk_role_utilisateur
