@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -50,5 +52,7 @@ public class Discussion {
     public Discussion (String sujet) {
         this.sujet = sujet;
     }
+
+
 
 }

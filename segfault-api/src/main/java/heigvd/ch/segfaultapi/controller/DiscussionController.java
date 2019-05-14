@@ -1,10 +1,10 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
-import heigvd.ch.segfaultapi.model.Message;
-import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +17,7 @@ import java.util.List;
 public class DiscussionController {
 
     private DiscussionRepository discussionRepository;
+
 
     @Autowired
     public DiscussionController(DiscussionRepository discussionRepository) {
@@ -40,4 +41,11 @@ public class DiscussionController {
 
         return discussionRepository.findAll();
     }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public Page<Discussion> fetchByPage(Pageable page) {
+        return discussionRepository.findAll(page);
+
+    }
+
 }
