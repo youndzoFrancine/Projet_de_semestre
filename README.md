@@ -19,7 +19,16 @@ Equipe de devellopement:
 
 ## Dependencies
 
+PostgreSQL 9.6.12
 
+Java JDK 11
+Springboot 2.1.3
+Voir pom.xml pour les dépendances supplémentaires du backend.
+
+Node.js 11.11.0
+npm 6.9.0 
+Vue.js 3.5.1
+Voir package.json pour les dépendances supplémentaires du frontend.
 
 ## Build and install
 
