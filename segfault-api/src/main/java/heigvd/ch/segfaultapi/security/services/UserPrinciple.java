@@ -58,6 +58,7 @@ public class UserPrinciple implements UserDetails {
         this.authorities = authorities;
     }
 
+
     /**
      * Build user principle.
      *

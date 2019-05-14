@@ -1,11 +1,8 @@
 package heigvd.ch.segfaultapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -57,23 +54,11 @@ public class Utilisateur {
     @Column(name = "role_utilisateur")
     private Integer role;
 
-
     @Getter
     @Setter
     @OneToMany(mappedBy = "utilisateur")
     @JsonIgnore
     private Set<Vote> voteSet;
-/*
-    @Getter
-    @Setter
-    @ManyToMany
-    @JoinTable(
-            name = "Vote",
-            joinColumns = @JoinColumn(name ="utilisateur_id"),
-            inverseJoinColumns = @JoinColumn(name = "message_id")
-    )
-    private Set<Message> messageSet;
-*/
 
     /**
      * Instantiates a new Utilisateur.

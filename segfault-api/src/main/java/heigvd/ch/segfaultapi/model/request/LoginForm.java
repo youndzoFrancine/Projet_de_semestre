@@ -11,7 +11,6 @@ import javax.validation.constraints.Size;
  * The type Login form.
  */
 public class LoginForm {
-
     @NotBlank
     @Size(max = 50)
     @Getter

@@ -25,7 +25,7 @@ import java.util.Optional;
  * The type Utilisateur controller.
  */
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("utilisateurs")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class UtilisateurController {
 

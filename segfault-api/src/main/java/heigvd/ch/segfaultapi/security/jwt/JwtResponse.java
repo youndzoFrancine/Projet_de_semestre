@@ -1,10 +1,19 @@
 package heigvd.ch.segfaultapi.security.jwt;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * The type Jwt response.
  */
 public class JwtResponse {
+
+    @Getter
+    @Setter
     private String token;
+
+    @Getter
+    @Setter
     private String type = "Bearer";
 
     /**
@@ -16,39 +25,4 @@ public class JwtResponse {
         this.token = accessToken;
     }
 
-    /**
-     * Gets access token.
-     *
-     * @return the access token
-     */
-    public String getAccessToken() {
-        return token;
-    }
-
-    /**
-     * Sets access token.
-     *
-     * @param accessToken the access token
-     */
-    public void setAccessToken(String accessToken) {
-        this.token = accessToken;
-    }
-
-    /**
-     * Gets token type.
-     *
-     * @return the token type
-     */
-    public String getTokenType() {
-        return type;
-    }
-
-    /**
-     * Sets token type.
-     *
-     * @param tokenType the token type
-     */
-    public void setTokenType(String tokenType) {
-        this.type = tokenType;
-    }
 }
