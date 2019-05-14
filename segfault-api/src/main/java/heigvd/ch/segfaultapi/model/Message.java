@@ -63,18 +63,12 @@ public class Message {
     @OneToMany(mappedBy = "message")
     private Set<Vote> voteSet;
 
-    /*
-
     @Getter
     @Setter
-    @ManyToMany
-    @JoinTable(
-            name = "Vote",
-            joinColumns = @JoinColumn(name ="message_id"),
-            inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
-    )
-    Set<Utilisateur> utilisateurSet;
-*/
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
+    private Utilisateur auteur;
+
     // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
 
 

@@ -24,11 +24,13 @@ public class Discussion {
     @Getter
     private String sujet;
 
+    /*
+    Plus besoin de ça, on récupère l'auteur dans le message racine.
     @Setter
     @Getter
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
-    private Utilisateur utilisateur;
+    private Utilisateur utilisateur;*/
 
     @Setter
     @Getter
