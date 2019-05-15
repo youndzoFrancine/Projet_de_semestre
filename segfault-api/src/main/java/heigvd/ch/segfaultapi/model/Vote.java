@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import heigvd.ch.segfaultapi.model.Utilisateur;
-import heigvd.ch.segfaultapi.model.Message;
 
 @Entity
 public class Vote {
@@ -31,6 +28,14 @@ public class Vote {
     @Getter
     @Setter
     Boolean upVote;
+
+    /**
+     * Cette méthode retourne l'id du message du vote.
+     * @return
+     */
+    public Integer getMessageID() {
+        return this.message.getMessageId();
+    }
 
     Vote() {}
 

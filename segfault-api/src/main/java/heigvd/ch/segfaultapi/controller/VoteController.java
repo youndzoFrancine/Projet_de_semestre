@@ -1,14 +1,13 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Vote;
-import heigvd.ch.segfaultapi.model.Utilisateur;
+import heigvd.ch.segfaultapi.projection.VoteDto;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import heigvd.ch.segfaultapi.repositories.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -32,8 +31,8 @@ public class VoteController {
      * @return
      */
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
-    public List<Vote> getById (@PathVariable("id") Integer id) {
-        
+    public List<VoteDto> getById (@PathVariable("id") Integer id) {
+
         return voteRepository.findAllByUtilisateur(utilisateurRepository.findById(id).get());
     }
 
