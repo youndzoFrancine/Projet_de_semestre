@@ -3,9 +3,12 @@ package heigvd.ch.segfaultapi.controller;
 import heigvd.ch.segfaultapi.model.Tag;
 import heigvd.ch.segfaultapi.repositories.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -39,16 +42,20 @@ public class TagController {
 
 
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public List<Tag> create (@RequestBody Tag discussion) {
+    @PostMapping(value = "create")
+    public ResponseEntity<?> create (@RequestBody Tag tag) {
 
-        tagRepository.save(discussion);
+        if (!tagRepository.findAllByNom(tag.getNom()).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+        }
 
-        return tagRepository.findAll();
+        tagRepository.save(tag);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public List<Tag> delete (@PathVariable("id") Long id) {
+    public List<Tag> delete (@PathVariable("id") Integer id) {
         tagRepository.deleteById(id);
 
         return tagRepository.findAll();

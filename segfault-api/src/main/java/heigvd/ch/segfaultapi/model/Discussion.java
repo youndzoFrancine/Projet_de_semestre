@@ -21,6 +21,7 @@ public class Discussion {
     @NonNull
     private Integer id;
 
+    @Setter
     @Getter
     private String sujet;
 
