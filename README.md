@@ -31,6 +31,8 @@ npm 6.9.0  <br/>
 Vue.js 3.5.1 <br/>
 Vuex <br/>
 Vue Router <br/>
+Bulma CSS <br/>
+Font Awesome <br/>
 Voir package.json pour les dépendances supplémentaires du frontend.
 
 ## Build and install
