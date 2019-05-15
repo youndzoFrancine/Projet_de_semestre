@@ -26,11 +26,14 @@ public class VoteController {
         return voteRepository.findAll();
     }
 
+    /**
+     * Trouve tous les votes pour l'id d'un utilisateur donné
+     * @param id
+     * @return
+     */
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public List<Vote> getById (@PathVariable("id") Integer id) {
-
-        Utilisateur utilisateur = utilisateurRepository.findById(id).get();
-
+        
         return voteRepository.findAllByUtilisateur(utilisateurRepository.findById(id).get());
     }
 
