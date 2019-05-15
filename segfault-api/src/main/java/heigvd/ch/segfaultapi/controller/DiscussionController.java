@@ -3,13 +3,17 @@ package heigvd.ch.segfaultapi.controller;
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Message;
 import heigvd.ch.segfaultapi.model.Utilisateur;
+import heigvd.ch.segfaultapi.projection.DiscussionCreate;
 import heigvd.ch.segfaultapi.projection.DiscussionDto;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
+import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +22,15 @@ import java.util.Optional;
 @RequestMapping("discussions")
 public class DiscussionController {
 
+    @Autowired
     private DiscussionRepository discussionRepository;
 
     @Autowired
-    public DiscussionController(DiscussionRepository discussionRepository) {
-        this.discussionRepository = discussionRepository;
-    }
+    private UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
 /*
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
@@ -36,11 +43,35 @@ public class DiscussionController {
     }
 */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Optional<Discussion> create(@RequestBody Discussion discussion) {
+    public ResponseEntity<?> create(@RequestBody DiscussionCreate payload) {
+
+        if (!discussionRepository.findAllBySujet(payload.getSujet()).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+        }
+
+        // On commence par créer le message
+
+        Message message = new Message();
+
+        message.setDateCreation(LocalDateTime.now());
+
+        message.setAuteur(utilisateurRepository.findById(payload.getUtilisateurID()).get());
+
+        message.setContenu(payload.getContenu());
+
+        messageRepository.save(message);
+
+        // Puis on l'ajoute à la discussion
+
+        Discussion discussion = new Discussion();
+
+        discussion.setSujet(payload.getSujet());
+
+        discussion.setMsgracine(message);
 
         discussionRepository.save(discussion);
 
-        return discussionRepository.findById(discussion.getId());
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)

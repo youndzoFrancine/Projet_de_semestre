@@ -21,6 +21,7 @@ public class Message {
     @Column(name = "message_id")
     private Integer messageId;
 
+    @Setter
     @Getter
     @Column(name = "contenu")
     @NonNull

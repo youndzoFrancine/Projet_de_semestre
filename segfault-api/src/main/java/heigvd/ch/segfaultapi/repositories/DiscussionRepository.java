@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface DiscussionRepository extends JpaRepository<Discussion, Integer> {
     List<DiscussionDto> findAllProjectedBy();
+
+    List<Discussion> findAllBySujet(String sujet);
 }
