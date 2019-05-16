@@ -1,11 +1,13 @@
 package heigvd.ch.segfaultapi.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.awt.*;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tag")
@@ -38,11 +40,13 @@ public class Tag {
     private List<Discussion> listeDiscussion = new HashSet<>();*/
 
 
+/*
     public Tag(String nom, boolean prioritaire,  int rang){
         this.nom = nom;
         this.prioritaire = prioritaire;
         this.rang = rang;
     }
+*/
 
 
 /*
