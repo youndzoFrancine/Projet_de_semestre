@@ -1,6 +1,7 @@
 package heigvd.ch.segfaultapi.projection;
 
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.model.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,18 +15,25 @@ import lombok.Setter;
 public class VoteDto {
 
     @Setter
+    private Utilisateur utilisateur;
+
+    @Setter
     private Message message;
 
     @Setter
     @Getter
     Boolean upVote;
 
+    public Integer getUtilisateurID() {return this.utilisateur.getUtilisateurID();}
 
     public Integer getMessageID() {
         return this.message.getMessageId();
     }
 
+    /*
     public Integer getMessageScore() {
         return this.message.getScore();
     }
+
+     */
 }

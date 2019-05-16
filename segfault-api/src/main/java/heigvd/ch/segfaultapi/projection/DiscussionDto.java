@@ -39,6 +39,7 @@ public class DiscussionDto {
         return this.msgracine.getAuteur();
     }
 
+
     // TODO: 2019-05-15 Pas encore fonctionnel ça, sais pas pourquoi
     
     /*
