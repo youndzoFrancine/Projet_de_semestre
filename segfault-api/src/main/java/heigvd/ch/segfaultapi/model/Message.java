@@ -1,17 +1,16 @@
 package heigvd.ch.segfaultapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.xml.bind.v2.TODO;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table (name = "Message")
@@ -22,6 +21,7 @@ public class Message {
     @Column(name = "message_id")
     private Integer messageId;
 
+    @Setter
     @Getter
     @Column(name = "contenu")
     @NonNull
@@ -62,18 +62,12 @@ public class Message {
     @OneToMany(mappedBy = "message")
     private Set<Vote> voteSet;
 
-    /*
-
     @Getter
     @Setter
-    @ManyToMany
-    @JoinTable(
-            name = "Vote",
-            joinColumns = @JoinColumn(name ="message_id"),
-            inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
-    )
-    Set<Utilisateur> utilisateurSet;
-*/
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
+    private Utilisateur auteur;
+
     // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
 
 

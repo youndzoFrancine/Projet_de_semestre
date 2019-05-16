@@ -1,6 +1,8 @@
 package heigvd.ch.segfaultapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -8,8 +10,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+@AllArgsConstructor
 @Entity
-
 @Table(name = "Utilisateur")
 public class Utilisateur {
 
@@ -36,10 +38,10 @@ public class Utilisateur {
     @JsonIgnore // Cacher mot de passe
     private String motDePasse;
 
-    @Column(name = "role_utilisateur")
+/*    @Column(name = "role_utilisateur")
     @Getter
     @Setter
-    private int roleUtilisateur;
+    private int roleUtilisateur;*/
 
     @Getter
     @Setter
@@ -59,6 +61,7 @@ public class Utilisateur {
     @Getter
     @Setter
     @OneToMany(mappedBy = "utilisateur")
+    @JsonIgnore
     private Set<Vote> voteSet;
 /*
     @Getter

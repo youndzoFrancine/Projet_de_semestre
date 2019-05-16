@@ -38,6 +38,8 @@ const actions = {
       .then(response => {
         if (response.status == 200) {
           commit("setTags", response.data);
+        } else {
+          commit();
         }
       })
       .catch(error => {

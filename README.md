@@ -19,7 +19,21 @@ Equipe de devellopement:
 
 ## Dependencies
 
+PostgreSQL 9.6.12
 
+Java JDK 11 <br/>
+Springboot 2.1.3 <br/>
+Project Lombok <br/>
+Voir pom.xml pour les dépendances supplémentaires du backend.
+
+Node.js 11.11.0 <br/>
+npm 6.9.0  <br/>
+Vue.js 3.5.1 <br/>
+Vuex <br/>
+Vue Router <br/>
+Bulma CSS <br/>
+Font Awesome <br/>
+Voir package.json pour les dépendances supplémentaires du frontend.
 
 ## Build and install
 

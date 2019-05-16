@@ -45,6 +45,8 @@ const actions = {
       .then(response => {
         if (response.status == 200) {
           commit("setMessage", response.data);
+        } else {
+          commit();
         }
       })
       .catch(error => {

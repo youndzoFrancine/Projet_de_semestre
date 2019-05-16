@@ -22,6 +22,7 @@ export default {
     disconnect () {this.$store.commit("logout")}
   },
   computed: mapGetters(["isAuthenticated","user"])
+
 };
 </script>
 

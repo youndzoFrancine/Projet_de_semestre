@@ -2,8 +2,15 @@
   <div>
     <article class="media">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <img src="https://bulma.io/images/placeholders/128x128.png">
+        <p>
+          <span class="icon is-medium">
+            <font-awesome-icon icon="arrow-up"/>
+          </span>
+        </p>
+        <p class="icon is-medium">
+          <span class="icon is-medium">
+            <font-awesome-icon icon="arrow-down"/>
+          </span>
         </p>
       </figure>
       <div class="media-content">
@@ -17,7 +24,9 @@
                le: {{this.baseMsg.date}}
             </small>
           </p>
+    
           <Tag :tags="post.tags"/>
+
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
@@ -58,6 +67,7 @@ export default {
   components: {
     Tag
   },
+  
   computed: { 
     baseMsg () {
       return this.$store.getters.getOneMessage(this.post.id)
