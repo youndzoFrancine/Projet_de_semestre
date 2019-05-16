@@ -2,9 +2,7 @@ package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Message;
-import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.projection.DiscussionCreate;
-import heigvd.ch.segfaultapi.projection.DiscussionDto;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
@@ -75,7 +72,8 @@ public class DiscussionController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<DiscussionDto> getAll () {
-        return discussionRepository.findAllProjectedBy();
+    public List<Discussion> getAll () {
+
+        return discussionRepository.findAll();
     }
 }
