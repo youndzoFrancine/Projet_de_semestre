@@ -1,13 +1,16 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 public class Vote {
 
+    @Setter
     @EmbeddedId
     VoteKey id;
 
@@ -36,7 +39,4 @@ public class Vote {
     public Integer getMessageID() {
         return this.message.getMessageId();
     }
-
-    Vote() {}
-
 }

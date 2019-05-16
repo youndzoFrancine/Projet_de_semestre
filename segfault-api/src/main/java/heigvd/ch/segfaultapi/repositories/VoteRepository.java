@@ -10,5 +10,8 @@ import java.util.List;
 
 public interface VoteRepository extends JpaRepository<Vote, Integer> {
     List<VoteDto> findAllByUtilisateur(Utilisateur utilisateur);
+
+    List<VoteDto> findAllProjectedBy();
+
 }
 
