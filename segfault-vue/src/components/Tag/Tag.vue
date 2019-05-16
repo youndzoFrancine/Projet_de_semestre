@@ -2,12 +2,8 @@
   <div class="tags">
     <div class="buttons are-small">
 <!--      <TagItem v-bind:key="tag.id" v-for="tag in tags" v-bind:tag="tag"/>-->
-      <div :key="tag.id" v-for="tag in tags">
-        <a
-          class="button is-info"
-          v-on:click="clickTag(tag.nom)"
-          v-bind:class="{'is-outlined':!tag.isActive}"
-        >#{{tag.nom}}</a>
+      <div class="button" :key="tag.tagId" v-for="tag in tags" :class="[{'is-outlined': !tag.isActive}, tag.prio ? 'is-link': 'is-info' ]" @click="clickTag(tag)">
+        <span>#{{tag.nom}}</span>
       </div>
     </div>
   </div>
@@ -20,10 +16,12 @@ export default {
   name: "Tag",
   props: ["tags"],
   methods: {
-    clickTag(tagName) { this.$store.commit("clicTag", {nom: tagName} ) }
+    clickTag(tag) { this.$store.commit("clicTag", {nom: tag.nom}) }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+/*  .space-around {padding: 2px;}*/
+/*  .prio {border: 3px solid;}*/
 </style>

@@ -4,7 +4,7 @@
       <h1 class="title">Connexion</h1>
     </div>
 
-    <!--email-->
+    <!--email || username -->
     <div class="field">
       <label class="label">Email ou nom d'utilisateur</label>
       <div class="field has-addons">
@@ -14,7 +14,7 @@
             v-model="email"
             id="email"
             type="text"
-            placeholder="prenom.nom"
+            placeholder="username or email"
           >
           <span class="icon is-small is-left">
             <font-awesome-icon icon="envelope"/>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <!--mot de pass entrer-->
+    <!--mot de passe-->
     <div class="field">
       <label class="label">Mot de passe</label>
 
@@ -43,6 +43,7 @@
           id="password"
           type="password"
           placeholder="password"
+          @input="sha256(password)"
         >
         <span class="icon is-small is-left">
           <font-awesome-icon icon="lock"/>
@@ -77,6 +78,7 @@
 
 <script>
 import axios from "axios";
+import {mapActions} from "vuex"
   
 export default {
   name: "theInscription",
@@ -90,6 +92,8 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["sha256"]),
+    
     connexion: async function() {
       /* debug console
       console.log("connexion");
@@ -100,11 +104,11 @@ export default {
         this.ConnexionError = "attention le nombre de tentative augmente le temps d'attente";
         sleep(200 * this.tentative);
       }
-      /*appel a la bd*/
+      /*appel a la bd. TODO: check route, params */
       await axios
       .post(this.$store.getters.apiURL + "users/validate", {
         email: this.email,
-        pass: this.password
+        pass: this.$store.getters.hashedPass
       })
       .then(response => {
         if (response.status == 200) {

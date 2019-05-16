@@ -20,7 +20,8 @@
       <p>select tags:</p>
     
       <Tag v-bind:tags="getAllTags"/>
-      <textarea id="newTags" placeholder="add other tags"></textarea>
+      <p>Add other tags:</p>
+      <textarea id="newTags" placeholder="all white spaces are removed, split tags with #"></textarea>
       
     </div>
     <nav class="level">
@@ -49,32 +50,47 @@ export default {
   components: {
     Tag
   },
-  computed: mapGetters(["getAllTags"]),
+  computed: mapGetters(["getAllTags", "apiURL"]),
   props: ["isQuestion", "parent", "time"],
   methods: {
-      submitMsg: function () {
-          // TODO: protect against empty fields! 
-          if (this.isQuestion) {
-            let tags = document.getElementById("newTags").value
-            if (tags)
-              this.$store.commit("addTags", tags)
+    submitMsg: async function () {
+      // TODO: protect against empty fields! 
+    
+      if (this.isQuestion) {
         
-          // TODO envoyer requête à l'api: msg -> /discussions/new ou comment -> /messages/new
-          
-              this.$store.commit("addMessage", {newText: document.getElementById("newText").value, user: this.$store.getters.user, parentMsg: null})
-              let tagsTab = []
-              document.getElementById("newTags").value.trim().split(" ").forEach((name) => tagsTab.push({nom: name}))
-              tagsTab = tagsTab.concat(this.$store.getters.getActivatedTags)
-              this.$store.commit("addDiscussion", {id: this.$store.getters.lastId, title: document.getElementById("newTitle").value, tags: tagsTab})
-//              console.log("tagsTab: " + tagsTab);
-              this.$store.commit("resetActive")
-              this.$router.push('/')
-          }
-          else { 
-            this.$store.commit("addMessage", {newText: document.getElementById("newText").value, user: this.$store.getters.user, parentMsg: this.parent})
-            this.$root.$emit('msgSent')
-          }
-            
+        if (this.$store.getters.getActivatedTags.filter(tag => tag.prio).length == 0) {
+          this.$store.dispatch("displayError", "you should select at least one mandatory tag. (dark blue)")
+          return
+        }
+    
+      // TODO: need at least 1 tag prio! 
+        // adding new tags to db and store 
+        let tags = document.getElementById("newTags").value
+        if (tags)
+          this.$store.dispatch("addTags", tags)
+      
+      // TODO envoyer requête à l'api: msg -> /discussions/new ou comment -> /messages/new
+      // ->  faire dans store
+      
+        this.$store.commit("addMessage", {newText: document.getElementById("newText").value, user: this.$store.getters.user, parentMsg: null})
+        
+//        tagsTab = tagsTab.concat(this.$store.getters.getActivatedTags)
+        this.$store.commit("addDiscussion", {id: this.$store.getters.lastId, title: document.getElementById("newTitle").value, tags: this.$store.getters.getActivatedTags})
+//        console.log("tagsTab: " + tagsTab);
+        this.$store.commit("resetActive")
+        this.$router.push('/')
+      }
+      else { 
+        const text = document.getElementById("newText").value
+        if (text) {
+          this.$store.commit("addMessage", {newText: text, user: this.$store.getters.user, parentMsg: this.parent})
+          // to hide the text field
+          this.$root.$emit('msgSent')
+        }
+        else {
+          this.$store.dispatch("displayError", "cannot add empty comment!")
+        }
+      }
     }
   }
     

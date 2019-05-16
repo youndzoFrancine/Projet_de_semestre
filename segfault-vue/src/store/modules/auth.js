@@ -9,9 +9,8 @@ const state = {
 
   auth: false,
   username: "",
-  role: "",
+  role: ""
   
-  apiUrl: "http://localhost:8087/"
 };
 
 // getters
@@ -19,8 +18,7 @@ const getters = {
   //isAuthenticated: state => !!state.token,
   //authStatus: state => state.status
   isAuthenticated: state => state.auth,
-  user: state => state.username,
-  apiURL: state => state.apiUrl
+  user: state => state.username
 };
 
 // actions

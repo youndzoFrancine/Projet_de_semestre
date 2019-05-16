@@ -56,16 +56,18 @@ const getters = {
 
 // actions
 const actions = {
-  async fetchDiscussions({ commit, getters }) {
+  async fetchDiscussions({ commit, getters, dispatch }) {
     
     await axios
       .get( getters.apiURL + "discussions/all")
       .then(response => {
+        console.log(response.data)
         if (response.status == 200) {
           commit("setDiscussions", response.data);
         } else {
-          commit();
+          dispatch("displayError", "error while fetching discussions.")
         }
+
       })
       .catch(error => {
         console.log(error);
@@ -75,7 +77,7 @@ const actions = {
 
 // mutations
 const mutations = {
-  setDiscussions: (state, payload) => {state.discussions = payload},
+  setDiscussions: (state, payload) => {/*state.discussions = payload*/},
   
   addDiscussion: (state, payload) => {state.discussions.push(payload)}
   

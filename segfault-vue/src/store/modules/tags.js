@@ -23,7 +23,7 @@ const getters = {
     let active = []
     for (let tag of state.tags)
       if (tag.isActive) 
-        active.push({nom: tag.nom})
+        active.push(tag)
 //    console.log("activated tags: "+active)
     return active
   }
@@ -31,6 +31,7 @@ const getters = {
 
 // actions
 const actions = {
+  
   async fetchTags({ getters, commit }) {
     await axios
       .get( getters.apiURL + "tags/all")
@@ -43,39 +44,60 @@ const actions = {
         console.log(error);
       });
   },
+
+  // method to add tags, they arrive as a string separated with #. Whites spaces are removed.
+  async addTags ({ getters, commit, dispatch}, tags) {    
     
-  async addTags ({ getters}, tags) {
+    const tagsTab = tags.replace(/\s/g,'').split('#')
     
-    await axios
-      .post( getters.apiURL + "tags/add", {
-        jwt: "20b0a876f1f3e",
-        tags: tags
+    /*TODO: need to send tags as array with default values for prio & rank*/
+    for (let newTag of tagsTab) {
+      await axios.post( getters.apiURL + "tags/create", {
+         nom: newTag,
+         prioritaire: false,
+         rang: 1
       })
       .then(response => {
-        if (response.status != 200) {
-          console.log("pas marche.")
+        console.log(response.data)
+        if (response.status == 201) {
+          // TODO: send resp.from backend to get good tagId
+          commit("addTags", newTag)
+        } 
+        else {
+          dispatch("displayError", "tags could not be sent to backend.")
         }
       })
       .catch(error => {
         console.log(error);
       });
+    }
   }
 };
 
 // mutations
 const mutations = {
   //TODO: add tag only if not already present
-  setTags: (state, payload) => (state.tags = payload),
-    // TODO: edit to push tags to db (local for now)
+  setTags: (state, payload) => {
+//    state.tags = payload
+    state.tags = []
+    for (let tag of payload)
+      state.tags.push({id:tag.tagId, nom: tag.nom, prio:tag.prioritaire, rank: tag.rang, isActive: false});
+    state.tags.sort((a,b) => b.rank - a.rank)
+    state.nextNum = state.tags.length
+    console.log(state.tags)
+  },
+
+    // TODO prevent adding twice a tag
   addTags: (state, payload) => {
     let nextNum = state.tags.length;
-    const table = payload.trim().split(" ");
-    table.forEach(newTag => state.tags.push({id: ++nextNum, nom: newTag, isActive: false}) );
+    payload.forEach(newTag => state.tags.push({id: ++nextNum, nom: newTag, prio:false, rank: 0, isActive: true}) );
 //      console.log(state.tags);
   },
   clicTag: (state, payload) => {
     let tag = state.tags.filter(tag =>tag.nom == payload.nom)[0];
+    console.log(payload, tag)
     tag.isActive = !tag.isActive;
+
   },
   resetActive: state => {for (let tag of state.tags) tag.isActive = false;}
   
