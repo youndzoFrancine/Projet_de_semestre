@@ -4,11 +4,14 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor // Obligatoire pour JPA
+ // Obligatoire pour JPA
+@NoArgsConstructor
 @Entity
 @Table(name = "Discussion")
 public class Discussion {
@@ -47,8 +50,7 @@ public class Discussion {
             joinColumns = @JoinColumn(name ="tag_id"),
             inverseJoinColumns = @JoinColumn(name = "discussion_id")
     )
-    private Set<Tag> tagSet;
-
+    private List<Tag> tagList;
 
     public Discussion (String sujet) {
         this.sujet = sujet;

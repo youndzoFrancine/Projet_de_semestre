@@ -1,19 +1,36 @@
 package heigvd.ch.segfaultapi.projection;
 
 import heigvd.ch.segfaultapi.model.Message;
-import heigvd.ch.segfaultapi.model.Role;
 import heigvd.ch.segfaultapi.model.Tag;
 import heigvd.ch.segfaultapi.model.Utilisateur;
-import jdk.jshell.execution.Util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
-@AllArgsConstructor
+
 public class DiscussionDto {
+
+    DiscussionDto (Message msgracine, String sujet, Tag tag) {
+        int i = 1;
+        i = 2;
+
+        this.msgracine = msgracine;
+
+        this.sujet = sujet;
+    }
+
+
+        DiscussionDto (Message msgracine, String sujet, List<Tag> tagList) {
+        this.msgracine = msgracine;
+
+        this.sujet = sujet;
+
+        this.tagList = List.copyOf(tagList);
+    }
+
 
     @Setter
     private Message msgracine;
@@ -38,6 +55,10 @@ public class DiscussionDto {
     public Utilisateur getAuteur () {
         return this.msgracine.getAuteur();
     }
+
+    @Getter
+    @Setter
+    private List<Tag> tagList;
 
 
     // TODO: 2019-05-15 Pas encore fonctionnel ça, sais pas pourquoi
