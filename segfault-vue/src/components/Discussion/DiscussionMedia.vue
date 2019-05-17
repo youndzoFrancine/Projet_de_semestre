@@ -3,8 +3,10 @@
     <div v-bind:key="post.id" v-for="post in posts" class="discussion-media">
       <DiscuMediaItem v-bind:post="post"/>
     </div>
-    <button @click="fetchDiscussions(getPrevPageNb)">previous page</button>
-    <button @click="fetchDiscussions(getNextPageNb)">next page</button>
+    <div class="buttons">
+    <button v-if="getPrevPageNb !== null" class="button" @click="fetchDiscussions(getPrevPageNb)">previous page</button>
+    <button v-if="getNextPageNb !== null" class="button" @click="fetchDiscussions(getNextPageNb)">next page</button>
+    </div>
   </div>
 </template>
 

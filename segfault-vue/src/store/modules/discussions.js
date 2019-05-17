@@ -54,13 +54,16 @@ const getters = {
   getTagsById: state => id => {
     return state.discussions.find(discussion => discussion.id === id).tags;
   },
-  getNextPageNb: state => state.currentPage < state.totalPages - 1 ? state.currentPage+1 : state.currentPage,
-  getPrevPageNb: state => state.currentPage > 0 ? state.currentPage - 1 : 0
+  getNextPageNb: state => state.currentPage < state.totalPages - 1 ? state.currentPage+1 : null,
+  getPrevPageNb: state => state.currentPage > 0 ? state.currentPage - 1 : null
 };
 
 // actions
 const actions = {
-  async fetchDiscussions({ commit, getters, dispatch }, page = 0) {
+  async fetchDiscussions({ commit, getters, dispatch }, page) {
+    
+    if (page === null)
+      return
     
     await axios
       .get( getters.apiURL + "discussions/all?page=" + page)

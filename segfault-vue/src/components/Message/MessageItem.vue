@@ -6,7 +6,7 @@
       </p>
     </figure>
     <div class="media-content">
-      <div class="content">
+      <div class="content" :class="message.author.role.roleID > 1 ? 'teacher':'' ">
         <p>
           <strong>posté par @{{message.author.nomUtilisateur}}</strong>
         </p>
@@ -55,4 +55,5 @@ export default {
 </script>
 
 <style>
+  .teacher {background-color: rgba(0,200,0,0.1);}
 </style>
