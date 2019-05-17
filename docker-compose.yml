@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:9.6-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=segfaultapi
+      - POSTGRES_PASSWORD=yourpass
+      - POSTGRES_DB=Forum
+    volumes:
+      - ./script_db/:/docker-entrypoint-initdb.d/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8081

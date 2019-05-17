@@ -15,9 +15,9 @@ CREATE USER segfaultapi WITH ENCRYPTED PASSWORD 'yourpass'
 CREATE DATABASE "Forum"
     WITH
     OWNER = segfaultapi
-    ENCODING = 'UTF-8'
-    LC_COLLATE = 'French_Switzerland.1252'
-    LC_CTYPE = 'French_Switzerland.1252'
+    #ENCODING = 'UTF-8'
+    #LC_COLLATE = 'French_Switzerland.1252'
+    #LC_CTYPE = 'French_Switzerland.1252'
     CONNECTION LIMIT = -1
     TEMPLATE template0;
 

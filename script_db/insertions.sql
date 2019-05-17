@@ -1,5 +1,5 @@
 -- Insertion dans la classe Departement.
-
+\connect Forum
 INSERT INTO departement(nom_departement)
 Values 
   ('HEG'),

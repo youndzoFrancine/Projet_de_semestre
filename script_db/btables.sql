@@ -1,4 +1,6 @@
 /* Nettoyage d'une db existante*/
+
+
 DROP TABLE IF EXISTS Departement	CASCADE;
 DROP TABLE IF EXISTS Tag 			CASCADE;
 DROP TABLE IF EXISTS Utilisateur 	CASCADE;
@@ -145,4 +147,4 @@ SELECT * FROM tag;
 SELECT * FROM vote;
 
 */
-	
+	-- Insertion dans la classe Departement.

@@ -4,13 +4,15 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor // Obligatoire pour JPA
+// Obligatoire pour JPA
+@NoArgsConstructor
 @Entity
 @Table(name = "Discussion")
 public class Discussion {
@@ -23,14 +25,17 @@ public class Discussion {
     @NonNull
     private Integer id;
 
+    @Setter
     @Getter
     private String sujet;
 
+    /*
+    Plus besoin de ça, on récupère l'auteur dans le message racine.
     @Setter
     @Getter
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
-    private Utilisateur utilisateur;
+    private Utilisateur utilisateur;*/
 
     @Setter
     @Getter
@@ -46,8 +51,7 @@ public class Discussion {
             joinColumns = @JoinColumn(name ="tag_id"),
             inverseJoinColumns = @JoinColumn(name = "discussion_id")
     )
-    private Set<Tag> tagSet;
-
+    private List<Tag> tagList;
 
     public Discussion (String sujet) {
         this.sujet = sujet;
