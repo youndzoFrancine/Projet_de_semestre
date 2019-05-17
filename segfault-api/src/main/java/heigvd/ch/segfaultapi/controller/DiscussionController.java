@@ -7,6 +7,9 @@ import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -72,8 +75,9 @@ public class DiscussionController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Discussion> getAll () {
+    public Page<Discussion> getAll (@RequestParam("page") int page) {
 
-        return discussionRepository.findAll();
+        Pageable tstPage = PageRequest.of(page, 7);
+        return discussionRepository.findAll(tstPage);
     }
 }

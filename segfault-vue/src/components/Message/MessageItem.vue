@@ -8,7 +8,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>posté par @{{message.author}}</strong>
+          <strong>posté par @{{message.author.nomUtilisateur}}</strong>
         </p>
         <p>{{message.text}}</p>
         <p>

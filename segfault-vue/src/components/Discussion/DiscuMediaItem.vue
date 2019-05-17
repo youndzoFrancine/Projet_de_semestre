@@ -14,13 +14,13 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content">
+        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'' ">
           <router-link :to="{path: '/message/'+post.id}">
             <p>{{post.title}}</p>
           </router-link>
           <p>
             <small>
-              <strong>posté par: @{{this.baseMsg.author}}</strong>
+              <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
                le: {{this.baseMsg.date}}
             </small>
           </p>
@@ -77,4 +77,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .teacher {background-color: rgba(0,200,0,0.1);}
 </style>

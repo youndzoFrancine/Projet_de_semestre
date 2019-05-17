@@ -58,12 +58,12 @@ export default {
     
       if (this.isQuestion) {
         
+      // need at least 1 tag prio
         if (this.$store.getters.getActivatedTags.filter(tag => tag.prio).length == 0) {
           this.$store.dispatch("displayError", "you should select at least one mandatory tag. (dark blue)")
           return
         }
     
-      // TODO: need at least 1 tag prio! 
         // adding new tags to db and store 
         let tags = document.getElementById("newTags").value
         if (tags)

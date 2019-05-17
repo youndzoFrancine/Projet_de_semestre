@@ -7,27 +7,10 @@ import axios from "axios";
 // initial state
 const state = {
     // TODO: pour l'instant il y a plusieurs messages ici pour simuler la db, après on fetchera les messages d'une discussion à la fois maximum.
-  messages: [{
-    id: 1,
-    author: "Jean",
-    date: "2019-05-11-04-20-42",
-    text: "Message en cours de chargement...",
-    score: 404,
-    hasVoted: "no",
-    childMsg: []
-  },
-  {
-    id: 2,
-    author: "Paul",
-    date: "2019-05-11-04-20-42",
-    text: "Coucou",
-    score: 404,
-    hasVoted: "no",
-    childMsg: []
-  }],
+  messages: [],
   
   // à dégager, c'est la db qui gère ça.
-  lastId: 2
+  lastId: 0
 };
 
 // getters
@@ -72,15 +55,21 @@ function addMsgRec (newText, user, parentMsg, currentMsg, newId) {
 
 // mutations
 const mutations = {
-  setMessage: (state, payload) => (state.message = payload),
+  setMessage: (state, payload) => (state.messages = payload),
   addMessage: (state, {newText, user, parentMsg}) => {
     // TODO: send to db, this is just for local testing
     if (parentMsg == null) // new discussion
-      state.messages.push({id: ++state.lastId, author: user, date: new Date().getTime() , text: newText, score: 100, hasVoted: "no", childMsg: []})
+      state.messages.push({id: ++state.lastId, author: user, date: new Date().getTime() , text: newText, score: 0, hasVoted: "no", childMsg: []})
     else // comment
       for (let message of state.messages)
         addMsgRec (newText, user, parentMsg, message, ++state.lastId)
-    }
+    },
+
+  
+  
+  // temporary method while discussions are sent entirely
+  pushMsgFamily: (state, payload) => state.messages.push(payload),
+  clearMsg: (state) => state.messages = []
 };
 
 export default {

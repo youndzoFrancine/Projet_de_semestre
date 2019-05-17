@@ -20,7 +20,7 @@ export default {
   },
   computed: mapGetters(["getOneMessage"]),
   created() {
-    this.fetchMessage(this.id);
+//    this.fetchMessage(this.id);
   }
   /*
   ,

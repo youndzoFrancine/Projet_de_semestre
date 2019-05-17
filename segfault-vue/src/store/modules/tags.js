@@ -83,7 +83,7 @@ const mutations = {
 //    state.tags = payload
     state.tags = []
     for (let tag of payload)
-      state.tags.push({id:tag.tagId, nom: tag.nom, prio:tag.prioritaire, rank: tag.rang, isActive: false});
+      state.tags.push({id:tag.id, nom: tag.nom, prio:tag.prio, rank: tag.rank, isActive: false});
     state.tags.sort((a,b) => b.rank - a.rank)
     state.nextNum = state.tags.length
     console.log(state.tags)

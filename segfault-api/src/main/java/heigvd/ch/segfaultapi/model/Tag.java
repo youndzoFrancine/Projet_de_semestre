@@ -15,7 +15,7 @@ public class Tag {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "tag_id" )
-    private Integer tagId;
+    private Integer id;
 
     @Getter
     @Column(name = "nom")
@@ -23,11 +23,11 @@ public class Tag {
 
     @Getter
     @Column(name = "prioritaire")
-    private boolean prioritaire;
+    private boolean prio;
 
     @Getter
     @Column(name = "rang")
-    private int rang;
+    private int rank;
 
 
 /*    @ManyToMany
@@ -40,8 +40,8 @@ public class Tag {
 
     public Tag(String nom, boolean prioritaire,  int rang){
         this.nom = nom;
-        this.prioritaire = prioritaire;
-        this.rang = rang;
+        this.prio = prioritaire;
+        this.rank = rang;
     }
 
 
