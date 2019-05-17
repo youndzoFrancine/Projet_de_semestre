@@ -2,6 +2,7 @@ package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.projection.DiscussionCreate;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
@@ -38,9 +39,22 @@ public class DiscussionController {
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<List<Discussion>>(discussions, HttpStatus.OK);
+    @Autowired
+    private MessageRepository messageRepository;
+
+/*
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ResponseEntity<?> getAll() {
+        List<Discussion> discussions = discussionRepository.findAll();
+        if (discussions.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Discussion>>(discussions, HttpStatus.OK);
 
         }
-    */
+
+    }
+*/
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody DiscussionCreate payload) {
 

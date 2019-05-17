@@ -1,10 +1,15 @@
 package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.projection.MessageReponse;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +19,8 @@ import java.util.Optional;
 @RequestMapping("messages")
 public class MessageController {
 
+    @Autowired
+    private UtilisateurRepository utilisateurRepository;
 
     private MessageRepository messageRepository;
 
@@ -28,10 +35,20 @@ public class MessageController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public List<Message> create (@RequestBody Message message) {
+    public ResponseEntity<?> create (@RequestBody MessageReponse payload) {
 
+        Message message = new Message();
+
+        message.setContenu(payload.getContenu());
+
+        message.setAuteur(utilisateurRepository.findById(payload.getUtilisateurID()).get());
+
+        message.setDateCreation(LocalDateTime.now());
+
+        messageRepository.getOne(payload.getMessageID()).getMessageSet().add(message);
         messageRepository.save(message);
-        return messageRepository.findAll();
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)

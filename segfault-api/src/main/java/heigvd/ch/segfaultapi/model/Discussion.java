@@ -11,7 +11,8 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-// Obligatoire pour JPA
+
+ // Obligatoire pour JPA
 @NoArgsConstructor
 @Entity
 @Table(name = "Discussion")

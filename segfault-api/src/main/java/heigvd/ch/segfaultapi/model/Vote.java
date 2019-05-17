@@ -1,16 +1,16 @@
 package heigvd.ch.segfaultapi.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import heigvd.ch.segfaultapi.model.Utilisateur;
-import heigvd.ch.segfaultapi.model.Message;
 
+@NoArgsConstructor
 @Entity
 public class Vote {
 
+    @Setter
     @EmbeddedId
     VoteKey id;
 
@@ -32,6 +32,11 @@ public class Vote {
     @Setter
     Boolean upVote;
 
-    Vote() {}
-
+    /**
+     * Cette méthode retourne l'id du message du vote.
+     * @return
+     */
+    public Integer getMessageID() {
+        return this.message.getMessageId();
+    }
 }
