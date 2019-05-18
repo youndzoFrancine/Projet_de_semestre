@@ -4,7 +4,7 @@
       <h1 class="title">Connexion</h1>
     </div>
 
-    <!--email-->
+    <!--email || username -->
     <div class="field">
       <label class="label">Email ou nom d'utilisateur</label>
       <div class="field has-addons">
@@ -14,7 +14,7 @@
             v-model="email"
             id="email"
             type="text"
-            placeholder="prenom.nom"
+            placeholder="username or email"
           >
           <span class="icon is-small is-left">
             <font-awesome-icon icon="envelope"/>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <!--mot de pass entrer-->
+    <!--mot de passe-->
     <div class="field">
       <label class="label">Mot de passe</label>
 
@@ -43,6 +43,7 @@
           id="password"
           type="password"
           placeholder="password"
+          @input="sha256(password)"
         >
         <span class="icon is-small is-left">
           <font-awesome-icon icon="lock"/>
@@ -57,7 +58,7 @@
               <button class="button is-success" v-on:click="connexion">connexion</button>
             </p>
             <template v-if="ConnexionError">
-              <p class="help is-danger">{{ConnexionError}}</p>
+              <p class="help is-danger">{{ ConnexionError }}</p>
             </template>
           </div>
           <div class="column">
@@ -76,6 +77,9 @@
 
 
 <script>
+import axios from "axios";
+import {mapActions} from "vuex"
+  
 export default {
   name: "theInscription",
   components: {},
@@ -83,35 +87,49 @@ export default {
     return {
       email: null,
       password: null,
-      ConnexionError: null
+      ConnexionError: null,
+      tentative: 0
     };
   },
   methods: {
-    connexion: function() {
+    ...mapActions(["sha256"]),
+    
+    connexion: async function() {
       /* debug console
       console.log("connexion");
       */
-      const tentative = new Number(0);
       const sleep = ms => new Promise(res => setTimeout(res, ms));
-      /*appel a la bd*/
-
-      if (tentative > 3) {
-        this.ConnexionError =
-          "attention le nombre de tentative augmente le temps d'attente";
-        sleep(200 * tentative);
-      } else if (
-        this.email === "Admin" ||
-        (this.email === "Admin.root@heig-vd.ch" && this.password === "123456")
-      ) {
-        /* debug console
-        console.log("connexion");*/
-        /*attention a gerer après la connexion*/
-        this.$store
-          .dispatch("changeStatus") // Should pass the status in connected
-          .then(this.$router.push({ name: "home" }));
-      } else {
-        ++this.tentative;
+      
+      if (this.tentative > 3) {
+        this.ConnexionError = "attention le nombre de tentative augmente le temps d'attente";
+        sleep(200 * this.tentative);
       }
+      /*appel a la bd. TODO: check route, params */
+      await axios
+      .post(this.$store.getters.apiURL + "users/validate", {
+        email: this.email,
+        pass: this.$store.getters.hashedPass
+      })
+      .then(response => {
+        if (response.status == 200) {
+          this.$store.commit("login", {name: response.data.username, role: response.data.role});
+          // send jwt in cookie to browser
+          
+          this.$router.push({ name: "home" })
+        }
+        else {
+          ++ this.tentative;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        // local check only, TODO: remove. (or not lol)
+        if (this.password == "cc") {
+          this.$store.commit("login", {name: this.email, role: "admin"})
+          this.$router.push({ name: "home" })
+        }
+      });
+  
     }
   }
 };

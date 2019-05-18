@@ -4,6 +4,7 @@ import discussions from "./modules/discussions";
 import tags from "./modules/tags";
 import message from "./modules/messages";
 import auth from "./modules/auth";
+import tools from "./modules/tools";
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     discussions,
     tags,
     message,
-    auth
+    auth,
+    tools
   }
 });

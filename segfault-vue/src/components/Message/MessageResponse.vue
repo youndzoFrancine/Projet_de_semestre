@@ -27,6 +27,8 @@
 </template>
 
 <script>
+  
+  // ce module sert à rien, on réutilise messageItem pour les réponses
 export default {
   name: "MessageResponse",
   props: ["unereponse"],

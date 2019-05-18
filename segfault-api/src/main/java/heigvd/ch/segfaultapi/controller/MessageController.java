@@ -39,13 +39,13 @@ public class MessageController {
 
         Message message = new Message();
 
-        message.setContenu(payload.getContenu());
+        message.setText(payload.getContenu());
 
-        message.setAuteur(utilisateurRepository.findById(payload.getUtilisateurID()).get());
+        message.setAuthor(utilisateurRepository.findById(payload.getUtilisateurID()).get());
 
-        message.setDateCreation(LocalDateTime.now());
+        message.setDate(LocalDateTime.now());
 
-        messageRepository.getOne(payload.getMessageID()).getMessageSet().add(message);
+        messageRepository.getOne(payload.getMessageID()).getChildMsg().add(message);
         messageRepository.save(message);
 
         return new ResponseEntity<>(HttpStatus.CREATED);

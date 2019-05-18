@@ -19,13 +19,13 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_id")
-    private Integer messageId;
+    private Integer id;
 
     @Setter
     @Getter
     @Column(name = "contenu")
     @NonNull
-    private String contenu;
+    private String text;
 
     @Getter
     @Setter
@@ -37,7 +37,7 @@ public class Message {
     @Getter
     @Setter
     @Column(name = "date_creation")
-    private LocalDateTime dateCreation;
+    private LocalDateTime date;
 
     @Getter
     @Setter
@@ -54,7 +54,7 @@ public class Message {
             joinColumns = @JoinColumn(name ="message_parent"),
             inverseJoinColumns = @JoinColumn(name = "message_fils")
     )
-    private Set<Message> messageSet;
+    private Set<Message> childMsg;
 
     @Getter
     @Setter
@@ -66,7 +66,7 @@ public class Message {
     @Setter
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "utilisateur_id", referencedColumnName = "utilisateur_id")
-    private Utilisateur auteur;
+    private Utilisateur author;
 
     // TODO: 2019-04-04 Corriger les attributs qui sont des relations 
 

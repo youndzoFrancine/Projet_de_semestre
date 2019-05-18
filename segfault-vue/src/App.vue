@@ -19,6 +19,7 @@
             </div>
           </div>
         </div>
+        <div id=feedback :class="displErrMsg? 'visible' : 'hidden'">{{errorMessage}}</div>
       </div>
       <!-- Pied de page -->
       <div class="hero-foot"></div>
@@ -29,12 +30,15 @@
 <script>
 import TheNavbar from "@/components/Navbar/TheNavbar.vue";
 import TheSidemenu from "@/components/TheSidemenu.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "App",
   components: {
     TheNavbar,
     TheSidemenu
-  }
+  },
+  computed: mapGetters(["displErrMsg", "errorMessage"])
 };
 </script>
 
@@ -43,4 +47,7 @@ export default {
 <style lang="scss">
 @import "~bulma/bulma.sass";
 @import "@/assets/index.scss";
+#feedback {position:fixed; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; background: #000a; width: 25vw; box-shadow: 1px 2px 6px black; color: white; }
+.hidden {visibility: hidden; opacity: 0; transition: visibility 0s 2s, opacity 2s linear;}
+.visible {visibility: visible; opacity: 1; transition: opacity .2s linear;}
 </style>
