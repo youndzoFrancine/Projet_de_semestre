@@ -134,15 +134,20 @@ CREATE TABLE IF NOT EXISTS Message_Family(
   
 );
 
-/* pour les tests:
-SELECT * FROM appartient;
-SELECT * FROM departement;
-SELECT * FROM discussion;
-SELECT * FROM est_lier;
-SELECT * FROM message;
-SELECT * FROM roles;
-SELECT * FROM tag;
-SELECT * FROM vote;
+DROP FUNCTION IF EXISTS update_score_msg(int, boolean);
+CREATE FUNCTION update_score_msg(message_id int, up_vote boolean) RETURNS void AS $$
+    DECLARE
+        ajout int := 0;
+    BEGIN
+       IF up_vote IS TRUE THEN
+              ajout := 1;
+       ELSE
+               ajout := -1;
+       END IF;
 
-*/
+       -- updating score in message
+       UPDATE message SET score = score + ajout
+	   		WHERE message.message_id = message_id;
+    END;
+$$ LANGUAGE plpgsql;
 	
