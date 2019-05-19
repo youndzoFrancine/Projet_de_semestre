@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    <MessageItem v-bind:message="getOneMessage"/>
+    <MessageItem v-bind:message="getOneMessage(id)"/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TheMessage",
-  props: { idtofetch: 2 },
+  props: ["id"],
   components: {
     MessageItem
   },
@@ -20,7 +20,7 @@ export default {
   },
   computed: mapGetters(["getOneMessage"]),
   created() {
-    this.fetchMessage();
+//    this.fetchMessage(this.id);
   }
   /*
   ,

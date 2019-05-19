@@ -22,7 +22,7 @@ export default {
   },
   computed: mapGetters(["getAllDiscussions"]),
   created() {
-    this.fetchDiscussions();
+    this.fetchDiscussions(0);
   }
 };
 </script>

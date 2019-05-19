@@ -31,14 +31,16 @@ export default new Router({
       component: () => import("./views/TheConnexion.vue")
     },
     {
-      path: "/message",
+      // param with the first msg id of disc.
+      path: "/message/:id",
       name: "TheMessage",
-      component: () => import("./views/TheMessage.vue")
+      component: () => import("./views/TheMessage.vue"),
+      props: true
     },
     {
       path: "/nouveau",
       name: "TheNewTopic",
-      compnent: () => import("./views/TheNewTopic.vue")
+      component: () => import("./views/TheNewTopic.vue")
     }
   ]
 });

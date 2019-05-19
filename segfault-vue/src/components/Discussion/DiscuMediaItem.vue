@@ -14,19 +14,19 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content">
-          <router-link to="/message">
-            <p>{{post.sujet}}</p>
+        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'' ">
+          <router-link :to="{path: '/message/'+post.id}">
+            <p>{{post.title}}</p>
           </router-link>
           <p>
             <small>
-              <strong>posté par @{{post.utilisateur.nomUtilisateur}}</strong>
-              posté le {{post.msgracine.dateCreation}}
+              <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
+               le: {{this.baseMsg.date}}
             </small>
           </p>
-          <p>
-            <Tag v-bind:tags="post.tagSet"/>
-          </p>
+    
+          <Tag :tags="post.tags"/>
+
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
@@ -50,8 +50,8 @@
       </div>
       <div class="media-right">
         <div class="buttons">
-          <button class="button purple is-small">10 réponses</button>
-          <button class="button purle is-small is-outlined">score {{post.msgracine.score}}</button>
+          <button class="button purple is-small">{{this.baseMsg.childMsg.length}} réponses</button>
+          <button class="button purle is-small is-outlined">score: {{this.baseMsg.score}}</button>
         </div>
       </div>
     </article>
@@ -67,9 +67,15 @@ export default {
   components: {
     Tag
   },
-  computed: {}
+  
+  computed: { 
+    baseMsg () {
+      return this.$store.getters.getOneMessage(this.post.id)
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+  .teacher {background-color: rgba(0,200,0,0.1);}
 </style>

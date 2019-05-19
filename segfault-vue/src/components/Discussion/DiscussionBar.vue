@@ -7,7 +7,7 @@
       <div class="column is-4">
         <Discussiontabs/>
       </div>
-      <div class="column is-3">
+      <div v-if="isAuthenticated" class="column is-3">
         <router-link to="nouveau" class="button is-success">Nouv. Question</router-link>
       </div>
     </div>
@@ -16,12 +16,14 @@
 
 <script>
 import Discussiontabs from "@/components/Discussion/DiscussionTabs.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Discussionbar",
   components: {
     Discussiontabs
-  }
+  },
+  computed: mapGetters(["isAuthenticated"])
 };
 </script>
 
