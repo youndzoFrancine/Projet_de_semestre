@@ -8,22 +8,6 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @Entity
-@Table(name = "vote")
-@NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(
-                name = "update_score_msg",
-                procedureName = "UPDATE_SCORE_MESSAGE",
-                resultClasses = { vote.class },
-                parameters = {
-                        @StoredProcedureParameter(
-                                name = "message_id",
-                                type = Integer.class,
-                                mode = ParameterMode.IN),
-                        @StoredProcedureParameter(
-                                name = "up_vote",
-                                type = Boolean.class,
-                                mode = ParameterMode.IN), })
-})
 public class Vote {
 
     @Setter
