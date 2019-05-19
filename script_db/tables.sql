@@ -134,12 +134,12 @@ CREATE TABLE IF NOT EXISTS Message_Family(
   
 );
 
-DROP FUNCTION IF EXISTS update_score_msg(int, boolean);
-CREATE FUNCTION update_score_msg(message_id int, up_vote boolean) RETURNS void AS $$
+DROP FUNCTION IF EXISTS update_score_msg();
+CREATE FUNCTION update_score_msg() RETURNS TRIGGER AS $update_score_msg$
     DECLARE
         ajout int := 0;
     BEGIN
-       IF up_vote IS TRUE THEN
+       IF NEW.up_vote IS TRUE THEN
               ajout := 1;
        ELSE
                ajout := -1;
@@ -147,7 +147,12 @@ CREATE FUNCTION update_score_msg(message_id int, up_vote boolean) RETURNS void A
 
        -- updating score in message
        UPDATE message SET score = score + ajout
-	   		WHERE message.message_id = message_id;
+               WHERE message.message_id = NEW.message_id;
+       RETURN NEW;
     END;
-$$ LANGUAGE plpgsql;
+$update_score_msg$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_score
+AFTER INSERT ON vote 
+FOR EACH ROW EXECUTE PROCEDURE update_score_msg();
 	
