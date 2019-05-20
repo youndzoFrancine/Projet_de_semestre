@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -50,7 +51,7 @@ public class Discussion {
             joinColumns = @JoinColumn(name ="tag_id"),
             inverseJoinColumns = @JoinColumn(name = "discussion_id")
     )
-    private List<Tag> tagList;
+    private List<Tag> tagList = new ArrayList<>();
 
     public Discussion (String sujet) {
         this.sujet = sujet;
