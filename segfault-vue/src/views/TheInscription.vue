@@ -49,6 +49,7 @@
           type="text"
           placeholder="username"
           v-on:input="UserInputControl"
+          autofocus
         >
         <span class="icon is-small is-left">
           <font-awesome-icon icon="user"/>
@@ -278,7 +279,7 @@ export default {
               if (response.status == 200) {
                 this.registrationFailure = null;
                 this.$store.commit("login", {role: "user", name: this.user})
-                this.$router.push({ name: "home" });
+                this.$router.go(-1);
               }
               else {
                 console.log("shit's here")
@@ -292,7 +293,8 @@ export default {
               // bypass for tests TODO: remove.
               if (this.email == "Admin.root@heig-vd.ch") {
                 this.$store.commit("login", {role: "admin", name: this.user})
-                this.$router.push({ name: "home" });
+                this.$store.dispatch("fetchVotes" )
+                this.$router.go(-1);
               }
             });
           

@@ -9,7 +9,8 @@ const state = {
 
   auth: false,
   username: "",
-  role: ""
+  role: "",
+  user: {}
   
 };
 
@@ -18,7 +19,7 @@ const getters = {
   //isAuthenticated: state => !!state.token,
   //authStatus: state => state.status
   isAuthenticated: state => state.auth,
-  user: state => state.username
+  user: state => state.user
 };
 
 // actions
@@ -36,6 +37,8 @@ const mutations = {
     state.username = name
     state.role = role
     state.auth = true
+    // TODO: need resp. from api for id & role!
+    state.user = {nomUtilisateur: name, utilisateurID: 7, role: {roleID: 4, nomRole: role}}
   },
   logout: (state) => {
     state.username = null
