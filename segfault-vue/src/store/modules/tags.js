@@ -54,24 +54,26 @@ const actions = {
     
     /*TODO: need to send tags as array with default values for prio & rank*/
     for (let newTag of tagsTab) {
-      await axios.post( getters.apiURL + "tags/create", {
+      if (newTag != "")
+
+        await axios.post( getters.apiURL + "tags/create", {
          nom: newTag,
          prioritaire: false,
          rang: 1
-      })
-      .then(response => {
-        console.log(response.data)
-        if (response.status == 201) {
-          // TODO: send resp.from backend to get good tagId
-          commit("addTags", newTag)
-        } 
-        else {
-          dispatch("displayError", "tags could not be sent to backend.")
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        })
+        .then(response => {
+          console.log(response.data)
+          if (response.status == 201) {
+            // TODO: send resp.from backend to get good tagId
+            commit("addTags", newTag)
+          } 
+          else {
+            dispatch("displayError", "tags could not be sent to backend.")
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
@@ -84,7 +86,7 @@ const mutations = {
     state.tags = []
     for (let tag of payload)
       state.tags.push({id:tag.id, nom: tag.nom, prio:tag.prio, rank: tag.rank, isActive: false});
-    state.tags.sort((a,b) => b.rank - a.rank)
+    state.tags.sort((a,b) => b.rank - a.rank || a.nom.localeCompare(b.nom) )
     state.nextNum = state.tags.length
     console.log(state.tags)
   },
@@ -92,7 +94,7 @@ const mutations = {
     // TODO prevent adding twice a tag
   addTags: (state, payload) => {
     let nextNum = state.tags.length;
-    payload.forEach(newTag => state.tags.push({id: ++nextNum, nom: newTag, prio:false, rank: 0, isActive: true}) );
+    state.tags.push({id: ++nextNum, nom: payload, prio:false, rank: 0, isActive: true});
 //      console.log(state.tags);
   },
   clicTag: (state, payload) => {

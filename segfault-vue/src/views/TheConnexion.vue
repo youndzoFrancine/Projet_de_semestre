@@ -15,6 +15,7 @@
             id="email"
             type="text"
             placeholder="username or email"
+            autofocus
           >
           <span class="icon is-small is-left">
             <font-awesome-icon icon="envelope"/>
@@ -113,9 +114,10 @@ export default {
       .then(response => {
         if (response.status == 200) {
           this.$store.commit("login", {name: response.data.username, role: response.data.role});
-          // send jwt in cookie to browser
+          // TODO: send jwt in cookie to browser
+          // TODO: dispatch fetchVotes
           
-          this.$router.push({ name: "home" })
+          this.$router.go(-1)
         }
         else {
           ++ this.tentative;
@@ -126,7 +128,8 @@ export default {
         // local check only, TODO: remove. (or not lol)
         if (this.password == "cc") {
           this.$store.commit("login", {name: this.email, role: "admin"})
-          this.$router.push({ name: "home" })
+          this.$store.dispatch("fetchVotes" )
+          this.$router.go(-1)
         }
       });
   

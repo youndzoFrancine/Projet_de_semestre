@@ -1,5 +1,6 @@
 <template>
   <div class="messages">
+    <h2>{{getTitle}}</h2>
     <MessageItem v-bind:message="getOneMessage(id)"/>
   </div>
 </template>
@@ -11,6 +12,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TheMessage",
+  // this prop is coming from the url
   props: ["id"],
   components: {
     MessageItem
@@ -18,9 +20,18 @@ export default {
   methods: {
     ...mapActions(["fetchMessage"])
   },
-  computed: mapGetters(["getOneMessage"]),
+  computed: {
+    ...mapGetters(["getOneMessage", "getAllDiscussions"]),
+    getTitle: function () {
+      return this.getAllDiscussions.find(disc => disc.id == this.id).title
+    }
+  },
   created() {
-//    this.fetchMessage(this.id);
+    
+    if (this.getAllDiscussions.length == 0) {
+      this.$store.dispatch("fetchMessage", this.id )
+      this.$store.dispatch("fetchVotes" )
+    }
   }
   /*
   ,
@@ -43,4 +54,5 @@ export default {
 </script>
 
 <style>
+  h2 {margin: 2vw; color: mediumslateblue; font-size: 1.5em;}
 </style>

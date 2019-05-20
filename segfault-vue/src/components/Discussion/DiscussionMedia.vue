@@ -1,6 +1,6 @@
 <template>
   <div class="discussions">
-    <div v-bind:key="post.id" v-for="post in posts" class="discussion-media">
+    <div v-bind:key="post.id" v-for="post in sortedDisc" class="discussion-media">
       <DiscuMediaItem v-bind:post="post"/>
     </div>
     <div class="buttons">
@@ -21,7 +21,17 @@ export default {
     ...mapActions(["fetchDiscussions"])
   },
   components: { DiscuMediaItem },
-  computed: mapGetters(["getNextPageNb","getPrevPageNb"])
+  computed: {
+    ...mapGetters(["getNextPageNb","getPrevPageNb"]),
+     // makes a sorted copy of the table to display it, so the store is not modified, so beautiful.
+    sortedDisc: function () {
+      const get = this.$store.getters
+      return this.posts.map(a=>a).sort( (a,b) => 
+          get.getOneMessage(b.id).score - get.getOneMessage(a.id).score 
+       || get.getOneMessage(b.id).date - get.getOneMessage(a.id).date )
+    
+    }
+  }
   
 };
 </script>

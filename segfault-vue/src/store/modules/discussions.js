@@ -68,7 +68,7 @@ const actions = {
     await axios
       .get( getters.apiURL + "discussions/all?page=" + page)
       .then(response => {
-        console.log(response.data)
+
         if (response.status == 200) {
 //          commit("setDiscussions", response.data);
           commit ("clearDisc")
@@ -85,6 +85,33 @@ const actions = {
           
         } else {
           dispatch("displayError", "error while fetching discussions.")
+        }
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  async newDiscussion({ commit, getters, dispatch }, { title, text, tags, userId }) {
+    
+    await axios
+      .post( getters.apiURL + "discussions/create", {
+        sujet: title,
+        contenu: text,
+        utilisateurID: userId,
+        tags: tags
+      })
+      .then(response => {
+      
+      // TODO: MOD.
+        console.log(response.data)
+        if (response.status == 201) {
+//          console.log(response.data)
+        // need to get id of created discussion
+          // anyway, page will be refreshed ^^
+//          commit("addDiscussion", response.data);
+        } else {
+          dispatch("displayError", "error while creating discussions.")
         }
 
       })

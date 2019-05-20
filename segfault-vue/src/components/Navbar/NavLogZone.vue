@@ -1,7 +1,7 @@
 <template>
   <div class="navbar-end logzone">
     <div class="navbar-item">
-      <p v-if="isAuthenticated">Connecté en tant que {{user}}
+      <p v-if="isAuthenticated">Connecté en tant que {{user.nomUtilisateur}}
         <span  class="button is-primary" @click="disconnect"> déco </span>
       </p>
       <div v-else class="buttons">
