@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The type Discussion controller.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("discussions")

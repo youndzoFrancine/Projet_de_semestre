@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/**
+ * The interface Discussion repository.
+ */
 public interface DiscussionRepository extends JpaRepository<Discussion, Integer> {
     //List<DiscussionProjection> findAllProjectedBy();
 

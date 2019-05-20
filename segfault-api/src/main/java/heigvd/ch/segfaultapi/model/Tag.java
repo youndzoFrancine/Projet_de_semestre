@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.awt.*;
 
 @AllArgsConstructor
+/**
+ * The type Tag.
+ */
 @NoArgsConstructor
 @Entity
 @Table(name = "tag")
