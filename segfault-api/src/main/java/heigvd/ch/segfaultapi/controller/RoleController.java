@@ -18,7 +18,6 @@ public class RoleController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Role> getAll() {
-        System.out.println("Get all tags...");
 
         return roleRepoitory.findAll();
     }

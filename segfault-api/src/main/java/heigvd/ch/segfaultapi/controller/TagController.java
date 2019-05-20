@@ -51,7 +51,7 @@ public class TagController {
 
         tagRepository.save(tag);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(tag.getId(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)

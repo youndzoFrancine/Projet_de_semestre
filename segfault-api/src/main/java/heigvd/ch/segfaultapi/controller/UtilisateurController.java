@@ -27,6 +27,7 @@ public class UtilisateurController {
         return utilisateurRepository.findAll();
     }
 
+    // todo plus utile
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Utilisateur> create (@RequestBody Utilisateur utilisateur) {
 
