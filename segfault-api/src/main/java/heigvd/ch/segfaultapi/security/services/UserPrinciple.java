@@ -35,7 +35,6 @@ public class UserPrinciple implements UserDetails {
 
     @Getter
     @Setter
-    @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
