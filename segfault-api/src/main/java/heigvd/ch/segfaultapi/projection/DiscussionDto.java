@@ -41,11 +41,11 @@ public class DiscussionDto {
 
 
     public Integer getMessageID () {
-        return this.msgracine.getMessageId();
+        return this.msgracine.getId();
     }
 
     public LocalDateTime getMessageDate () {
-        return this.msgracine.getDateCreation();
+        return this.msgracine.getDate();
     }
 
     public Integer getScore () {
@@ -53,7 +53,7 @@ public class DiscussionDto {
     }
 
     public Utilisateur getAuteur () {
-        return this.msgracine.getAuteur();
+        return this.msgracine.getAuthor();
     }
 
     @Getter

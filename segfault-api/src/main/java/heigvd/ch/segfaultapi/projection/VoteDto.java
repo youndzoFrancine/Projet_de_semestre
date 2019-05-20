@@ -27,7 +27,7 @@ public class VoteDto {
     public Integer getUtilisateurID() {return this.utilisateur.getUtilisateurID();}
 
     public Integer getMessageID() {
-        return this.message.getMessageId();
+        return this.message.getId();
     }
 
     /*
