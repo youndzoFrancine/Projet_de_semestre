@@ -33,7 +33,7 @@
         <AddMessage v-if="comment" :parent="message.id"/>
       </div>
       <MessageItem
-        v-for="reponse in sort"
+        v-for="reponse in sortedMsg"
         :message="reponse"
         :key="reponse.id"
         :name="reponse.id"           
@@ -89,7 +89,7 @@ export default {
   computed: { 
     ...mapGetters(["isAuthenticated", "getVote"]),
     // makes a sorted copy of the table to display it, so the store is not modified, so beautiful.
-    sort: function () {
+    sortedMsg: function () {
       return this.message.childMsg.map(a=>a).sort((a,b) => b.score - a.score || a.date - b.date )
     },
     vote: function () {
