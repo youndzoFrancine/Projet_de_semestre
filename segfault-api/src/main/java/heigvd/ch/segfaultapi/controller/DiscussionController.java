@@ -53,11 +53,11 @@ public class DiscussionController {
 
         Message message = new Message();
 
-        message.setDateCreation(LocalDateTime.now());
+        message.setDate(LocalDateTime.now());
 
-        message.setAuteur(utilisateurRepository.findById(payload.getUtilisateurID()).get());
+        message.setAuthor(utilisateurRepository.findById(payload.getUtilisateurID()).get());
 
-        message.setContenu(payload.getContenu());
+        message.setText(payload.getContenu());
 
         messageRepository.save(message);
 

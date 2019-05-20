@@ -134,15 +134,25 @@ CREATE TABLE IF NOT EXISTS Message_Family(
   
 );
 
-/* pour les tests:
-SELECT * FROM appartient;
-SELECT * FROM departement;
-SELECT * FROM discussion;
-SELECT * FROM est_lier;
-SELECT * FROM message;
-SELECT * FROM roles;
-SELECT * FROM tag;
-SELECT * FROM vote;
+DROP FUNCTION IF EXISTS update_score_msg();
+CREATE FUNCTION update_score_msg() RETURNS TRIGGER AS $update_score_msg$
+    DECLARE
+        ajout int := 0;
+    BEGIN
+       IF NEW.up_vote IS TRUE THEN
+              ajout := 1;
+       ELSE
+               ajout := -1;
+       END IF;
 
-*/
+       -- updating score in message
+       UPDATE message SET score = score + ajout
+               WHERE message.message_id = NEW.message_id;
+       RETURN NEW;
+    END;
+$update_score_msg$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_score
+AFTER INSERT ON vote 
+FOR EACH ROW EXECUTE PROCEDURE update_score_msg();
 	

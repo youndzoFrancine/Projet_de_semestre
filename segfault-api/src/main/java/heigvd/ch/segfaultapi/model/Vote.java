@@ -37,6 +37,6 @@ public class Vote {
      * @return
      */
     public Integer getMessageID() {
-        return this.message.getMessageId();
+        return this.message.getId();
     }
 }
