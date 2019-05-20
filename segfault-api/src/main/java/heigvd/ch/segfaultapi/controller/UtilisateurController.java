@@ -76,9 +76,9 @@ public class UtilisateurController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
 
-        Utilisateur username = null;
+        Utilisateur utilisateur = null;
         if(userRepository.existsByMailUtilisateur(loginRequest.getMailUtilisateur())) {
-            username = userRepository.findByMailUtilisateur(loginRequest.getMailUtilisateur());
+            utilisateur = userRepository.findByMailUtilisateur(loginRequest.getMailUtilisateur());
         }
         else
             return new ResponseEntity<String>("Fail -> this email don't exist!",
@@ -86,7 +86,7 @@ public class UtilisateurController {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        username.getNomUtilisateur(),
+                        utilisateur.getNomUtilisateur(),
                         loginRequest.getMotDePasse()
                 )
         );
@@ -94,7 +94,9 @@ public class UtilisateurController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtProvider.generateJwtToken(authentication);
-        return ResponseEntity.ok(new JwtResponse(jwt));
+
+
+        return new ResponseEntity<>(new JwtResponse(jwt), HttpStatus.ACCEPTED);
     }
 
     /**
@@ -142,7 +144,7 @@ public class UtilisateurController {
         user.setRole(role);
         userRepository.save(user);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
 
