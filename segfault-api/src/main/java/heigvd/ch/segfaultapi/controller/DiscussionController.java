@@ -21,6 +21,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Discussion controller.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("discussions")

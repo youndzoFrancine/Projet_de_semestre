@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Vote controller.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("votes")
@@ -22,6 +25,11 @@ public class VoteController {
     @Autowired
     private VoteRepository voteRepository;
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @Autowired
     UtilisateurRepository utilisateurRepository;
 

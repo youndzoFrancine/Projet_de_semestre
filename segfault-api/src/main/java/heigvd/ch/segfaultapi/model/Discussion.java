@@ -11,8 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The type Discussion.
+ */
  // Obligatoire pour JPA
-@NoArgsConstructor
+@NoArgsConstructor // Obligatoire pour JPA
 @Entity
 @Table(name = "Discussion")
 public class Discussion {
@@ -53,6 +56,11 @@ public class Discussion {
     )
     private List<Tag> tagList = new ArrayList<>();
 
+    /**
+     * Instantiates a new Discussion.
+     *
+     * @param sujet the sujet
+     */
     public Discussion (String sujet) {
         this.sujet = sujet;
     }

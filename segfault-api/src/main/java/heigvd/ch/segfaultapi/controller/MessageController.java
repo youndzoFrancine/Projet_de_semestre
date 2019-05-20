@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 
+/**
+ * The type Message controller.
+ */
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("messages")
@@ -24,16 +27,32 @@ public class MessageController {
 
     private MessageRepository messageRepository;
 
+    /**
+     * Instantiates a new Message controller.
+     *
+     * @param messageRepository the message repository
+     */
     @Autowired
     public MessageController(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Message> getAll () {
         return messageRepository.findAll();
     }
 
+    /**
+     * Create list.
+     *
+     * @param message the message
+     * @return the list
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create (@RequestBody MessageReponse payload) {
 
@@ -51,6 +70,12 @@ public class MessageController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public Optional<Message> getById (@PathVariable("id") Integer id) {
         return messageRepository.findById(id);

@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @AllArgsConstructor
+/**
+ * The type Message.
+ */
 @NoArgsConstructor
 @Entity
 @Table (name = "Message")
