@@ -2,19 +2,23 @@ package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.model.Tag;
 import heigvd.ch.segfaultapi.projection.DiscussionCreate;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.repositories.TagRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +37,9 @@ public class DiscussionController {
 
     @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
 
 /*
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -72,15 +79,23 @@ public class DiscussionController {
 
         discussion.setMsgracine(message);
 
+        for (Integer tagid :payload.getTags()) {
+            Tag tag = tagRepository.findById(tagid).get();
+
+            System.out.println(tag.getNom());
+
+            discussion.getTagList().add(tag);
+        }
+
         discussionRepository.save(discussion);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(discussion.getId(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Page<Discussion> getAll (@RequestParam("page") int page) {
 
-        Pageable tstPage = PageRequest.of(page, 7);
+        Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
         return discussionRepository.findAll(tstPage);
     }
 }

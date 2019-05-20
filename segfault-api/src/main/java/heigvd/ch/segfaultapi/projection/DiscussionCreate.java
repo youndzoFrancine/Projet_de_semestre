@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,6 +25,10 @@ public class DiscussionCreate {
     @Getter
     @Setter
     private Integer utilisateurID;
+
+    @Getter
+    @Setter
+    private List<Integer> tags;
 
     // TODO: 2019-05-15 Ajouter le tagSet 
 

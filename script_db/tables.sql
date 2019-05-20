@@ -134,6 +134,8 @@ CREATE TABLE IF NOT EXISTS Message_Family(
   
 );
 
+/**		TRIGGERS	*/
+--trigger to update message's score while insert a tuple un table vote
 DROP FUNCTION IF EXISTS update_score_msg();
 CREATE FUNCTION update_score_msg() RETURNS TRIGGER AS $update_score_msg$
     DECLARE
@@ -156,3 +158,18 @@ CREATE TRIGGER update_score
 AFTER INSERT ON vote 
 FOR EACH ROW EXECUTE PROCEDURE update_score_msg();
 	
+--trigger to update tag's rang while insert a tuple un table est_lier
+DROP FUNCTION IF EXISTS update_rang_tag();
+CREATE FUNCTION update_rang_tag() RETURNS TRIGGER AS $update_rang_tag$
+   
+    BEGIN
+       -- updating score in tag
+       UPDATE tag SET rang = rang + 1
+               WHERE tag.tag_id = NEW.tag_id;
+       RETURN NEW;
+    END;
+$update_rang_tag$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_tag
+AFTER INSERT ON est_lier
+FOR EACH ROW EXECUTE PROCEDURE update_rang_tag();

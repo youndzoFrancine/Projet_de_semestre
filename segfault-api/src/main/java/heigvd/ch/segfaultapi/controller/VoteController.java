@@ -52,6 +52,11 @@ public class VoteController {
         return voteRepository.findAllByUtilisateur(utilisateurRepository.findById(id).get());
     }
 
+    /**
+     * /create
+     * @param payload
+     * @return Status 201, la Key de Vote
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody VoteCreate payload) {
 
@@ -68,7 +73,7 @@ public class VoteController {
 
         voteRepository.save(vote);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(vote.getId(), HttpStatus.CREATED);
     }
 
 }

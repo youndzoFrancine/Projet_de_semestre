@@ -164,6 +164,7 @@ public class UtilisateurController {
      * @param utilisateur the utilisateur
      * @return the list
      */
+    // todo plus utile
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Utilisateur> create (@RequestBody Utilisateur utilisateur) {
 

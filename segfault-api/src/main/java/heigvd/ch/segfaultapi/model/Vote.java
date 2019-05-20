@@ -17,6 +17,7 @@ public class Vote {
     /**
      * The Id.
      */
+    @Getter
     @Setter
     @EmbeddedId
     VoteKey id;
