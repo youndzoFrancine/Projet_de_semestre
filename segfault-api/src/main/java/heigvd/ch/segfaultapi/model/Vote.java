@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Vote {
 
+    @Getter
     @Setter
     @EmbeddedId
     VoteKey id;
