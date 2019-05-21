@@ -23,33 +23,20 @@ export default {
   computed: {
     ...mapGetters(["getOneMessage", "getAllDiscussions"]),
     getTitle: function () {
-      return this.getAllDiscussions.find(disc => disc.id == this.id).title
+      const disc = this.getAllDiscussions.find(disc => disc.id == this.id)
+      return disc ? disc.title : ""
     }
   },
   created() {
     
+  // replace by: if getOneMessage (this.id).id ==null -> fetch1disc (to create, does once the same as fetchDisc)
     if (this.getAllDiscussions.length == 0) {
       this.$store.dispatch("fetchMessage", this.id )
+      this.$store.dispatch("getDiscTitle", this.id )
       this.$store.dispatch("fetchVotes" )
     }
   }
-  /*
-  ,
-  data() {
-    return {
-      message: {
-        messageId: 1,
-        contenu: "Message en cours de chargement",
-        score: 30,
-        MessageSet: []
-      }
-    };
-  },
-  mounted() {
-    axios.get("http://localhost:8087/messages/1").then(response => {
-      this.message = response.data;
-    });
-  }*/
+  
 };
 </script>
 

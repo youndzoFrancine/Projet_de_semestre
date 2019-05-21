@@ -3,47 +3,12 @@
  */
 
 import axios from "axios";
+// to get the router, not available via this.$router...
+import {app} from "@/main"
 
 // initial state
 const state = {
-  discussions: [
-//    {
-//      id: 1,
-//      title: "Avez-vous déjà vu des discussions par défaut?",
-//      tags: [
-//        {
-//          id: 404,
-//          nom: "fake",
-//          prioritaire: false,
-//          rang: 1
-//        },
-//        {
-//          id: 405,
-//          nom: "offline",
-//          prioritaire: false,
-//          rang: 5
-//        }
-//      ]
-//    },
-//    {
-//      id: 2,
-//      title: "Est-ce que quelqu'un sait pourquoi la page ne charge pas?",
-//      tags: [
-//        {
-//          id: 404,
-//          nom: "fake",
-//          prioritaire: false,
-//          rang: 1
-//        },
-//        {
-//          id: 405,
-//          nom: "offline",
-//          prioritaire: false,
-//          rang: 5
-//        }
-//      ]
-//    }
-  ],
+  discussions: [],
   currentPage: 0,
   totalPages: 0
 };
@@ -79,7 +44,7 @@ const actions = {
               title: disc.sujet,
               tags: disc.tagList
             })
-            commit("pushMsgFamily", disc.msgracine)
+            commit("setMessage", disc.msgracine)
           }
           commit ("setDiscPage", {number: response.data.number, totalPages: response.data.totalPages})
           
@@ -103,22 +68,40 @@ const actions = {
       })
       .then(response => {
       
-      // TODO: MOD.
         console.log(response.data)
-        if (response.status == 201) {
-//          console.log(response.data)
-        // need to get id of created discussion
-          // anyway, page will be refreshed ^^
-//          commit("addDiscussion", response.data);
+        
+        if (response.status != 201) {
+          dispatch("displayError", "error while creating discussions." )
         } else {
-          dispatch("displayError", "error while creating discussions.")
+          commit("resetActive")
+          app.$router.go(-1)
         }
 
       })
       .catch(error => {
         console.log(error);
       });
+  },
+
+async getDiscTitle({ commit, getters}, id) {
+    
+    await axios
+      .get( getters.apiURL + "discussions/" + id)
+      .then(response => {
+      
+        console.log(response.data)
+        
+        if (response.status == 200) {
+          commit("addDiscussion", {id: id, title: response.data})
+        } else {
+          commit("addDiscussion", {id: id, title: ""})
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
 };
 
 // mutations

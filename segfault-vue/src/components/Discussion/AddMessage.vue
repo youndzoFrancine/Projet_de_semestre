@@ -88,25 +88,25 @@ export default {
         this.$store.dispatch("newDiscussion", { 
           title: title, 
           text: text, 
-          tags:  this.$store.getters.getActivatedTags, 
+          tags: this.$store.getters.getActivatedTags.map(tag => tag.id), 
           userId: this.$store.getters.user.utilisateurID
         })
-
-        this.$store.commit("resetActive")
-        this.$router.go(-1)
         
       }
       else { 
         
         this.$store.dispatch("newMessage", {
-          newText: text, 
-          user: this.$store.getters.user, 
+          newText: text,
           parentMsg: this.parent
         })
         // to hide the text field
         this.$root.$emit('msgSent')
       }
     }
+  },
+  created () {
+    if (!this.$store.getters.getAllTags.length)
+      this.$store.dispatch ("fetchTags")
   }
     
 };

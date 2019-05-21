@@ -6,14 +6,7 @@ import axios from "axios";
 
 // initial state
 const state = {
-  tags: [
-    { id: 1, nom: "tag", isActive: false },
-    { id: 2, nom: "par", isActive: false },
-    { id: 3, nom: "defaut", isActive: false },
-    { id: 4, nom: "ruby", isActive: false },
-    { id: 5, nom: "python", isActive: false },
-    { id: 6, nom: "haskell", isActive: false }
-  ]
+  tags: []
 };
 
 // getters
@@ -64,8 +57,7 @@ const actions = {
         .then(response => {
           console.log(response.data)
           if (response.status == 201) {
-            // TODO: send resp.from backend to get good tagId
-            commit("addTags", newTag)
+            commit("addTag", {name: newTag, id: response.data})
           } 
           else {
             dispatch("displayError", "tags could not be sent to backend.")
@@ -92,14 +84,14 @@ const mutations = {
   },
 
     // TODO prevent adding twice a tag
-  addTags: (state, payload) => {
-    let nextNum = state.tags.length;
-    state.tags.push({id: ++nextNum, nom: payload, prio:false, rank: 0, isActive: true});
+  addTag: (state, tag) => {
+    // bdd returns just id in payload
+    state.tags.push({id: tag.id, nom: tag.name, prio:false, rank: 1, isActive: true});
 //      console.log(state.tags);
   },
   clicTag: (state, payload) => {
     let tag = state.tags.filter(tag =>tag.nom == payload.nom)[0];
-    console.log(payload, tag)
+//    console.log(payload, tag)
     tag.isActive = !tag.isActive;
 
   },

@@ -28,7 +28,7 @@ export default {
       const get = this.$store.getters
       return this.posts.map(a=>a).sort( (a,b) => 
           get.getOneMessage(b.id).score - get.getOneMessage(a.id).score 
-       || get.getOneMessage(b.id).date - get.getOneMessage(a.id).date )
+       || get.getOneMessage(b.id).date.localeCompare(get.getOneMessage(a.id).date) )
     
     }
   }

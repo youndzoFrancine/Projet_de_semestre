@@ -15,7 +15,7 @@ import java.util.Optional;
  * The type Tag controller.
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("tags")
 public class TagController {
 

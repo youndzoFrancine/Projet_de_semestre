@@ -8,8 +8,6 @@ const state = {
   //token: localStorage.getItem("user-token") || "",
 
   auth: false,
-  username: "",
-  role: "",
   user: {}
   
 };
@@ -24,26 +22,33 @@ const getters = {
 
 // actions
 const actions = {
-  changeStatus: ({ commit }) => {
-    commit("setAuthStatus", !state.auth);
-  }
+  // TODO: this action should ~ check jwt, call login and fetch votes.
+  // localstorage can be set only in connexion and here (called from app)
+  // user is not needed in localStorage if we can validate the jwt api side...
+//  getUserAndLogin: ({ commit }, jwt) => {
+//
+//  }
 };
 
 // mutations
 const mutations = {
-  setAuthStatus: (state, payload) => (state.auth = payload),
+//  setAuthStatus: (state, payload) => (state.auth = payload),
   
-  login: (state, {name, role}) => {
-    state.username = name
-    state.role = role
+  login: (state, {jwt, user}) => {
+
+    if (jwt) {
+      localStorage.setItem('jwt', jwt)
+      localStorage.setItem('user', JSON.stringify(user))
+    }
+    state.user = user
     state.auth = true
-    // TODO: need resp. from api for id & role!
-    state.user = {nomUtilisateur: name, utilisateurID: 7, role: {roleID: 4, nomRole: role}}
   },
   logout: (state) => {
-    state.username = null
-    state.role = null
+
     state.auth = false
+    state.user = {}
+    localStorage.removeItem('jwt')
+    localStorage.removeItem('user') 
   }
 };
 

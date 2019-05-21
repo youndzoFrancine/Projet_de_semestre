@@ -4,9 +4,9 @@
       <h1 class="title">Connexion</h1>
     </div>
 
-    <!--email || username -->
+    <!--email-->
     <div class="field">
-      <label class="label">Email ou nom d'utilisateur</label>
+      <label class="label">Email</label>
       <div class="field has-addons">
         <div class="control is-expanded has-icons-left has-icons-right has-addons" type="email">
           <input
@@ -14,7 +14,7 @@
             v-model="email"
             id="email"
             type="text"
-            placeholder="username or email"
+            placeholder="email"
             autofocus
           >
           <span class="icon is-small is-left">
@@ -96,40 +96,51 @@ export default {
     ...mapActions(["sha256"]),
     
     connexion: async function() {
-      /* debug console
-      console.log("connexion");
-      */
+      
       const sleep = ms => new Promise(res => setTimeout(res, ms));
       
       if (this.tentative > 3) {
         this.ConnexionError = "attention le nombre de tentative augmente le temps d'attente";
         sleep(200 * this.tentative);
       }
-      /*appel a la bd. TODO: check route, params */
+
       await axios
-      .post(this.$store.getters.apiURL + "users/validate", {
-        email: this.email,
-        pass: this.$store.getters.hashedPass
+      .post(this.$store.getters.apiURL + "utilisateurs/signin", {
+        mailUtilisateur: this.email,
+        motDePasse: this.$store.getters.hashedPass
       })
       .then(response => {
-        if (response.status == 200) {
-          this.$store.commit("login", {name: response.data.username, role: response.data.role});
-          // TODO: send jwt in cookie to browser
-          // TODO: dispatch fetchVotes
+        if (response.status == 202) {
+          
+          this.$store.commit("login", {jwt: response.data.token, user: response.data.user});
+          this.$store.dispatch("fetchVotes")
           
           this.$router.go(-1)
         }
         else {
-          ++ this.tentative;
+          console.log("bite")
         }
       })
       .catch(error => {
-        console.log(error);
-        // local check only, TODO: remove. (or not lol)
+        console.log("merde: ", error.response);
+        // local shortcut only, TODO: remove. (or not lol)
         if (this.password == "cc") {
-          this.$store.commit("login", {name: this.email, role: "admin"})
+          this.$store.commit("login", {jwt: "7h1$iZaJw7", user: {"utilisateurID": 7,
+                            "nomUtilisateur": "M@X",
+                            "mailUtilisateur": "max@heig-vd.ch",
+                            "departementSet": [],
+                            "role": {
+                                "roleID": 4,
+                                "nomRole": "Admin"
+                            }}})
           this.$store.dispatch("fetchVotes" )
           this.$router.go(-1)
+        }
+        else {
+          const data = error.response.data
+          // return format is crap...
+          this.$store.dispatch("displayError", "refused by backEnd: " + (data.errors ? data.errors[0].defaultMessage : data.error? data.error : data))
+          ++ this.tentative;
         }
       });
   
