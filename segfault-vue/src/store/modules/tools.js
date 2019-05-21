@@ -46,17 +46,7 @@ const mutations = {
   },
   hideErrMsg: (state) => state.displErrMsg = false,
   setHashedPass: (state, pass) => state.hashedPass = pass
-  
-//  login: (state, {name, role}) => {
-//    state.username = name
-//    state.role = role
-//    state.auth = true
-//  },
-//  logout: (state) => {
-//    state.username = null
-//    state.role = null
-//    state.auth = false
-//  }
+
 };
 
 export default {

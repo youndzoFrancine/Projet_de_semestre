@@ -22,7 +22,7 @@ export default {
   },
   computed: mapGetters(["getAllDiscussions"]),
   created() {
-    if (this.getAllDiscussions.length == 0)
+    if (this.getAllDiscussions.length < 7 )
       this.fetchDiscussions(0);
   }
 };

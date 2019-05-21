@@ -90,7 +90,7 @@ export default {
     ...mapGetters(["isAuthenticated", "getVote"]),
     // makes a sorted copy of the table to display it, so the store is not modified, so beautiful.
     sortedMsg: function () {
-      return this.message.childMsg.map(a=>a).sort((a,b) => b.score - a.score || a.date - b.date )
+      return this.message.childMsg.map(a=>a).sort((a,b) => b.score - a.score || a.date.localeCompare(b.date) )
     },
     vote: function () {
       const vote = this.getVote(this.message.id)

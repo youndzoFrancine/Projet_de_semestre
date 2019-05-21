@@ -67,7 +67,7 @@ public class MessageController {
         messageRepository.getOne(payload.getMessageID()).getChildMsg().add(message);
         messageRepository.save(message);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
     /**

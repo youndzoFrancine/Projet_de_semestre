@@ -33,8 +33,10 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 
-new Vue({
+export const app = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount("#app");
+
+

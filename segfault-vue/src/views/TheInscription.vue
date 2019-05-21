@@ -16,8 +16,9 @@
               v-model="email"
               id="email"
               type="text"
-              placeholder="prenom.nom"
+              placeholder="prenom.nom@heig-vd.ch"
               v-on:input="emailInputControl"
+              autofocus
             >
             <span class="icon is-small is-left">
               <font-awesome-icon icon="envelope"/>
@@ -49,7 +50,6 @@
           type="text"
           placeholder="username"
           v-on:input="UserInputControl"
-          autofocus
         >
         <span class="icon is-small is-left">
           <font-awesome-icon icon="user"/>
@@ -269,34 +269,27 @@ export default {
         } else {
           /*enregistrement dans la db*/
           await axios
-            .post( this.$store.getters.apiURL + "utilisateurs/create", {
-              nom_utilisateur: this.user,
-              mail_utilisateur: this.email,
-              mot_de_passe: this.$store.getters.hashedPass,
-              role_utilisateur: "etudiant"
+            .post( this.$store.getters.apiURL + "utilisateurs/signup", {
+              nomUtilisateur: this.user,
+              mailUtilisateur: this.email,
+              motDePasse: this.$store.getters.hashedPass,
             })
             .then(response => {
-              if (response.status == 200) {
+              if (response.status == 201) {
                 this.registrationFailure = null;
-                this.$store.commit("login", {role: "user", name: this.user})
+                this.$store.commit("login", {jwt: response.data.token, user: response.data.user})
                 this.$router.go(-1);
               }
               else {
-                console.log("shit's here")
-                this.registrationFailure = "pb d'accès à l'api."
+                console.log(response.data, "this never happens.")
               }
-              console.log(response.data)
             })
             .catch(error => {
-              console.log(error);
-            
-              // bypass for tests TODO: remove.
-              if (this.email == "Admin.root@heig-vd.ch") {
-                this.$store.commit("login", {role: "admin", name: this.user})
-                this.$store.dispatch("fetchVotes" )
-                this.$router.go(-1);
-              }
-            });
+              console.log(error.response);
+              this.$store.dispatch("displayError", "error: " + error.response.data)
+              this.registrationFailure = "pb d'accès à l'api."
+            }
+          );
           
         }
       } else {

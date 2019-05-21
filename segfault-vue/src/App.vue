@@ -38,7 +38,15 @@ export default {
     TheNavbar,
     TheSidemenu
   },
-  computed: mapGetters(["displErrMsg", "errorMessage"])
+  computed: mapGetters(["displErrMsg", "errorMessage"]),
+  beforeCreate() {
+    if (localStorage.getItem('jwt') != null) {
+       // TODO: check validity of jwt, when we have a route to do it...
+      // (method to do in auth.js)
+      this.$store.commit("login", {user: JSON.parse(localStorage.getItem('user'))})
+      this.$store.dispatch("fetchVotes")
+    }
+  }
 };
 </script>
 

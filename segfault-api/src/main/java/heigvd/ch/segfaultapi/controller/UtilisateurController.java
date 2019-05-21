@@ -18,7 +18,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,8 +94,7 @@ public class UtilisateurController {
 
         String jwt = jwtProvider.generateJwtToken(authentication);
 
-
-        return new ResponseEntity<>(new JwtResponse(jwt), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new JwtResponse(jwt, utilisateur), HttpStatus.ACCEPTED);
     }
 
     /**
@@ -144,7 +142,18 @@ public class UtilisateurController {
         user.setRole(role);
         userRepository.save(user);
 
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        user.getNomUtilisateur(),
+                        signUpRequest.getMotDePasse()
+                )
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String jwt = jwtProvider.generateJwtToken(authentication);
+
+        return new ResponseEntity<>(new JwtResponse(jwt, user), HttpStatus.CREATED);
     }
 
 
@@ -218,7 +227,7 @@ public class UtilisateurController {
         utilisateurRepository.save(userUpadate);
 
 
-        return new ResponseEntity<>("user has been update!", HttpStatus.OK);
+        return new ResponseEntity<>("user has been updated!", HttpStatus.OK);
     }
 
     /**

@@ -6,19 +6,16 @@ import axios from "axios";
 
 // initial state
 const state = {
-    // TODO: pour l'instant il y a plusieurs messages ici pour simuler la db, après on fetchera les messages d'une discussion à la fois maximum.
+   
   messages: [],
-  
-  votes: [],
-  
-  // à dégager, c'est la db qui gère ça.
-  lastId: 0
+  votes: [],  
 };
 
 // getters
 const getters = {
-  // 
-  getOneMessage: state => id => {return state.messages.find(msg => msg.id == id)},
+  // message is not fetched if not in store (when querying /messages/id directly)
+  // -> TODO: need to get disc containing it and set it.
+  getOneMessage: state => id => {return state.messages.find(msg => msg.id == id) || {id: null, text: "", score: null, author: {role: {roleID: 0}}, childMsg: []}},
   lastId: state => state.lastId,
   getVote: state => msgId => {return state.votes.find(vote => vote.messageID == msgId)}
 };
@@ -45,12 +42,13 @@ const actions = {
       .post(getters.apiURL + "messages/create", {
         contenu: payload.newText,
         messageID: payload.parentMsg,
-        utilisateurID: payload.user.utilisateurID
+        utilisateurID: getters.user.utilisateurID
       })
       .then(response => {
         if (response.status == 201) {
           console.log(response.data)
-          commit("addMessage", payload);
+          response.data.childMsg = []
+          commit("addMessage", {newMsg: response.data, parentId: payload.parentMsg});
         } else {
           dispatch("displayError", "error while creating message.")
         }
@@ -79,17 +77,15 @@ const actions = {
 };
 
 
-// fonction dégueu qui parcourt tout l'arbre (sauf les descendants du message parent), mais ça marche ^^ 
-// TODO: virer quand on a la db
-function addMsgRec (newText, user, parentMsg, currentMsg, newId) {
+// fonction qui parcourt l'arbre pour insérer le message localement, au lieu de refetcher tous les messages
+function addMsgRec (newMsg, currentMsg, parentId) {
 
-  if (currentMsg.id == parentMsg) {
-
-      currentMsg.childMsg.push({id: newId, author: user, date: new Date().getTime(), text: newText, score: 100, hasVoted: "no", childMsg: []})
+  if (currentMsg.id == parentId) {
+      currentMsg.childMsg.push(newMsg)
   }
   else {
     for (let message of currentMsg.childMsg) {
-      addMsgRec (newText, user, parentMsg, message, newId)
+      addMsgRec (newMsg, message, parentId)
     }  
   }
 }
@@ -105,22 +101,12 @@ function addMsgRec (newText, user, parentMsg, currentMsg, newId) {
 // mutations
 const mutations = {
   setMessage: (state, payload) => (state.messages.push(payload)),
-  addMessage: (state, {newText, user, parentMsg}) => {
-//    if (parentMsg == null) // new discussion
-//      state.messages.push({id: ++state.lastId, author: user, date: new Date().getTime() , text: newText, score: 0, hasVoted: "no", childMsg: []})
-//    else // comment
+  addMessage: (state, {newMsg, parentId}) => {
+
       for (let message of state.messages)
-        addMsgRec (newText, user, parentMsg, message, state.lastId)
+        addMsgRec (newMsg, message, parentId)
     },
 
-  
-  
-  // temporary method while discussions are sent entirely
-  pushMsgFamily: (state, payload) => {
-//    console.log(payload)
-//    sortChildMsgRec (payload.childMsg)
-    state.messages.push(payload)
-  },
   clearMsg: (state) => state.messages = [],
   
   

@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * The type Discussion controller.
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("discussions")
 public class DiscussionController {
 
@@ -92,10 +93,16 @@ public class DiscussionController {
         return new ResponseEntity<>(discussion.getId(), HttpStatus.CREATED);
     }
 
+    // TODO: add /{sort} in route, use for Sort.by()
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Page<Discussion> getAll (@RequestParam("page") int page) {
 
         Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
         return discussionRepository.findAll(tstPage);
+    }
+
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    public String getById (@PathVariable("id") Integer id) {
+        return discussionRepository.findById(id).get().getSujet();
     }
 }
