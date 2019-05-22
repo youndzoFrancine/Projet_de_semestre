@@ -114,17 +114,11 @@ public class DiscussionController {
         // Les tags à trouver
         List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
 
-        //List<Discussion> l1 = discussionRepository.findDistinctByTagListIn(tagList);
+        List<Discussion> listeDoublon = discussionRepository.findAllByTagListIn(tagList);
 
-        List<Discussion> l2 = discussionRepository.findAllByTagListIn(tagList);
-
-        //l2.removeAll(l1);
-
-
-
-
-        return l2.stream()
-                .filter(e -> Collections.frequency(l2, e) == tagList.size())
+        // On filtre ceux qui apparaissent à la fréquence souhaitée
+        return listeDoublon.stream()
+                .filter(e -> Collections.frequency(listeDoublon, e) == tagList.size())
                 .distinct()
                 .collect(Collectors.toList());
     }
