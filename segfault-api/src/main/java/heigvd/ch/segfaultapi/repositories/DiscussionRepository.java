@@ -27,4 +27,7 @@ public interface DiscussionRepository extends JpaRepository<Discussion, Integer>
     List<Discussion> findAllbyBySujetContaining(String atrouver);
     List<Discussion> findAllByMsgracine_TextContaining(String atrouver);
 
+    List<Discussion> findDistinctBySujetContainingOrMsgracine_TextContaining(String trouvertitre, String trouvertexte);
+
+
 }

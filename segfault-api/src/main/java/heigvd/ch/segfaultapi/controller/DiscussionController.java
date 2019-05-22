@@ -125,16 +125,8 @@ public class DiscussionController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public List<Discussion> getContain (@RequestParam(value = "string", required = false) String s) {
+    public List<Discussion> getContains (@RequestParam(value = "string", required = false) String s) {
 
-        //Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
-        return discussionRepository.findAllbyBySujetContaining(s);
-    }
-
-    @RequestMapping(value = "/search2", method = RequestMethod.GET)
-    public List<Discussion> getContainInside (@RequestParam(value = "string", required = false) String s) {
-
-        //Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
-        return discussionRepository.findAllByMsgracine_TextContaining(s);
+        return discussionRepository.findDistinctBySujetContainingOrMsgracine_TextContaining(s,s);
     }
 }
