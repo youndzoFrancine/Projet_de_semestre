@@ -23,27 +23,27 @@ Values
 INSERT INTO utilisateur(nom_utilisateur, mail_utilisateur, mot_de_passe, role_utilisateur)
 Values
     /*md5('root1234') = e8bc632a8955b067e4f57824d5954690*/
-  ('Admin', 'admin.administrateur@heig-vd.ch', 'aabb2100033f0352fe7458e412495148', 4),
+  ('Admin', 'admin.administrateur@heig-vd.ch', '$2a$10$RUwvl75fVxOx2JFgP5QSV.Acgbjc9bGAOOW1G6Rv.T0.KSp.ZgOha', 4),
     /*md5('bestpassword123454') = e8bc632a8955b067e4f57824d5954690*/
-  ('CrescenceK', 'crescence.yimnaingkamdem@heig-vd.ch', 'e8bc632a8955b067e4f57824d5954690', 1),
+  ('CrescenceK', 'crescence.yimnaingkamdem@heig-vd.ch', '$2a$10$xOE2usp0N/qA49RPjo.RaO03GfO6TNlFMLsiJeXyzppfju..unCfC', 1),
   /*md5('fyk456') = 95577c3adb3cfa71d89d2d4e2eda96fd*/
-  ('youndzoFrancine', 'francine.youndzokengne@heig-vd.ch', '95577c3adb3cfa71d89d2d4e2eda96fd', 1),
+  ('youndzoFrancine', 'francine.youndzokengne@heig-vd.ch', '$2a$10$I5/XQLRUrZB4cEDhX.0COO8FlhyK7s7MbZOmPGg1qWi8qr9mYibWe', 1),
     /*md5('tpq789') = 0acf1488de10c0fce54f6aaaf39a303e*/
-  ('tiagoquin', 'tiago.povoaqui@heig-vd.ch', '0acf1488de10c0fce54f6aaaf39a303e', 1),
-  /*md5('cln123') = 865b501220e511a279efc515503c5ae1*/
-  ('cedriclankeu', '(cedric.lankeungassam@heig-vd.ch', '865b501220e511a279efc515503c5ae1', 1),
+  ('tiagoquin', 'tiago.povoaqui@heig-vd.ch', '$2a$10$18jY/0KSj01yOYuTyGx9duB/R0LtL9y9MGcPaDSZHoaoKvAoY/QUq', 1),
+  /*md5('cln123') = 865b501220e511a279efc515503c5ae1  => mdp recu par Api*/
+  ('cedriclankeu', 'cedric.lankeungassam@heig-vd.ch', '$2a$10$Kp6mYqx/X0k27u3xAlpiVu1UoDEtW7G8/CMUy/9xjuYS4wYZ5Dqz2', 1),
     /*md5('agi456') = f7b057bc528e98dd80eac722296dd39f*/
-  ('AlexandreGabrielli', 'alexandre.gabrielli@heig-vd.ch', 'f7b057bc528e98dd80eac722296dd39f', 1),
+  ('AlexandreGabrielli', 'alexandre.gabrielli@heig-vd.ch', '$2a$10$qvTT3Cxlxs8xiowENYY5sOwVwMWGfVY1Kh9QEKmaSCMgdCoMXdqCW', 1),
     /*md5('mcf789') = 80758752c5e07f13a5f9ca9e43eea251*/
-  ('Maxcaduff', 'max.caduff@heig-vd.ch', '80758752c5e07f13a5f9ca9e43eea251', 1),
+  ('Maxcaduff', 'max.caduff@heig-vd.ch', '$2a$10$GXVUzQ2sp3prMsgLjrHmLusPaXsBoumaChh5SiP5Fz4dmFySn/EL.', 1),
     /*md5('mcf789') = 80758752c5e07f13a5f9ca9e43eea251*/
-  ('grafolytics', 'marcel.graf@heig-vd.ch', '80758752c5e07f13a5f9ca9e43eea251', 3),
+  ('grafolytics', 'marcel.graf@heig-vd.ch', '$2a$10$Jybj2bD5I/H.fxaRm8XcOu1hh9cxFbMDBaf/Hs7sn16sy404skyxy', 3),
     /*md5('cpa456') = 8670948c5a87999218c67b098ed43883*/
-  ('ci4cb', 'carlos.pena@heig-vd.ch', '8670948c5a87999218c67b098ed43883', 3),
+  ('ci4cb', 'carlos.pena@heig-vd.ch', '$2a$10$BUGl1onA1/3tbM13qlRkCO6xNZOqUdKGn1hUsKrhHA3kUV8ohskIG', 3),
     /*md5('lionel') = 8670948c5a87999218c67b098ed43883*/
-  ('lionel', 'lionel.assistant@heig-vd.ch', '800a0e21225906fe82d141def1a9202d', 2),
+  ('lionel', 'lionel.assistant@heig-vd.ch','$2a$10$Zrhs93W1Rrcqf0VhPNbAGO53q72.V1ZxNgE6.q515GN0gZIVIVbZa', 2),
     /*md5('nicole') = fc63f87c08d505264caba37514cd0cfd*/
-  ('nicole', 'nicole.assistant@heig-vd.ch', 'fc63f87c08d505264caba37514cd0cfd', 2);  
+  ('nicole', 'nicole.assistant@heig-vd.ch', '$2a$10$C5O07Qrgnq6QUXY0mEofZO/ruJEOOc5BR5jpLsxKp6JP7pNSzKmUm', 2);  
   
  -- Insertion dans la table appartient. -------------------------------------------
  
