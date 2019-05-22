@@ -25,5 +25,6 @@ public interface DiscussionRepository extends JpaRepository<Discussion, Integer>
 
     Page<Discussion> findAllbyBySujetContaining(String atrouver, Pageable p);
     List<Discussion> findAllbyBySujetContaining(String atrouver);
+    List<Discussion> findAllByMsgracine_TextContaining(String atrouver);
 
 }
