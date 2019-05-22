@@ -16,6 +16,18 @@ public interface DiscussionRepository extends JpaRepository<Discussion, Integer>
 
     List<Discussion> findAllBySujet(String sujet);
     Page<Discussion> findAll(Pageable p);
-    List<Discussion> findAllBySujetContaining(String sujet);
-    List<Discussion> findAllByTagListContaining(Tag tag);
+    Page<Discussion> findAllByOrderByMsgracine_DateDesc(Pageable p);
+
+    Page<Discussion> findAllByOrderByMsgracine_ScoreDesc(Pageable p);
+
+
+
+    List<Discussion> findAllByTagListIn(List<Tag> tagList);
+
+    // List<Discussion> findDistinctByTagListIn(List<Tag> tagList);
+
+
+    List<Discussion> findDistinctBySujetContainingOrMsgracine_TextContaining(String trouvertitre, String trouvertexte);
+
+
 }
