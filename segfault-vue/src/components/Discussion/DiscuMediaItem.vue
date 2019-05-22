@@ -20,8 +20,10 @@
           </router-link>
           <p>
             <small>
-              <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
-               le: {{this.baseMsg.date}}
+              <router-link  :to="{path: '/user/'+ this.baseMsg.author.utilisateurID}" >
+                <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
+              </router-link>
+               <span class="right">le: {{this.baseMsg.date}}</span>
             </small>
           </p>
     

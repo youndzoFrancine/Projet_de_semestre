@@ -53,9 +53,11 @@ export default {
 
 <!-- Style gobale de l'app -->
 <style lang="scss">
-@import "~bulma/bulma.sass";
-@import "@/assets/index.scss";
-#feedback {position:fixed; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; background: #000a; width: 25vw; box-shadow: 1px 2px 6px black; color: white; }
-.hidden {visibility: hidden; opacity: 0; transition: visibility 0s 2s, opacity 2s linear;}
-.visible {visibility: visible; opacity: 1; transition: opacity .2s linear;}
+  @import "~bulma/bulma.sass";
+  @import "@/assets/index.scss";
+  #feedback {position:fixed; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; background: #000a; width: 25vw; box-shadow: 1px 2px 6px black; color: white; }
+  .hidden {visibility: hidden; opacity: 0; transition: visibility 0s 2s, opacity 2s linear;}
+  .visible {visibility: visible; opacity: 1; transition: opacity .2s linear;}
+  .right {float: right;}
+  .content{padding: 10px;}
 </style>

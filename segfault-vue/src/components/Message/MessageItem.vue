@@ -17,15 +17,15 @@
     <div class="media-content">
       <div class="content" :class="message.author.role.roleID > 1 ? 'teacher':'' ">
         <p>
-          <strong>posté par @{{message.author.nomUtilisateur}}</strong>
+          <router-link  :to="{path: '/user/'+ message.author.utilisateurID}" >
+            <strong>posté par @{{message.author.nomUtilisateur}}</strong>
+          </router-link>
         </p>
         <p>{{message.text}}</p>
         <p>
           <small>
-            <a>++Vote</a> ·
-            <a>Vote--</a> ·
-            <span v-if="isAuthenticated" @click="toggle">Répondre · </span>
             posté le: {{message.date}}
+            <span v-if="isAuthenticated" @click="toggle" class="right"> · Répondre · </span>
           </small>
         </p>
       </div>

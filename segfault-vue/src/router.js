@@ -41,6 +41,12 @@ export default new Router({
       path: "/nouveau",
       name: "TheNewTopic",
       component: () => import("./views/TheNewTopic.vue")
+    },
+    {
+      path: "/user/:id",
+      name: "UserInfo",
+      component: () => import("./views/UserInfo.vue"),
+      props: true
     }
   ]
 });

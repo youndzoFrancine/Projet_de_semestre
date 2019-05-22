@@ -45,7 +45,8 @@ const mutations = {
     state.displErrMsg = true
   },
   hideErrMsg: (state) => state.displErrMsg = false,
-  setHashedPass: (state, pass) => state.hashedPass = pass
+  setHashedPass: (state, pass) => state.hashedPass = pass,
+  resetHashedPass: (state) => state.hashedPass = ""
 
 };
 
