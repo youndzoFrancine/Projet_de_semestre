@@ -18,7 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The type Discussion controller.
@@ -104,14 +106,26 @@ public class DiscussionController {
         return discussionRepository.findById(id).get().getSujet();
     }
 
-    @RequestMapping(value="/test", method = RequestMethod.GET)
-    public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> some) {
+    @RequestMapping(value="/bytags", method = RequestMethod.GET)
+    public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> tagNames) {
 
-        System.out.println(some.toString());
+        System.out.println("\n" + tagNames.toString());
+
+        // Les tags à trouver
+        List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
+
+        //List<Discussion> l1 = discussionRepository.findDistinctByTagListIn(tagList);
+
+        List<Discussion> l2 = discussionRepository.findAllByTagListIn(tagList);
+
+        //l2.removeAll(l1);
 
 
-        List<Tag> tagList = tagRepository.findAllByNomIsIn(some);
 
-        return discussionRepository.findDistinctByTagListIn(tagList);
+
+        return l2.stream()
+                .filter(e -> Collections.frequency(l2, e) == tagList.size())
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
