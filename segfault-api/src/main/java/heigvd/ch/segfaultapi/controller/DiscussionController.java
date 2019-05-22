@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * The type Discussion controller.
@@ -104,5 +105,28 @@ public class DiscussionController {
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public String getById (@PathVariable("id") Integer id) {
         return discussionRepository.findById(id).get().getSujet();
+    }
+
+    @RequestMapping(value="/bytags", method = RequestMethod.GET)
+    public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> tagNames) {
+
+        if (tagNames == null) tagNames = new ArrayList<>();
+
+        // Les tags à trouver
+        List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
+
+        List<Discussion> listeDoublon = discussionRepository.findAllByTagListIn(tagList);
+
+        // On filtre ceux qui apparaissent à la fréquence souhaitée
+        return listeDoublon.stream()
+                .filter(e -> Collections.frequency(listeDoublon, e) == tagList.size())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public List<Discussion> getContains (@RequestParam(value = "string", required = false) String s) {
+
+        return discussionRepository.findDistinctBySujetContainingOrMsgracine_TextContaining(s,s);
     }
 }
