@@ -96,10 +96,20 @@ public class DiscussionController {
 
     // TODO: add /{sort} in route, use for Sort.by()
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Page<Discussion> getAll (@RequestParam("page") int page) {
+    public Page<Discussion> getAll (@RequestParam("page") int page,
+                                    @RequestParam(value = "sortMethod", required = false) String sortMethod) {
 
-        Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
-        return discussionRepository.findAll(tstPage);
+        Pageable tstPage = PageRequest.of(page, 7);
+        Page<Discussion> liste;
+
+        if(sortMethod != null && sortMethod.equals("score")) {
+            liste = discussionRepository.findAllByOrderByMsgracine_ScoreDesc(tstPage);
+        } else { //elif sortMethod.equals("date")
+            liste = discussionRepository.findAllByOrderByMsgracine_DateDesc(tstPage);
+        }
+
+
+        return liste;
     }
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
