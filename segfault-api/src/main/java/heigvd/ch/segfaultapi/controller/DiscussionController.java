@@ -18,9 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * The type Discussion controller.
@@ -104,5 +102,16 @@ public class DiscussionController {
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public String getById (@PathVariable("id") Integer id) {
         return discussionRepository.findById(id).get().getSujet();
+    }
+
+    @RequestMapping(value="/test", method = RequestMethod.GET)
+    public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> some) {
+
+        System.out.println(some.toString());
+
+
+        List<Tag> tagList = tagRepository.findAllByNomIsIn(some);
+
+        return discussionRepository.findDistinctByTagListIn(tagList);
     }
 }
