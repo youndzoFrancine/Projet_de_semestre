@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -109,7 +110,7 @@ public class DiscussionController {
     @RequestMapping(value="/bytags", method = RequestMethod.GET)
     public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> tagNames) {
 
-        System.out.println("\n" + tagNames.toString());
+        if (tagNames == null) tagNames = new ArrayList<>();
 
         // Les tags à trouver
         List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
@@ -121,5 +122,13 @@ public class DiscussionController {
                 .filter(e -> Collections.frequency(listeDoublon, e) == tagList.size())
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    // TODO: add /{sort} in route, use for Sort.by()
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public List<Discussion> getContain (@RequestParam(value = "string", required = false) String s) {
+
+        //Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
+        return discussionRepository.findAllbyBySujetContaining(s);
     }
 }
