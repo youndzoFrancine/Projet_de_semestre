@@ -89,5 +89,17 @@ public class MessageController {
     }
 
  */
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> remove (@PathVariable("id") Integer id) {
+
+        if (messageRepository.findById(id).isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        messageRepository.deleteById(id);
+
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
 }
 
