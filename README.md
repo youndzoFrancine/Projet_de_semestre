@@ -37,7 +37,14 @@ Voir package.json pour les dépendances supplémentaires du frontend.
 
 ## Build and install
 
+### Base de donnée
+Dans /script_db vous trouverez useranddb.sql, tables.sql et insertions.sql afin de générer une base de donnée de test.
 
+### Spring boot
+Ouvrir dans l'éditeur de votre choix le pom.xml et importer les dépendances maven.
+
+### Vue
+npm install pour ajouter les dépendances du package.json.
 
 ## Run
 
