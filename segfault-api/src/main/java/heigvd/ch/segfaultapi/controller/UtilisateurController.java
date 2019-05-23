@@ -219,7 +219,7 @@ public class UtilisateurController {
             return new ResponseEntity("username already exists", HttpStatus.BAD_REQUEST);
         }
 
-        if(!utilisateur.getNewUsername().equals(""))
+        if( !utilisateur.getNewUsername().equals(""))
             userUpdate.setNomUtilisateur(utilisateur.getNewUsername());
 
         if(!utilisateur.getNewPass().equals(""))

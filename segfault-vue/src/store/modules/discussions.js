@@ -26,12 +26,14 @@ const getters = {
 // actions
 const actions = {
   async fetchDiscussions({ commit, getters, dispatch }, page) {
-    
+   
+    if (page === "last")
+      page = state.currentPage   
     if (page === null)
       return
     
     await axios
-      .get( getters.apiURL + "discussions/all?page=" + page)
+      .get( getters.apiURL + "discussions/all?page=" + page + "&sort=" + getters.sortBy)
       .then(response => {
 
         if (response.status == 200) {
@@ -47,6 +49,35 @@ const actions = {
             commit("setMessage", disc.msgracine)
           }
           commit ("setDiscPage", {number: response.data.number, totalPages: response.data.totalPages})
+          
+        } else {
+          dispatch("displayError", "error while fetching discussions.")
+        }
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  async fetchByTags({ commit, getters, dispatch }) {
+    const params = getters.sortBy + getters.getActivatedTags.reduce((acc, tag) => acc + "&tag=" + tag.nom, "")
+    await axios
+      .get( getters.apiURL + "discussions/tags?sort=" + params )
+      .then(response => {
+
+        if (response.status == 200) {
+//          commit("setDiscussions", response.data);
+          commit ("clearDisc")
+          commit("clearMsg")
+          for (let disc of response.data) {
+            commit("addDiscussion", {
+              id: disc.msgracine.id,
+              title: disc.sujet,
+              tags: disc.tagList
+            })
+            commit("setMessage", disc.msgracine)
+          }
+          commit ("setDiscPage", {number: 0, totalPages: 1})
           
         } else {
           dispatch("displayError", "error while fetching discussions.")

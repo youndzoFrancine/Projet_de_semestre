@@ -60,4 +60,7 @@ export default {
   .visible {visibility: visible; opacity: 1; transition: opacity .2s linear;}
   .right {float: right;}
   .content{padding: 10px;}
+  .teacher {background-color: rgba(0,200,0,0.1);}
+  .green {background-color: rgba(0,200,0,0.5);}
+  .red {background-color: rgba(200,0,0,0.5);}
 </style>

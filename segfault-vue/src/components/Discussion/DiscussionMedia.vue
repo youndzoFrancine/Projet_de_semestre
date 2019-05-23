@@ -22,9 +22,11 @@ export default {
   },
   components: { DiscuMediaItem },
   computed: {
-    ...mapGetters(["getNextPageNb","getPrevPageNb"]),
+    ...mapGetters(["getNextPageNb","getPrevPageNb", "sortBy"]),
      // makes a sorted copy of the table to display it, so the store is not modified, so beautiful.
     sortedDisc: function () {
+      if (this.sortBy === "date")
+        return this.posts
       const get = this.$store.getters
       return this.posts.map(a=>a).sort( (a,b) => 
           get.getOneMessage(b.id).score - get.getOneMessage(a.id).score 

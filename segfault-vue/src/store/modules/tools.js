@@ -7,7 +7,9 @@ const state = {
   displErrMsg: false,
   errorMessage: "",
   
-  hashedPass: ""
+  hashedPass: "",
+  
+  sortBy: "score"
 
 };
 
@@ -17,7 +19,8 @@ const getters = {
   apiURL: state => state.apiUrl,
   displErrMsg: state => state.displErrMsg,
   errorMessage: state => state.errorMessage,
-  hashedPass: state => state.hashedPass
+  hashedPass: state => state.hashedPass,
+  sortBy: state => state.sortBy
 };
 
 
@@ -46,7 +49,8 @@ const mutations = {
   },
   hideErrMsg: (state) => state.displErrMsg = false,
   setHashedPass: (state, pass) => state.hashedPass = pass,
-  resetHashedPass: (state) => state.hashedPass = ""
+  resetHashedPass: (state) => state.hashedPass = "",
+  setSortBy: (state, sort) => state.sortBy = sort
 
 };
 

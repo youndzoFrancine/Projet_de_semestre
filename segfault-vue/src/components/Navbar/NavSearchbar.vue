@@ -19,4 +19,5 @@ export default {
 </script>
 
 <style>
+  .searchbar {min-width: 350px; margin: auto;}
 </style>

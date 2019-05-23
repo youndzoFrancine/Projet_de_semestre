@@ -1,14 +1,14 @@
 <template>
   <article class="media">
     <figure class="media-left">
-        <p v-if="isAuthenticated" @click="voteMsg('up')" :class="{green: vote=='up'}" >
+        <p v-if="isAuthenticated" @click="voteMsg({msg: message, type:'up'})" :class="{green: vote(message.id)=='up'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-up"/>
           </span>
         </p>
         score:<br />
         {{message.score}}
-        <p v-if="isAuthenticated" @click="voteMsg('down')" :class="{red: vote=='down'}" >
+        <p v-if="isAuthenticated" @click="voteMsg({msg: message, type:'down'})" :class="{red: vote(message.id)=='down'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-down"/>
           </span>
@@ -20,13 +20,15 @@
           <router-link  :to="{path: '/user/'+ message.author.utilisateurID}" >
             <strong>posté par @{{message.author.nomUtilisateur}}</strong>
           </router-link>
+          <span class="right button is-outlined is-small" v-if="canDelete" @click="deleteMsg(message)"> · Delete · </span>
         </p>
         <p>{{message.text}}</p>
         <p>
-          <small>
+          <small >
             posté le: {{message.date}}
-            <span v-if="isAuthenticated" @click="toggle" class="right"> · Répondre · </span>
           </small>
+            <span v-if="isAuthenticated" @click="toggle" class="right button is-outlined is-small">
+              · Répondre · </span>
         </p>
       </div>
       <div>
@@ -45,8 +47,8 @@
 <script>
 import MessageItem from "@/components/Message/MessageItem.vue";
 import AddMessage from "@/components/Discussion/AddMessage.vue";
-import { mapGetters } from "vuex";
-import axios from "axios"
+import { mapGetters, mapActions } from "vuex";
+//import axios from "axios"
 
 export default {
   name: "MessageItem",
@@ -55,31 +57,8 @@ export default {
   },
   props: ["message"],
   methods: {
-    toggle: function () {this.comment = !this.comment},
-    
-    voteMsg: async function(type) {
-      if (type != this.vote) {
-        const newVote = {
-          upVote: type == "up" ? true : false,
-          messageID: this.message.id,
-          utilisateurID: this.$store.getters.user.utilisateurID
-        }
-        await axios
-        .post(this.$store.getters.apiURL + "votes/create", newVote)
-        .then(response => {
-          if (response.status == 201) {
-            const diff = this.vote == "no" ? 1 : 2
-            this.message.score += (type == 'up' ? diff : -diff)
-            this.$store.commit("checkAndAddVote", newVote)
-          } else {
-            this.$store.dispatch("displayError", "error while creating vote.")
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      }
-    }
+    ...mapActions(["voteMsg"]),
+    toggle: function () {this.comment = !this.comment}
   },
   components: { MessageItem, AddMessage },
   created() {
@@ -87,24 +66,19 @@ export default {
     //set 
   },
   computed: { 
-    ...mapGetters(["isAuthenticated", "getVote"]),
-    // makes a sorted copy of the table to display it, so the store is not modified, so beautiful.
+    ...mapGetters(["isAuthenticated", "vote", "user"]),
+    // makes a sorted copy of the table to display it, so the store is not modified, but new table still references other items, so beautiful.
     sortedMsg: function () {
       return this.message.childMsg.map(a=>a).sort((a,b) => b.score - a.score || a.date.localeCompare(b.date) )
     },
-    vote: function () {
-      const vote = this.getVote(this.message.id)
-      if (vote == undefined)
-        return 'no'
-      return vote.upVote? 'up' : 'down'
+    canDelete: function () {
+      return (this.isAuthenticated && this.message.childMsg == [] && 
+          (this.user.role.roleID == 4 || this.message.author.utilisateurID == this.user.utilisateurID))
     }
   }
 };
 </script>
 
 <style>
-  .teacher {background-color: rgba(0,200,0,0.1);}
-  .green {background-color: rgba(0,200,0,0.5);}
-  .red {background-color: rgba(200,0,0,0.5);}
   figure {text-align: center;}
 </style>

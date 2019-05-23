@@ -16,7 +16,13 @@ export default {
   name: "Tag",
   props: ["tags"],
   methods: {
-    clickTag(tag) { this.$store.commit("clicTag", {nom: tag.nom}) }
+    clickTag(tag) { 
+      this.$store.commit("clicTag", tag)
+      if (this.$store.getters.getActivatedTags.length == 0)
+        this.$store.dispatch("fetchDiscussions", "last" )
+      else
+        this.$store.dispatch("fetchByTags")
+    }
   }
 };
 </script>

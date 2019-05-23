@@ -91,8 +91,9 @@ export default {
         this.$store.commit("resetHashedPass")
         return
       }
+      const name = this.userDispl.nomUtilisateur === this.newName ? "" : this.newName
       axios.put( this.apiURL + "utilisateurs/" + this.id, {
-        newUsername: this.userDispl.nomUtilisateur == this.newName ? "" : this.newname,
+        newUsername: name,
         newPass: this.hashedPass,
         newRoleId: this.userDispl.role.roleID
       })
