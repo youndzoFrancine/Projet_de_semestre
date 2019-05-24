@@ -35,6 +35,14 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Intege
     Optional<Utilisateur> findByNomUtilisateur(String nomUtilisateur);
 
     /**
+     * Find by id, returns optional.
+     *
+     * @param id l'id utilisateur
+     * @return the optional
+     */
+    Optional<Utilisateur> findByUtilisateurID(Integer id);
+
+    /**
      * Exists by nom utilisateur boolean.
      *
      * @param nomUtilisateur the nom utilisateur

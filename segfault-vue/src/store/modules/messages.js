@@ -17,7 +17,11 @@ const getters = {
   // -> TODO: need to get disc containing it and set it.
   getOneMessage: state => id => {return state.messages.find(msg => msg.id == id) || {id: null, text: "", score: null, author: {role: {roleID: 0}}, childMsg: []}},
   lastId: state => state.lastId,
-  getVote: state => msgId => {return state.votes.find(vote => vote.messageID == msgId)}
+  vote: state => msgId => {
+    const curVote = state.votes.find(vote => vote.messageID == msgId)
+    if (curVote == undefined) return 'no'
+    return curVote.upVote? 'up' : 'down'
+  }
 };
 
 // actions
@@ -73,6 +77,32 @@ const actions = {
       .catch(error => {
         console.log(error);
       });
+    },
+    
+    async voteMsg ({commit, dispatch, getters}, {msg, type}) {
+      if (type != getters.vote(msg.id)) {
+        const newVote = {
+          upVote: type == "up" ? true : false,
+          messageID: msg.id,
+          utilisateurID: getters.user.utilisateurID
+        }
+        await axios
+        .post(getters.apiURL + "votes/create", newVote)
+        .then(response => {
+          if (response.status == 201) {
+            const diff = getters.vote(msg.id) == "no" ? 1 : 2
+            // can change message...? othw do mutat°
+            msg.score += (type == 'up' ? diff : -diff)
+            commit("checkAndAddVote", newVote)
+          } else {
+            dispatch("displayError", "error while creating vote.")
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          dispatch("displayError", "error while creating vote.")
+        });
+      }
     }
 };
 

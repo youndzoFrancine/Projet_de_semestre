@@ -80,7 +80,7 @@ const mutations = {
       state.tags.push({id:tag.id, nom: tag.nom, prio:tag.prio, rank: tag.rank, isActive: false});
     state.tags.sort((a,b) => b.rank - a.rank || a.nom.localeCompare(b.nom) )
     state.nextNum = state.tags.length
-    console.log(state.tags)
+//    console.log(state.tags)
   },
 
     // TODO prevent adding twice a tag
@@ -89,8 +89,9 @@ const mutations = {
     state.tags.push({id: tag.id, nom: tag.name, prio:false, rank: 1, isActive: true});
 //      console.log(state.tags);
   },
-  clicTag: (state, payload) => {
-    let tag = state.tags.filter(tag =>tag.nom == payload.nom)[0];
+  clicTag: (state, tag) => {
+//    let tag = state.tags.filter(tag =>tag.nom == payload.nom)[0];
+    // TODO: check si on peut pas juste taper dans payload ^^
 //    console.log(payload, tag)
     tag.isActive = !tag.isActive;
 

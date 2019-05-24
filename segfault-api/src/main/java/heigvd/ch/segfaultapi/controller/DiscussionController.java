@@ -97,14 +97,14 @@ public class DiscussionController {
     // TODO: add /{sort} in route, use for Sort.by()
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Page<Discussion> getAll (@RequestParam("page") int page,
-                                    @RequestParam(value = "sortMethod", required = false) String sortMethod) {
+                                    @RequestParam(value = "sort", required = false) String sort) {
 
         Pageable tstPage = PageRequest.of(page, 7);
         Page<Discussion> liste;
 
-        if(sortMethod != null && sortMethod.equals("score")) {
+        if(sort != null && sort.equals("score")) {
             liste = discussionRepository.findAllByOrderByMsgracine_ScoreDesc(tstPage);
-        } else { //elif sortMethod.equals("date")
+        } else { //elif sort.equals("date")
             liste = discussionRepository.findAllByOrderByMsgracine_DateDesc(tstPage);
         }
 
@@ -117,15 +117,22 @@ public class DiscussionController {
         return discussionRepository.findById(id).get().getSujet();
     }
 
-    @RequestMapping(value="/bytags", method = RequestMethod.GET)
-    public List<Discussion> getByTags(@RequestParam(value = "tags", required = false) List<String> tagNames) {
+    @RequestMapping(value="/tags", method = RequestMethod.GET)
+    public List<Discussion> getByTags(@RequestParam(value = "tag", required = false) List<String> tagNames,
+                                      @RequestParam(value = "sort", required = false) String sort) {
 
         if (tagNames == null) tagNames = new ArrayList<>();
 
         // Les tags à trouver
         List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
 
-        List<Discussion> listeDoublon = discussionRepository.findAllByTagListIn(tagList);
+        List<Discussion> listeDoublon;
+        if(sort != null && sort.equals("score"))
+            listeDoublon = discussionRepository.findAllByTagListInOrderByMsgracine_ScoreDesc(tagList);
+        else
+            listeDoublon = discussionRepository.findAllByTagListInOrderByMsgracine_DateDesc(tagList);
+
+
 
         // On filtre ceux qui apparaissent à la fréquence souhaitée
         return listeDoublon.stream()

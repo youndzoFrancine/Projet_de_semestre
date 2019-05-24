@@ -2,12 +2,12 @@
   <div>
     <article class="media">
       <figure class="media-left">
-        <p>
+        <p  v-if="isAuthenticated" @click="voteMsg({msg: baseMsg, type:'up'})" :class="{green: vote(baseMsg.id)=='up'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-up"/>
           </span>
         </p>
-        <p class="icon is-medium">
+        <p v-if="isAuthenticated" @click="voteMsg({msg: baseMsg, type:'down'})" :class="{red: vote(baseMsg.id)=='down'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-down"/>
           </span>
@@ -20,8 +20,10 @@
           </router-link>
           <p>
             <small>
-              <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
-               le: {{this.baseMsg.date}}
+              <router-link  :to="{path: '/user/'+ this.baseMsg.author.utilisateurID}" >
+                <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
+              </router-link>
+               <span class="right">le: {{this.baseMsg.date}}</span>
             </small>
           </p>
     
@@ -50,8 +52,8 @@
       </div>
       <div class="media-right">
         <div class="buttons">
-          <button class="button purple is-small">{{this.baseMsg.childMsg.length}} réponses</button>
-          <button class="button purle is-small is-outlined">score: {{this.baseMsg.score}}</button>
+          <div class="button is-small">{{this.baseMsg.childMsg.length}} réponses</div>
+          <div class="button is-small is-outlined">score: {{this.baseMsg.score}}</div>
         </div>
       </div>
     </article>
@@ -60,6 +62,7 @@
 
 <script>
 import Tag from "@/components/Tag/Tag.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "DiscuMediaItem",
@@ -67,8 +70,12 @@ export default {
   components: {
     Tag
   },
+  methods: {
+    ...mapActions(["voteMsg"])
+  },
   
   computed: { 
+    ...mapGetters(["vote", "isAuthenticated"]),
     baseMsg () {
       return this.$store.getters.getOneMessage(this.post.id)
     }
@@ -77,5 +84,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .teacher {background-color: rgba(0,200,0,0.1);}
+  .media-right {max-width: 100px;}
+  .media-right > div > div {width: 90px;}
 </style>

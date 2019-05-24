@@ -22,8 +22,8 @@ public interface DiscussionRepository extends JpaRepository<Discussion, Integer>
 
 
 
-    List<Discussion> findAllByTagListIn(List<Tag> tagList);
-
+    List<Discussion> findAllByTagListInOrderByMsgracine_DateDesc(List<Tag> tagList);
+    List<Discussion> findAllByTagListInOrderByMsgracine_ScoreDesc(List<Tag> tagList);
     // List<Discussion> findDistinctByTagListIn(List<Tag> tagList);
 
 
