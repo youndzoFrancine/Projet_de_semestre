@@ -142,7 +142,7 @@
 
 <script>
 import axios from "axios"
-import { mapGetters, mapActions } from "vuex"; // pas marche u____U
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "theInscription",
@@ -162,14 +162,11 @@ export default {
       termsErrors: null
     };
   },
-  computed: mapGetters(["apiURL"]), // pas marche....
+  computed: {...mapGetters(["apiURL"])},
   methods: {
     ...mapActions(["sha256"]),
 
     UserInputControl: function(e) {
-      /*debug console
-      console.log("call UserInputControl function"); */
-      //cancel auto-completion
       this.cancelAutoCompletion();
       let test;
       test = this.user.split(" ");
@@ -186,21 +183,14 @@ export default {
       e.preventDefault();
     },
     emailInputControl: function(e) {
-      /*debug console
-      console.log("call emailInputcontrol function");*/
       let split = this.email.split("@");
-      /*debug console
-      console.log(split[0]);
-      console.log(split[1]);*/
       this.user = split[0];
       this.userInputErrors = null;
       if (split[1] != "heig-vd.ch") {
-        /*debug console
-        console.log("parse @");*/
         this.emailInputErrors =
           "Seul les adresses finnisant par @heig-vd.ch sont autorisées";
       } else if (this.email == "root.admin@heig-vd.ch") {
-        /* appel a la bd*/
+        /* TODO: call db to check before submiting*/
         this.emailInputErrors = "cette adresse mail est déjà prise";
       } else {
         this.emailInputErrors = null;
@@ -208,8 +198,6 @@ export default {
       e.preventDefault();
     },
     passwordInputControl: function() {
-      /*debug console
-      console.log("call passwordInputControl function");*/
       if (this.passwordTcheck != this.password) {
         this.passwordInputErrors = "mot de passe différents";
       } else {
@@ -217,25 +205,17 @@ export default {
       }
     },
     passwordBasicTcheck: function() {
-      /*debug console
-      console.log("call passwordBasicTcheck");*/
       this.passwordTcheck.split(" ");
       if (this.password.length < 6) {
-        /*debug console
-        console.log("taille pas assez importante");*/
         this.passwordInputErrors = "6 caractères ou plus sont demandés";
       } else {
         this.passwordInputControl();
       }
     },
     cancelAutoCompletion: function() {
-      /*debug console
-      console.log("call cancelAutoCompletion");*/
       this.booleanChangeFocus = true;
     },
     registration: async function() {
-      /*debug console
-      console.log("call registration");*/
       let mistake = new Boolean(false);
 
       if (
@@ -262,14 +242,12 @@ export default {
           this.termsErrors = null;
         }
         if (mistake == true) {
-          /*debug console
-        console.log("mistake");*/
           this.registrationFailure =
             "tous les champs ne sont pas remplis correctement";
         } else {
           /*enregistrement dans la db*/
           await axios
-            .post( this.$store.getters.apiURL + "utilisateurs/signup", {
+            .post( this.apiURL + "utilisateurs/signup", {
               nomUtilisateur: this.user,
               mailUtilisateur: this.email,
               motDePasse: this.$store.getters.hashedPass,
@@ -281,7 +259,7 @@ export default {
                 this.$router.go(-1);
               }
               else {
-                console.log(response.data, "this never happens.")
+                console.log( "this never happens.")
               }
             })
             .catch(error => {

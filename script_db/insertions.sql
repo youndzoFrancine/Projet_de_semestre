@@ -22,28 +22,28 @@ Values
 
 INSERT INTO utilisateur(nom_utilisateur, mail_utilisateur, mot_de_passe, role_utilisateur)
 Values
-    /*md5('root1234') = e8bc632a8955b067e4f57824d5954690*/
-  ('Admin', 'admin.administrateur@heig-vd.ch', 'aabb2100033f0352fe7458e412495148', 4),
-    /*md5('bestpassword123454') = e8bc632a8955b067e4f57824d5954690*/
-  ('CrescenceK', 'crescence.yimnaingkamdem@heig-vd.ch', 'e8bc632a8955b067e4f57824d5954690', 1),
-  /*md5('fyk456') = 95577c3adb3cfa71d89d2d4e2eda96fd*/
-  ('youndzoFrancine', 'francine.youndzokengne@heig-vd.ch', '95577c3adb3cfa71d89d2d4e2eda96fd', 1),
-    /*md5('tpq789') = 0acf1488de10c0fce54f6aaaf39a303e*/
-  ('tiagoquin', 'tiago.povoaqui@heig-vd.ch', '0acf1488de10c0fce54f6aaaf39a303e', 1),
-  /*md5('cln123') = 865b501220e511a279efc515503c5ae1*/
-  ('cedriclankeu', '(cedric.lankeungassam@heig-vd.ch', '865b501220e511a279efc515503c5ae1', 1),
-    /*md5('agi456') = f7b057bc528e98dd80eac722296dd39f*/
-  ('AlexandreGabrielli', 'alexandre.gabrielli@heig-vd.ch', 'f7b057bc528e98dd80eac722296dd39f', 1),
-    /*md5('mcf789') = 80758752c5e07f13a5f9ca9e43eea251*/
-  ('Maxcaduff', 'max.caduff@heig-vd.ch', '80758752c5e07f13a5f9ca9e43eea251', 1),
-    /*md5('mcf789') = 80758752c5e07f13a5f9ca9e43eea251*/
-  ('grafolytics', 'marcel.graf@heig-vd.ch', '80758752c5e07f13a5f9ca9e43eea251', 3),
-    /*md5('cpa456') = 8670948c5a87999218c67b098ed43883*/
-  ('ci4cb', 'carlos.pena@heig-vd.ch', '8670948c5a87999218c67b098ed43883', 3),
-    /*md5('lionel') = 8670948c5a87999218c67b098ed43883*/
-  ('lionel', 'lionel.assistant@heig-vd.ch', '800a0e21225906fe82d141def1a9202d', 2),
-    /*md5('nicole') = fc63f87c08d505264caba37514cd0cfd*/
-  ('nicole', 'nicole.assistant@heig-vd.ch', 'fc63f87c08d505264caba37514cd0cfd', 2);  
+    /*sha256('root1234') = "d41ca9b3ff93b24da439c32ab28c24fd03220fbee13d3c4650f20125172ae72d"*/
+  ('Admin', 'admin@heig-vd.ch', 'd41ca9b3ff93b24da439c32ab28c24fd03220fbee13d3c4650f20125172ae72d', 4),
+    /*sha256('aaaaaa') = "ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797"*/
+  ('CrescenceK', 'crescence.yimnaingkamdem@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+  /* sha256('aaaaaa') */
+  ('youndzoFrancine', 'francine.youndzokengne@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('tiagoquin', 'tiago.povoaqui@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+  /* sha256('aaaaaa') */
+  ('cedriclankeu', 'cedric.lankeungassam@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('AlexandreGabrielli', 'alexandre.gabrielli@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('Maxcaduff', 'max.caduff@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('bbbbbb') = "4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7"*/
+  ('grafolytics', 'marcel.graf@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 3),
+    /* sha256('bbbbbb') */
+  ('ci4cb', 'carlos.pena@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 3),
+    /* sha256('bbbbbb') */
+  ('lionel', 'lionel.assistant@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 2),
+    /* sha256('bbbbbb') */
+  ('nicole', 'nicole.assistant@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 2);  
   
  -- Insertion dans la table appartient. -------------------------------------------
  
@@ -69,11 +69,9 @@ values
 	('debian', true, 6),
 	('assembleur',true,4),
 	('numeristaion', false, 6),
-	('signaux',false,1),
 	('systeme',true,10),
 	('gen',false,7),
 	('scapy',false,9),
-	('cpp' ,true,1),
 	('netbeans' ,true,7),
 	('postgresql',true,9),
 	('nodejs',false,8),
@@ -103,8 +101,6 @@ values
 	('numerique',true,6),
 	('inf1',true,1),
 	('inf2',true,3),
-	('inf01',true,9),
-	('info2',true,4),
 	('progoo',false,9),
 	('economie',false,5),
 	('c++',false,5),
@@ -520,7 +516,7 @@ values
 	(6,35),
 	(6,42),
 	(7,15),
-	(8,47),
+	(8,43),
 	(9,45),
 	(9,36),
 	(10,15),
@@ -534,7 +530,7 @@ values
 	(11,37),
 	(11,23),
 	(12,43),
-	(12,49),
+	(12,42),
 	(12,12),
 	(12,32),
 	(12,38),
@@ -544,21 +540,21 @@ values
 	(13,22),
 	(13,11),
 	(13,1),
-	(13,50),
+	(13,30),
 	(13,10),
 	(13,20),
 	(14,14),
-	(14,46),
+	(14,44),
 	(14,28),
 	(15,19),
 	(15,10),
 	(15,45),
 	(16,42),
 	(16,1),
-	(16,47),
-	(16,48),
+	(16,12),
+	(16,41),
 	(17,5),
-	(18,47),
+	(18,37),
 	(19,31),
 	(19,39),
 	(20,2),

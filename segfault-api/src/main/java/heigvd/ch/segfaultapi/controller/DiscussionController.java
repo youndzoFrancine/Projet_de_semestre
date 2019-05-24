@@ -84,7 +84,7 @@ public class DiscussionController {
         for (Integer tagid :payload.getTags()) {
             Tag tag = tagRepository.findById(tagid).get();
 
-            System.out.println(tag.getNom());
+//            System.out.println(tag.getNom());
 
             discussion.getTagList().add(tag);
         }

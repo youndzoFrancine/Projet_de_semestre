@@ -15,12 +15,13 @@
         </p>
       </figure>
     <div class="media-content">
-      <div class="content" :class="message.author.role.roleID > 1 ? 'teacher':'' ">
+      <div class="content" :class="message.author.role.roleID > 1 ? 'teacher':'user' ">
         <p>
           <router-link  :to="{path: '/user/'+ message.author.utilisateurID}" >
             <strong>posté par @{{message.author.nomUtilisateur}}</strong>
           </router-link>
-          <span class="right button is-outlined is-small" v-if="canDelete" @click="deleteMsg(message)"> · Delete · </span>
+          <span class="right button is-outlined is-small" v-if="canDelete" @click="deleteMsg(message.id)"> · Delete · </span>
+          
         </p>
         <p>{{message.text}}</p>
         <p>
@@ -57,8 +58,9 @@ export default {
   },
   props: ["message"],
   methods: {
-    ...mapActions(["voteMsg"]),
-    toggle: function () {this.comment = !this.comment}
+    ...mapActions(["voteMsg", "deleteMsg"]),
+    toggle: function () {this.comment = !this.comment},
+  
   },
   components: { MessageItem, AddMessage },
   created() {
@@ -66,15 +68,18 @@ export default {
     //set 
   },
   computed: { 
-    ...mapGetters(["isAuthenticated", "vote", "user"]),
+    ...mapGetters(["isAuthenticated", "vote", "user", "getById"]),
     // makes a sorted copy of the table to display it, so the store is not modified, but new table still references other items, so beautiful.
     sortedMsg: function () {
       return this.message.childMsg.map(a=>a).sort((a,b) => b.score - a.score || a.date.localeCompare(b.date) )
     },
     canDelete: function () {
-      return (this.isAuthenticated && this.message.childMsg == [] && 
-          (this.user.role.roleID == 4 || this.message.author.utilisateurID == this.user.utilisateurID))
-    }
+      // useless for now: DB deletes corresponding user when deleting a message...
+      return false;
+//      return (this.isAuthenticated && !this.message.childMsg.length && ! this.getById(this.message.id) &&
+//          (this.user.role.roleID == 4 || this.message.author.utilisateurID == this.user.utilisateurID))
+    },
+    
   }
 };
 </script>

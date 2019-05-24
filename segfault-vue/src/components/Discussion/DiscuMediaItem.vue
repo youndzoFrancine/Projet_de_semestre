@@ -14,7 +14,7 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'' ">
+        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'user' ">
           <router-link :to="{path: '/message/'+post.id}">
             <p>{{post.title}}</p>
           </router-link>
@@ -27,7 +27,7 @@
             </small>
           </p>
     
-          <Tag :tags="post.tags"/>
+          <Tag :tags="bindedTags"/>
 
         </div>
         <nav class="level is-mobile">
@@ -75,9 +75,17 @@ export default {
   },
   
   computed: { 
-    ...mapGetters(["vote", "isAuthenticated"]),
+    ...mapGetters(["vote", "isAuthenticated", "getAllTags"]),
     baseMsg () {
       return this.$store.getters.getOneMessage(this.post.id)
+    },
+    bindedTags () {
+      let tab = []
+      for (let tag of this.post.tags) {
+        const found = this.getAllTags.find(realTag => realTag.id == tag.id)
+        if (found) tab.push(found)
+      }
+      return tab
     }
   }
 };

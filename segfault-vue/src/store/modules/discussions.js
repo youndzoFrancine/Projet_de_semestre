@@ -15,9 +15,9 @@ const state = {
 
 // getters
 const getters = {
-  getAllDiscussions: state => state.discussions, // Fonction flêchée qui renvoie les discussions
-  getTagsById: state => id => {
-    return state.discussions.find(discussion => discussion.id === id).tags;
+  getAllDiscussions: state => state.discussions, 
+  getById: state => id => {
+    return state.discussions.find(discussion => discussion.id == id);
   },
   getNextPageNb: state => state.currentPage < state.totalPages - 1 ? state.currentPage+1 : null,
   getPrevPageNb: state => state.currentPage > 0 ? state.currentPage - 1 : null
@@ -37,7 +37,7 @@ const actions = {
       .then(response => {
 
         if (response.status == 200) {
-//          commit("setDiscussions", response.data);
+
           commit ("clearDisc")
           commit("clearMsg")
           for (let disc of response.data.content) {
@@ -57,6 +57,7 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while fetching discussions.")
       });
   },
   async fetchByTags({ commit, getters, dispatch }) {
@@ -66,7 +67,6 @@ const actions = {
       .then(response => {
 
         if (response.status == 200) {
-//          commit("setDiscussions", response.data);
           commit ("clearDisc")
           commit("clearMsg")
           for (let disc of response.data) {
@@ -86,6 +86,7 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while fetching discussions.")
       });
   },
   async newDiscussion({ commit, getters, dispatch }, { title, text, tags, userId }) {
@@ -98,8 +99,7 @@ const actions = {
         tags: tags
       })
       .then(response => {
-      
-        console.log(response.data)
+//        console.log(response.data)
         
         if (response.status != 201) {
           dispatch("displayError", "error while creating discussions." )
@@ -111,6 +111,7 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while creating discussions." )
       });
   },
 
@@ -119,17 +120,16 @@ async getDiscTitle({ commit, getters}, id) {
     await axios
       .get( getters.apiURL + "discussions/" + id)
       .then(response => {
-      
-        console.log(response.data)
         
         if (response.status == 200) {
-          commit("addDiscussion", {id: id, title: response.data})
+          commit("addDiscussion", {id: parseInt(id), title: response.data})
         } else {
-          commit("addDiscussion", {id: id, title: ""})
+          commit("addDiscussion", {id: 0, title: ""})
         }
       })
       .catch(error => {
         console.log(error);
+        commit("addDiscussion", {id: 0, title: ""})
       });
   }
 
