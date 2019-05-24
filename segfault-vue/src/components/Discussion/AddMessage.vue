@@ -78,13 +78,7 @@ export default {
         let tags = document.getElementById("newTags").value
         if (tags)
           await this.$store.dispatch("addTags", tags)
-      
-      // TODO envoyer requête à l'api: msg -> /discussions/new ou comment -> /messages/new
-      // ->  faire dans store
-      
-//        this.$store.commit("addMessage", {newText: text, userId: this.$store.getters.user.utilisateurID, parentMsg: null})
-        
-//        tagsTab = tagsTab.concat(this.$store.getters.getActivatedTags)
+          
         this.$store.dispatch("newDiscussion", { 
           title: title, 
           text: text, 

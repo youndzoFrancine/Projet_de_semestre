@@ -61,6 +61,7 @@ export default {
   .right {float: right;}
   .content{padding: 10px;}
   .teacher {background-color: rgba(0,200,0,0.1);}
+  .user {background-color: rgba(150,150,200,0.1)}
   .green {background-color: rgba(0,200,0,0.5);}
   .red {background-color: rgba(200,0,0,0.5);}
 </style>

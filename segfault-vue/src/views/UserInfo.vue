@@ -39,12 +39,20 @@
   <label class="label">Role: </label>
   <div class="buttons">
     {{this.roles[userDispl.role.roleID-1].nomRole}}&nbsp;
-    <span v-if="user.role.roleID > 1" class="button is-primary is-outlined" @click="upgradeRole"> upgrade role </span>
+    <span v-if="user.role && user.role.roleID > 1" class="button is-primary is-outlined" @click="upgradeRole"> upgrade role </span>
   </div>
   
-  <div v-if="isProfile || user.role.roleID > 1" class="buttons">
+  <div v-if="isProfile || (user.role && user.role.roleID > 1)" class="buttons">
     <span class="button is-primary" @click="saveUser">Save</span> 
   </div>
+   <div v-if="isProfile" >
+    <p>Saved discussions:</p>
+    <div v-for="disc in savedDisc" :key="disc.id" :name="disc.id" >
+      <router-link :to="{path: '/message/'+disc.id}">
+        {{disc.title}}  
+      </router-link> 
+    </div>
+   </div>
  </div>
 </template>
 
@@ -137,7 +145,8 @@ export default {
   computed: {
       ...mapGetters(["isAuthenticated", "user", "hashedPass", "apiURL"]),
 
-    isProfile: function() {return this.id == this.user.utilisateurID}
+    isProfile: function() {return this.id == this.user.utilisateurID},
+    savedDisc: function() {return JSON.parse(localStorage.getItem('savedDisc'))}
 //    getTitle: function () {
 //      const disc = this.getAllDiscussions.find(disc => disc.id == this.id)
 //      return disc ? disc.title : ""
