@@ -173,3 +173,26 @@ $update_rang_tag$ LANGUAGE plpgsql;
 CREATE TRIGGER update_tag
 AFTER INSERT ON est_lier
 FOR EACH ROW EXECUTE PROCEDURE update_rang_tag();
+
+--trigger to update message's score while insert a tuple un table vote
+DROP FUNCTION IF EXISTS update_score_msg_del();
+CREATE FUNCTION update_score_msg_del() RETURNS TRIGGER AS $update_score_msg_del$
+    DECLARE
+        ajout int := 0;
+    BEGIN
+       IF OLD.up_vote IS TRUE THEN
+              ajout := -1;
+       ELSE
+               ajout := 1;
+       END IF;
+
+       -- updating score in message
+       UPDATE message SET score = score + ajout
+               WHERE message.message_id = OLD.message_id;
+       RETURN NEW;
+    END;
+$update_score_msg_del$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_score_del
+AFTER DELETE ON vote 
+FOR EACH ROW EXECUTE PROCEDURE update_score_msg_del();
