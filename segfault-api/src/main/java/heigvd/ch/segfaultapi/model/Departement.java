@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * The type Departement.
+ */
 @NoArgsConstructor
 @Entity
 @Table(name = "Departement")
@@ -26,11 +29,22 @@ public class Departement {
     private Set<Utilisateur> utilisateurSet;
     */
 
+    /**
+     * Equals boolean.
+     *
+     * @param obj the obj
+     * @return the boolean
+     */
     @Override
     public boolean equals(Object obj) {
         return obj.getClass() == this.getClass() && nomDepartement.equals(((Departement) obj).nomDepartement);
     }
 
+    /**
+     * Instantiates a new Departement.
+     *
+     * @param nom_Departement the nom departement
+     */
     public Departement(String nom_Departement){
         this.nomDepartement = nom_Departement;
     }

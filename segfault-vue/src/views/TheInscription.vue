@@ -7,22 +7,24 @@
     <!--email-->
     <div class="field">
       <label class="label">Email</label>
-      <template v-if="emailInputErrors">
+
         <div class="field has-addons">
           <div class="control is-expanded has-icons-left has-icons-right has-addons" type="email">
             <input
-              class="input is-danger"
+              class="input"
+              :class="{ 'is-success': !emailInputErrors, 'is-danger': emailInputErrors }"
               v-model="email"
               id="email"
               type="text"
-              placeholder="prenom.nom"
+              placeholder="prenom.nom@heig-vd.ch"
               v-on:input="emailInputControl"
+              autofocus
             >
             <span class="icon is-small is-left">
               <font-awesome-icon icon="envelope"/>
             </span>
             <span class="icon is-small is-right">
-              <font-awesome-icon icon="exclamation"/>
+              <font-awesome-icon :icon="emailInputErrors? 'exclamation' : 'check'"/>
             </span>
           </div>
           <p class="control">
@@ -32,149 +34,70 @@
             </a>-->
           </p>
         </div>
-        <p class="help is-danger">{{emailInputErrors}}</p>
-      </template>
-      <template v-else>
-        <div class="field has-addons">
-          <div class="control is-expanded has-icons-left has-icons-right" type="email">
-            <input
-              class="input is-success"
-              v-model="email"
-              id="email"
-              type="text"
-              placeholder="prenom.nom"
-              v-on:input="emailInputControl"
-            >
-            <!--C'est lors du focus sur email qu'on verifie l'username evite de faire trop d'appelle a la bd-->
-            <span class="icon is-small is-left">
-              <font-awesome-icon icon="envelope"/>
-            </span>
-
-            <span class="icon is-small is-right">
-              <font-awesome-icon icon="check"/>
-            </span>
-          </div>
-          <!--
-          <a class="button is-static">
-     <font style="text-transform: lowercase;"> @heig-vd.ch</font>
-          </a>-->
-        </div>
-      </template>
+        <p v-if="emailInputErrors" class="help is-danger">{{emailInputErrors}}</p>
+      
     </div>
 
     <!--username-->
     <div id="username" class="field">
       <label class="label">Nom d'utilisateur</label>
-      <template v-if="UserInputErrors">
-        <div class="control has-icons-left has-icons-right">
-          <input
-            class="input is-danger"
-            v-model="user"
-            id="user"
-            type="text"
-            placeholder="username"
-            v-on:input="UserInputControl"
-          >
-          <span class="icon is-small is-left">
-            <font-awesome-icon icon="user"/>
-          </span>
-          <span class="icon is-small is-right">
-            <font-awesome-icon icon="exclamation"/>
-          </span>
-        </div>
-        <p class="help is-danger">{{UserInputErrors}}</p>
-      </template>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          :class="{ 'is-success': !userInputErrors, 'is-danger': userInputErrors }"
+          v-model="user"
+          id="user"
+          type="text"
+          placeholder="username"
+          v-on:input="UserInputControl"
+        >
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="user"/>
+        </span>
+        <span class="icon is-small is-right">
+          <font-awesome-icon :icon="userInputErrors? 'exclamation' : 'check'"/>
+        </span>
+      </div>
+      <p v-if="userInputErrors" class="help is-danger">{{userInputErrors}}</p>
 
-      <template v-else>
-        <div class="control has-icons-left has-icons-right">
-          <input
-            class="input is-success"
-            v-model="user"
-            id="user"
-            type="text"
-            placeholder="username"
-            v-on:input="UserInputControl"
-          >
-          <span class="icon is-small is-left">
-            <font-awesome-icon icon="user"/>
-          </span>
-          <span class="icon is-small is-right">
-            <font-awesome-icon icon="check"/>
-          </span>
-        </div>
-      </template>
-
-      <!--mot de pass entrer-->
+      <!--mot de passe -->
       <div class="field">
         <label class="label">Mot de passe</label>
 
-        <template v-if="passwordInputErrors == null">
-          <div class="control has-icons-left">
-            <input
-              class="input is-success"
-              v-model="password"
-              id="password"
-              type="password"
-              placeholder="password"
-              v-on:input="passwordBasicTcheck"
-            >
-            <span class="icon is-small is-left">
-              <font-awesome-icon icon="lock"/>
-            </span>
-          </div>
-        </template>
-        <template v-else>
-          <!-- non utiliser pour le moment (mdp trop court ou autre)-->
-          <div class="control has-icons-left">
-            <input
-              class="input is-danger"
-              v-model="password"
-              id="password"
-              type="password"
-              placeholder="password"
-              v-on:input="passwordBasicTcheck"
-            >
-            <span class="icon is-small is-left">
-              <font-awesome-icon icon="lock"/>
-            </span>
-          </div>
-        </template>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            :class="{ 'is-success': !passwordInputErrors, 'is-danger': passwordInputErrors }"
+            v-model="password"
+            id="password"
+            type="password"
+            placeholder="password"
+            v-on:input="passwordBasicTcheck(); sha256(password)"
+          >
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="lock"/>
+          </span>
+        </div>
 
         <div class="control">
-          <!--mot de pass verification -->
+          <!--mot de passe verification -->
           <label class="label">Retapez votre mot de passe</label>
-          <template v-if="passwordInputErrors == null">
-            <div class="control has-icons-left">
-              <input
-                class="input is-success"
-                v-model="passwordTcheck"
-                id="passwordTcheck"
-                type="password"
-                placeholder="password check"
-                v-on:input="passwordInputControl"
-              >
-
-              <span class="icon is-small is-left">
-                <font-awesome-icon icon="lock"/>
-              </span>
-            </div>
-          </template>
-          <template v-else>
-            <div class="control has-icons-left">
-              <input
-                class="input is-danger"
-                v-model="passwordTcheck"
-                id="passwordTcheck"
-                type="password"
-                placeholder="password check"
-                v-on:input="passwordInputControl"
-              >
-              <span class="icon is-small is-left">
-                <font-awesome-icon icon="lock"/>
-              </span>
-            </div>
-            <p class="help is-danger">{{passwordInputErrors}}</p>
-          </template>
+          
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              :class="{ 'is-success': !passwordInputErrors, 'is-danger': passwordInputErrors }"
+              v-model="passwordTcheck"
+              id="passwordTcheck"
+              type="password"
+              placeholder="password check"
+              v-on:input="passwordInputControl"
+            >
+            <span class="icon is-small is-left">
+              <font-awesome-icon icon="lock"/>
+            </span>
+          </div>
+          <p v-if="passwordInputErrors" class="help is-danger">{{passwordInputErrors}}</p>
 
           <!-- terms and conditions-->
           <div class="field">
@@ -195,8 +118,8 @@
               <p class="control">
                 <button class="button is-success" v-on:click="registration">register</button>
               </p>
-              <template v-if="RegistrationFaillure">
-                <p class="help is-danger">{{RegistrationFaillure}}</p>
+              <template v-if="registrationFailure">
+                <p class="help is-danger">{{registrationFailure}}</p>
               </template>
             </div>
             <div class="column">
@@ -218,25 +141,31 @@
 
 
 <script>
+import axios from "axios"
+import { mapGetters, mapActions } from "vuex"; // pas marche u____U
+
 export default {
   name: "theInscription",
-  components: {},
   data: function() {
     return {
-      UserInputErrors: null,
+      userInputErrors: null,
       user: new String(),
       emailInputErrors: null,
       email: null,
       password: new String(),
       passwordTcheck: new String(),
+//      hashedPass: new String(),
       passwordInputErrors: null,
       booleanChangeFocus: new Boolean(false),
-      RegistrationFaillure: null,
+      registrationFailure: null,
       terms: null,
       termsErrors: null
     };
   },
+  computed: mapGetters(["apiURL"]), // pas marche....
   methods: {
+    ...mapActions(["sha256"]),
+
     UserInputControl: function(e) {
       /*debug console
       console.log("call UserInputControl function"); */
@@ -245,14 +174,14 @@ export default {
       let test;
       test = this.user.split(" ");
       if (test[1]) {
-        this.UserInputErrors = "espace blanc interdit";
+        this.userInputErrors = "espace blanc interdit";
       } else if (this.user.length < 5) {
-        this.UserInputErrors = "plus de 5 caractères requis";
+        this.userInputErrors = "plus de 5 caractères requis";
       } else if (this.user == "Admin") {
         /* appel a la bd*/
-        this.UserInputErrors = "This pseudo is already taken";
+        this.userInputErrors = "This pseudo is already taken";
       } else {
-        this.UserInputErrors = null;
+        this.userInputErrors = null;
       }
       e.preventDefault();
     },
@@ -264,12 +193,12 @@ export default {
       console.log(split[0]);
       console.log(split[1]);*/
       this.user = split[0];
-      this.UserInputErrors = null;
+      this.userInputErrors = null;
       if (split[1] != "heig-vd.ch") {
         /*debug console
         console.log("parse @");*/
         this.emailInputErrors =
-          "Seul les adresses finnisant par @heig-vd.ch sont autorise";
+          "Seul les adresses finnisant par @heig-vd.ch sont autorisées";
       } else if (this.email == "root.admin@heig-vd.ch") {
         /* appel a la bd*/
         this.emailInputErrors = "cette adresse mail est déjà prise";
@@ -282,7 +211,7 @@ export default {
       /*debug console
       console.log("call passwordInputControl function");*/
       if (this.passwordTcheck != this.password) {
-        this.passwordInputErrors = "mot de passe different";
+        this.passwordInputErrors = "mot de passe différents";
       } else {
         this.passwordInputErrors = null;
       }
@@ -294,7 +223,7 @@ export default {
       if (this.password.length < 6) {
         /*debug console
         console.log("taille pas assez importante");*/
-        this.passwordInputErrors = "plus de 6 caractères sont demander";
+        this.passwordInputErrors = "6 caractères ou plus sont demandés";
       } else {
         this.passwordInputControl();
       }
@@ -304,7 +233,7 @@ export default {
       console.log("call cancelAutoCompletion");*/
       this.booleanChangeFocus = true;
     },
-    registration: function() {
+    registration: async function() {
       /*debug console
       console.log("call registration");*/
       let mistake = new Boolean(false);
@@ -312,18 +241,18 @@ export default {
       if (
         this.passwordInputErrors == null &&
         this.emailInputErrors == null &&
-        this.UserInputErrors == null
+        this.userInputErrors == null
       ) {
         if (this.email == null) {
-          this.emailInputErrors = "champs non rempli";
+          this.emailInputErrors = "champ non rempli";
           mistake = true;
         }
         if (this.password == null) {
-          this.passwordInputErrors = "champs non rempli";
+          this.passwordInputErrors = "champ non rempli";
           mistake = true;
         }
         if (this.user == null) {
-          this.UserInputErrors = "champs non rempli";
+          this.userInputErrors = "champ non rempli";
           mistake = true;
         }
         if (this.terms == null) {
@@ -335,17 +264,37 @@ export default {
         if (mistake == true) {
           /*debug console
         console.log("mistake");*/
-          this.RegistrationFaillure =
-            "tout les champs ne sont pas rempli correctement";
+          this.registrationFailure =
+            "tous les champs ne sont pas remplis correctement";
         } else {
           /*enregistrement dans la db*/
-          this.$router.push({ name: "home" });
-          this.RegistrationFaillure = null;
-          return;
+          await axios
+            .post( this.$store.getters.apiURL + "utilisateurs/signup", {
+              nomUtilisateur: this.user,
+              mailUtilisateur: this.email,
+              motDePasse: this.$store.getters.hashedPass,
+            })
+            .then(response => {
+              if (response.status == 201) {
+                this.registrationFailure = null;
+                this.$store.commit("login", {jwt: response.data.token, user: response.data.user})
+                this.$router.go(-1);
+              }
+              else {
+                console.log(response.data, "this never happens.")
+              }
+            })
+            .catch(error => {
+              console.log(error.response);
+              this.$store.dispatch("displayError", "error: " + error.response.data)
+              this.registrationFailure = "pb d'accès à l'api."
+            }
+          );
+          
         }
       } else {
-        this.RegistrationFaillure =
-          "tout les champs ne sont pas rempli correctement";
+        this.registrationFailure =
+          "tous les champs ne sont pas remplis correctement";
       }
     }
   }

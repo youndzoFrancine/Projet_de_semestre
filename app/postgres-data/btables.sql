@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur (
 	nom_utilisateur			VARCHAR 	NOT NULL UNIQUE,
 	mail_utilisateur		VARCHAR 	NOT NULL UNIQUE,
 	/* md5 => 32 byte*/
-	mot_de_passe  			VARCHAR(32) NOT NULL,
+	mot_de_passe  			VARCHAR(64) NOT NULL,
 	role_utilisateur		INTEGER 	NOT NULL,
 	
 	CONSTRAINT fk_role_utilisateur
@@ -136,6 +136,7 @@ CREATE TABLE IF NOT EXISTS Message_Family(
   
 );
 
+<<<<<<< HEAD:app/postgres-data/btables.sql
 /* pour les tests:
 SELECT * FROM appartient;
 SELECT * FROM departement;
@@ -148,3 +149,44 @@ SELECT * FROM vote;
 
 */
 	-- Insertion dans la classe Departement.
+=======
+/**		TRIGGERS	*/
+--trigger to update message's score while insert a tuple un table vote
+DROP FUNCTION IF EXISTS update_score_msg();
+CREATE FUNCTION update_score_msg() RETURNS TRIGGER AS $update_score_msg$
+    DECLARE
+        ajout int := 0;
+    BEGIN
+       IF NEW.up_vote IS TRUE THEN
+              ajout := 1;
+       ELSE
+               ajout := -1;
+       END IF;
+
+       -- updating score in message
+       UPDATE message SET score = score + ajout
+               WHERE message.message_id = NEW.message_id;
+       RETURN NEW;
+    END;
+$update_score_msg$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_score
+AFTER INSERT ON vote 
+FOR EACH ROW EXECUTE PROCEDURE update_score_msg();
+	
+--trigger to update tag's rang while insert a tuple un table est_lier
+DROP FUNCTION IF EXISTS update_rang_tag();
+CREATE FUNCTION update_rang_tag() RETURNS TRIGGER AS $update_rang_tag$
+   
+    BEGIN
+       -- updating score in tag
+       UPDATE tag SET rang = rang + 1
+               WHERE tag.tag_id = NEW.tag_id;
+       RETURN NEW;
+    END;
+$update_rang_tag$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_tag
+AFTER INSERT ON est_lier
+FOR EACH ROW EXECUTE PROCEDURE update_rang_tag();
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902:script_db/tables.sql

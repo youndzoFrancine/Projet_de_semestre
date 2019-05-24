@@ -6,14 +6,25 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @NoArgsConstructor
+/**
+ * The type Vote.
+ */
 @Entity
 public class Vote {
 
+    /**
+     * The Id.
+     */
+    @Getter
     @Setter
     @EmbeddedId
     VoteKey id;
 
+    /**
+     * The Message.
+     */
     @Getter
     @Setter
     @ManyToOne
@@ -21,6 +32,9 @@ public class Vote {
     @JoinColumn(name = "message_id")
     Message message;
 
+    /**
+     * The Utilisateur.
+     */
     @Getter
     @Setter
     @ManyToOne
@@ -28,6 +42,9 @@ public class Vote {
     @JoinColumn(name = "utilisateur_id")
     Utilisateur utilisateur;
 
+    /**
+     * The Up vote.
+     */
     @Getter
     @Setter
     Boolean upVote;
@@ -37,6 +54,6 @@ public class Vote {
      * @return
      */
     public Integer getMessageID() {
-        return this.message.getMessageId();
+        return this.message.getId();
     }
 }

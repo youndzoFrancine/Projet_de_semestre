@@ -11,18 +11,31 @@ import java.util.List;
 import java.util.Optional;
 
 
+/**
+ * The type Tag controller.
+ */
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("tags")
 public class TagController {
 
     private TagRepository tagRepository;
 
+    /**
+     * Instantiates a new Tag controller.
+     *
+     * @param tagRepository the tag repository
+     */
     @Autowired
     TagController (TagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Tag> getAll() {
     /*    List<Tag> tags = new ArrayList<>();
@@ -51,9 +64,15 @@ public class TagController {
 
         tagRepository.save(tag);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(tag.getId(), HttpStatus.CREATED);
     }
 
+    /**
+     * Delete list.
+     *
+     * @param id the id
+     * @return the list
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public List<Tag> delete (@PathVariable("id") Integer id) {
         tagRepository.deleteById(id);

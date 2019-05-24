@@ -2,22 +2,35 @@ package heigvd.ch.segfaultapi.controller;
 
 import heigvd.ch.segfaultapi.model.Discussion;
 import heigvd.ch.segfaultapi.model.Message;
+import heigvd.ch.segfaultapi.model.Tag;
 import heigvd.ch.segfaultapi.projection.DiscussionCreate;
 import heigvd.ch.segfaultapi.repositories.DiscussionRepository;
 import heigvd.ch.segfaultapi.repositories.MessageRepository;
+import heigvd.ch.segfaultapi.repositories.TagRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+<<<<<<< HEAD
 import org.springframework.data.domain.Pageable;
+=======
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * The type Discussion controller.
+ */
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("discussions")
 public class DiscussionController {
 
@@ -31,6 +44,7 @@ public class DiscussionController {
     @Autowired
     private MessageRepository messageRepository;
 
+<<<<<<< HEAD
     /*
         @RequestMapping(value = "/all", method = RequestMethod.GET)
         public ResponseEntity<?> getAll() {
@@ -41,6 +55,10 @@ public class DiscussionController {
             return new ResponseEntity<List<Discussion>>(discussions, HttpStatus.OK);
     @Autowired
     private MessageRepository messageRepository;
+=======
+    @Autowired
+    private TagRepository tagRepository;
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
 
 /*
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -66,11 +84,11 @@ public class DiscussionController {
 
         Message message = new Message();
 
-        message.setDateCreation(LocalDateTime.now());
+        message.setDate(LocalDateTime.now());
 
-        message.setAuteur(utilisateurRepository.findById(payload.getUtilisateurID()).get());
+        message.setAuthor(utilisateurRepository.findById(payload.getUtilisateurID()).get());
 
-        message.setContenu(payload.getContenu());
+        message.setText(payload.getContenu());
 
         messageRepository.save(message);
 
@@ -82,15 +100,30 @@ public class DiscussionController {
 
         discussion.setMsgracine(message);
 
+        for (Integer tagid :payload.getTags()) {
+            Tag tag = tagRepository.findById(tagid).get();
+
+            System.out.println(tag.getNom());
+
+            discussion.getTagList().add(tag);
+        }
+
         discussionRepository.save(discussion);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(discussion.getId(), HttpStatus.CREATED);
     }
 
+    // TODO: add /{sort} in route, use for Sort.by()
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Discussion> getAll () {
+    public Page<Discussion> getAll (@RequestParam("page") int page) {
 
-        return discussionRepository.findAll();
+        Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
+        return discussionRepository.findAll(tstPage);
+    }
+
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    public String getById (@PathVariable("id") Integer id) {
+        return discussionRepository.findById(id).get().getSujet();
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)

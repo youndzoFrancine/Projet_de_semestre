@@ -18,7 +18,7 @@ export default {
     ...mapActions(["fetchTags"])
   },
   computed: mapGetters(["getAllTags"]),
-  created() {
+  created() { 
     this.fetchTags();
   }
 };

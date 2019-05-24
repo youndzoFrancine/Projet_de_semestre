@@ -8,12 +8,19 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+<<<<<<< HEAD
 
+=======
+/**
+ * The type Discussion.
+ */
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
  // Obligatoire pour JPA
-@NoArgsConstructor
+@NoArgsConstructor // Obligatoire pour JPA
 @Entity
 @Table(name = "Discussion")
 public class Discussion {
@@ -49,11 +56,16 @@ public class Discussion {
     @ManyToMany
     @JoinTable(
             name = "Est_lier",
-            joinColumns = @JoinColumn(name ="tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "discussion_id")
+            joinColumns = @JoinColumn(name ="discussion_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private List<Tag> tagList;
+    private List<Tag> tagList = new ArrayList<>();
 
+    /**
+     * Instantiates a new Discussion.
+     *
+     * @param sujet the sujet
+     */
     public Discussion (String sujet) {
         this.sujet = sujet;
     }

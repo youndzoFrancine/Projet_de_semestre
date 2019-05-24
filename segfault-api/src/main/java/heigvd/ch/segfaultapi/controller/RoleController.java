@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * The type Role controller.
+ */
 @RestController
 @RequestMapping("/roles")
 public class RoleController {
@@ -16,9 +19,13 @@ public class RoleController {
     @Autowired
     private RoleRepoitory roleRepoitory;
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Role> getAll() {
-        System.out.println("Get all tags...");
 
         return roleRepoitory.findAll();
     }

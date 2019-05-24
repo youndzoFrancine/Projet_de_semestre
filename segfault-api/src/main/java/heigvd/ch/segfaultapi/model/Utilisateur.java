@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * The type Utilisateur.
+ */
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Utilisateur")
 public class Utilisateur {
@@ -53,9 +56,10 @@ public class Utilisateur {
     )
     private Set<Departement> departementSet;
 
+    @Setter
     @Getter
     @ManyToOne
-    @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id", insertable= false, updatable=false)
+    @JoinColumn(name = "role_utilisateur", referencedColumnName = "role_id")
     private Role role;
 
     @Getter
@@ -75,7 +79,5 @@ public class Utilisateur {
     private Set<Message> messageSet;
 */
 
-    public Utilisateur () {
-    }
 
 }
