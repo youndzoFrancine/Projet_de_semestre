@@ -118,30 +118,30 @@ export default {
           this.$router.go(-1)
         }
         else {
-          console.log("bite")
+          console.log("won't happen")
         }
       })
       .catch(error => {
-        console.log("merde: ", error.response);
-        // local shortcut only, TODO: remove. (or not lol)
-        if (this.password == "cc") {
-          this.$store.commit("login", {jwt: "7h1$iZaJw7", user: {"utilisateurID": 7,
-                            "nomUtilisateur": "M@X",
-                            "mailUtilisateur": "max@heig-vd.ch",
-                            "departementSet": [],
-                            "role": {
-                                "roleID": 4,
-                                "nomRole": "Admin"
-                            }}})
-          this.$store.dispatch("fetchVotes" )
-          this.$router.go(-1)
-        }
-        else {
+        console.log("error: ", error.response);
+        // debug shortcut only
+//        if (this.password == "cc") {
+//          this.$store.commit("login", {jwt: "7h1$iZaJw7", user: {"utilisateurID": 7,
+//                            "nomUtilisateur": "M@X",
+//                            "mailUtilisateur": "max@heig-vd.ch",
+//                            "departementSet": [],
+//                            "role": {
+//                                "roleID": 4,
+//                                "nomRole": "Admin"
+//                            }}})
+//          this.$store.dispatch("fetchVotes" )
+//          this.$router.go(-1)
+//        }
+//        else {
           const data = error.response.data
           // return format is crap...
           this.$store.dispatch("displayError", "refused by backEnd: " + (data.errors ? data.errors[0].defaultMessage : data.error? data.error : data))
           ++ this.tentative;
-        }
+//        }
       });
   
     }

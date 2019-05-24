@@ -189,4 +189,30 @@ $update_rang_tag$ LANGUAGE plpgsql;
 CREATE TRIGGER update_tag
 AFTER INSERT ON est_lier
 FOR EACH ROW EXECUTE PROCEDURE update_rang_tag();
+<<<<<<< HEAD:app/postgres-data/btables.sql
 >>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902:script_db/tables.sql
+=======
+
+--trigger to update message's score while insert a tuple un table vote
+DROP FUNCTION IF EXISTS update_score_msg_del();
+CREATE FUNCTION update_score_msg_del() RETURNS TRIGGER AS $update_score_msg_del$
+    DECLARE
+        ajout int := 0;
+    BEGIN
+       IF OLD.up_vote IS TRUE THEN
+              ajout := -1;
+       ELSE
+               ajout := 1;
+       END IF;
+
+       -- updating score in message
+       UPDATE message SET score = score + ajout
+               WHERE message.message_id = OLD.message_id;
+       RETURN NEW;
+    END;
+$update_score_msg_del$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_score_del
+AFTER DELETE ON vote 
+FOR EACH ROW EXECUTE PROCEDURE update_score_msg_del();
+>>>>>>> 5fcf99b3a46bfda4dfd01433edf417aba0d4cd0d:script_db/tables.sql

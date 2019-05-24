@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: demodb
+    build: ./data/
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=segfaultapi
+      - POSTGRES_PASSWORD=yourpass
+      - POSTGRES_DB=Forum
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./db :/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+  springboot:
+    build: .
+    ports:
+      - "8087:8087"
+    command: mvn clean spring-boot:run
+    depends_on:
+       - db
+volumes:
+  db-data:

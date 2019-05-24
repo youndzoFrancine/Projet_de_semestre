@@ -48,7 +48,8 @@ const mutations = {
     state.auth = false
     state.user = {}
     localStorage.removeItem('jwt')
-    localStorage.removeItem('user') 
+    localStorage.removeItem('user')
+    localStorage.removeItem('savedDisc')
   }
 };
 

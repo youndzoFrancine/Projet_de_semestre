@@ -25,18 +25,19 @@ const getters = {
 // actions
 const actions = {
   
-  async fetchTags({ getters, commit }) {
+  async fetchTags({ getters, commit, dispatch }) {
     await axios
       .get( getters.apiURL + "tags/all")
       .then(response => {
         if (response.status == 200) {
           commit("setTags", response.data);
         } else {
-          commit();
+          dispatch("displayError", "error while fetching tags.")
         }
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while fetching tags.")
       });
   },
 
@@ -45,7 +46,6 @@ const actions = {
     
     const tagsTab = tags.replace(/\s/g,'').split('#')
     
-    /*TODO: need to send tags as array with default values for prio & rank*/
     for (let newTag of tagsTab) {
       if (newTag != "")
 
@@ -55,7 +55,7 @@ const actions = {
          rang: 1
         })
         .then(response => {
-          console.log(response.data)
+//          console.log(response.data)
           if (response.status == 201) {
             commit("addTag", {name: newTag, id: response.data})
           } 
@@ -65,6 +65,7 @@ const actions = {
         })
         .catch(error => {
           console.log(error);
+          dispatch("displayError", "tags could not be sent to backend.")
         });
     }
   }
@@ -72,7 +73,6 @@ const actions = {
 
 // mutations
 const mutations = {
-  //TODO: add tag only if not already present
   setTags: (state, payload) => {
 //    state.tags = payload
     state.tags = []
@@ -80,20 +80,14 @@ const mutations = {
       state.tags.push({id:tag.id, nom: tag.nom, prio:tag.prio, rank: tag.rank, isActive: false});
     state.tags.sort((a,b) => b.rank - a.rank || a.nom.localeCompare(b.nom) )
     state.nextNum = state.tags.length
-    console.log(state.tags)
-  },
 
-    // TODO prevent adding twice a tag
+  },
+  //TODO: add tag only if not already present
   addTag: (state, tag) => {
-    // bdd returns just id in payload
     state.tags.push({id: tag.id, nom: tag.name, prio:false, rank: 1, isActive: true});
-//      console.log(state.tags);
   },
-  clicTag: (state, payload) => {
-    let tag = state.tags.filter(tag =>tag.nom == payload.nom)[0];
-//    console.log(payload, tag)
+  clicTag: (state, tag) => {
     tag.isActive = !tag.isActive;
-
   },
   resetActive: state => {for (let tag of state.tags) tag.isActive = false;}
   

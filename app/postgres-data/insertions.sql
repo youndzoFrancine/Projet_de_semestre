@@ -21,6 +21,7 @@ Values
 
 INSERT INTO utilisateur(nom_utilisateur, mail_utilisateur, mot_de_passe, role_utilisateur)
 Values
+<<<<<<< HEAD:app/postgres-data/insertions.sql
     /*md5('root1234') = e8bc632a8955b067e4f57824d5954690*/
   ('Admin', 'admin.administrateur@heig-vd.ch', 'aabb2100033f0352fe7458e412495148', 4),
     /*md5('bestpassword123454') = e8bc632a8955b067e4f57824d5954690*/
@@ -44,6 +45,31 @@ Values
     /*md5('nicole') = fc63f87c08d505264caba37514cd0cfd*/
   ('nicole', 'nicole.assistant@heig-vd.ch', 'fc63f87c08d505264caba37514cd0cfd', 2);
 
+=======
+    /*sha256('root1234') = "d41ca9b3ff93b24da439c32ab28c24fd03220fbee13d3c4650f20125172ae72d"*/
+  ('Admin', 'admin@heig-vd.ch', 'd41ca9b3ff93b24da439c32ab28c24fd03220fbee13d3c4650f20125172ae72d', 4),
+    /*sha256('aaaaaa') = "ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797"*/
+  ('CrescenceK', 'crescence.yimnaingkamdem@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+  /* sha256('aaaaaa') */
+  ('youndzoFrancine', 'francine.youndzokengne@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('tiagoquin', 'tiago.povoaqui@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+  /* sha256('aaaaaa') */
+  ('cedriclankeu', 'cedric.lankeungassam@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('AlexandreGabrielli', 'alexandre.gabrielli@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('aaaaaa') */
+  ('Maxcaduff', 'max.caduff@heig-vd.ch', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 1),
+    /* sha256('bbbbbb') = "4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7"*/
+  ('grafolytics', 'marcel.graf@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 3),
+    /* sha256('bbbbbb') */
+  ('ci4cb', 'carlos.pena@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 3),
+    /* sha256('bbbbbb') */
+  ('lionel', 'lionel.assistant@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 2),
+    /* sha256('bbbbbb') */
+  ('nicole', 'nicole.assistant@heig-vd.ch', '4625fd63b0e96fc0d656ae7381605e48d4a0f63a319fc743adf22688613883c7', 2);  
+  
+>>>>>>> 5fcf99b3a46bfda4dfd01433edf417aba0d4cd0d:script_db/insertions.sql
  -- Insertion dans la table appartient. -------------------------------------------
 
 INSERT INTO appartient(departement_id, utilisateur_id)
@@ -68,11 +94,9 @@ values
 	('debian', true, 6),
 	('assembleur',true,4),
 	('numeristaion', false, 6),
-	('signaux',false,1),
 	('systeme',true,10),
 	('gen',false,7),
 	('scapy',false,9),
-	('cpp' ,true,1),
 	('netbeans' ,true,7),
 	('postgresql',true,9),
 	('nodejs',false,8),
@@ -102,8 +126,6 @@ values
 	('numerique',true,6),
 	('inf1',true,1),
 	('inf2',true,3),
-	('inf01',true,9),
-	('info2',true,4),
 	('progoo',false,9),
 	('economie',false,5),
 	('c++',false,5),
@@ -519,7 +541,7 @@ values
 	(6,35),
 	(6,42),
 	(7,15),
-	(8,47),
+	(8,43),
 	(9,45),
 	(9,36),
 	(10,15),
@@ -533,7 +555,7 @@ values
 	(11,37),
 	(11,23),
 	(12,43),
-	(12,49),
+	(12,42),
 	(12,12),
 	(12,32),
 	(12,38),
@@ -543,21 +565,21 @@ values
 	(13,22),
 	(13,11),
 	(13,1),
-	(13,50),
+	(13,30),
 	(13,10),
 	(13,20),
 	(14,14),
-	(14,46),
+	(14,44),
 	(14,28),
 	(15,19),
 	(15,10),
 	(15,45),
 	(16,42),
 	(16,1),
-	(16,47),
-	(16,48),
+	(16,12),
+	(16,41),
 	(17,5),
-	(18,47),
+	(18,37),
 	(19,31),
 	(19,39),
 	(20,2),

@@ -4,6 +4,7 @@ import heigvd.ch.segfaultapi.model.Role;
 import heigvd.ch.segfaultapi.model.Utilisateur;
 import heigvd.ch.segfaultapi.model.request.LoginForm;
 import heigvd.ch.segfaultapi.model.request.SignUpForm;
+import heigvd.ch.segfaultapi.projection.UserUpdate;
 import heigvd.ch.segfaultapi.repositories.RoleRepoitory;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import heigvd.ch.segfaultapi.security.jwt.JwtProvider;
@@ -203,29 +204,32 @@ public class UtilisateurController {
      * @param utilisateur the utilisateur
      * @return the response entity
      */
-    @PutMapping("/users/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable("utilisateur_id") Integer id, @RequestBody Utilisateur utilisateur) {
-        System.out.println("Update user with ID = " + utilisateur.getUtilisateurID() + "...");
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable("id") Integer id, @RequestBody UserUpdate utilisateur) {
+        System.out.println("Update user with ID = " + id + "...");
 
         Optional<Utilisateur> users;
-        users= utilisateurRepository.findById(utilisateur.getUtilisateurID());
-        Utilisateur userUpadate = users.get();
+        users = utilisateurRepository.findByUtilisateurID(id);
+        Utilisateur userUpdate = users.get();
 
         if(users == null){
-            return new ResponseEntity("users doesn't exist", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("user id: "+ id +" doesn't exist", HttpStatus.BAD_REQUEST);
+        }
+        if(userRepository.existsByNomUtilisateur(utilisateur.getNewUsername())) {
+            return new ResponseEntity("username already exists", HttpStatus.BAD_REQUEST);
         }
 
-        if(!(userUpadate.getNomUtilisateur().equals(" ")))
-            userUpadate.setNomUtilisateur(utilisateur.getNomUtilisateur());
+        if( !utilisateur.getNewUsername().equals(""))
+            userUpdate.setNomUtilisateur(utilisateur.getNewUsername());
 
-        if(!(userUpadate.getMailUtilisateur().equals(" ")))
-            userUpadate.setMailUtilisateur(utilisateur.getMailUtilisateur());
+        if(!utilisateur.getNewPass().equals(""))
+            userUpdate.setMotDePasse(utilisateur.getNewPass());
 
-        if(!(userUpadate.getMotDePasse().equals(" ")))
-            userUpadate.setMotDePasse(utilisateur.getMotDePasse());
+        Role role = roleRepository.findByRoleID(utilisateur.getNewRoleId()).get();
 
-        utilisateurRepository.save(userUpadate);
+        userUpdate.setRole(role);
 
+        utilisateurRepository.save(userUpdate);
 
         return new ResponseEntity<>("user has been updated!", HttpStatus.OK);
     }
@@ -243,5 +247,16 @@ public class UtilisateurController {
         utilisateurRepository.deleteById(id);
 
         return new ResponseEntity<>("user has been deleted!", HttpStatus.OK);
+    }
+
+    /**
+     * Gets by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
+    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
+    public Optional<Utilisateur> getById (@PathVariable("id") Integer id) {
+        return utilisateurRepository.findById(id);
     }
 }

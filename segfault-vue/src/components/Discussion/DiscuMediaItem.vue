@@ -2,30 +2,32 @@
   <div>
     <article class="media">
       <figure class="media-left">
-        <p>
+        <p  v-if="isAuthenticated" @click="voteMsg({msg: baseMsg, type:'up'})" :class="{green: vote(baseMsg.id)=='up'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-up"/>
           </span>
         </p>
-        <p class="icon is-medium">
+        <p v-if="isAuthenticated" @click="voteMsg({msg: baseMsg, type:'down'})" :class="{red: vote(baseMsg.id)=='down'}" >
           <span class="icon is-medium">
             <font-awesome-icon icon="arrow-down"/>
           </span>
         </p>
       </figure>
       <div class="media-content">
-        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'' ">
+        <div class="content" :class="this.baseMsg.author.role.roleID > 1 ? 'teacher':'user' ">
           <router-link :to="{path: '/message/'+post.id}">
             <p>{{post.title}}</p>
           </router-link>
           <p>
             <small>
-              <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
-               le: {{this.baseMsg.date}}
+              <router-link  :to="{path: '/user/'+ this.baseMsg.author.utilisateurID}" >
+                <strong>posté par: @{{this.baseMsg.author.nomUtilisateur}}</strong>
+              </router-link>
+               <span class="right">le: {{this.baseMsg.date}}</span>
             </small>
           </p>
     
-          <Tag :tags="post.tags"/>
+          <Tag :tags="bindedTags"/>
 
         </div>
         <nav class="level is-mobile">
@@ -50,8 +52,8 @@
       </div>
       <div class="media-right">
         <div class="buttons">
-          <button class="button purple is-small">{{this.baseMsg.childMsg.length}} réponses</button>
-          <button class="button purle is-small is-outlined">score: {{this.baseMsg.score}}</button>
+          <div class="button is-small">{{this.baseMsg.childMsg.length}} réponses</div>
+          <div class="button is-small is-outlined">score: {{this.baseMsg.score}}</div>
         </div>
       </div>
     </article>
@@ -60,6 +62,7 @@
 
 <script>
 import Tag from "@/components/Tag/Tag.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "DiscuMediaItem",
@@ -67,15 +70,28 @@ export default {
   components: {
     Tag
   },
+  methods: {
+    ...mapActions(["voteMsg"])
+  },
   
   computed: { 
+    ...mapGetters(["vote", "isAuthenticated", "getAllTags"]),
     baseMsg () {
       return this.$store.getters.getOneMessage(this.post.id)
+    },
+    bindedTags () {
+      let tab = []
+      for (let tag of this.post.tags) {
+        const found = this.getAllTags.find(realTag => realTag.id == tag.id)
+        if (found) tab.push(found)
+      }
+      return tab
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .teacher {background-color: rgba(0,200,0,0.1);}
+  .media-right {max-width: 100px;}
+  .media-right > div > div {width: 90px;}
 </style>

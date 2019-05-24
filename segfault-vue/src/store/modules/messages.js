@@ -13,11 +13,15 @@ const state = {
 
 // getters
 const getters = {
-  // message is not fetched if not in store (when querying /messages/id directly)
+  // message is not fetched if not in store (when querying /message/id directly)
   // -> TODO: need to get disc containing it and set it.
   getOneMessage: state => id => {return state.messages.find(msg => msg.id == id) || {id: null, text: "", score: null, author: {role: {roleID: 0}}, childMsg: []}},
   lastId: state => state.lastId,
-  getVote: state => msgId => {return state.votes.find(vote => vote.messageID == msgId)}
+  vote: state => msgId => {
+    const curVote = state.votes.find(vote => vote.messageID == msgId)
+    if (curVote == undefined) return 'no'
+    return curVote.upVote? 'up' : 'down'
+  }
 };
 
 // actions
@@ -34,11 +38,12 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while fetching message.")
       });
   },
     async newMessage ({commit, dispatch, getters}, payload) {
-//      {newText, parentMsg, userId}
-    await axios
+
+      await axios
       .post(getters.apiURL + "messages/create", {
         contenu: payload.newText,
         messageID: payload.parentMsg,
@@ -46,7 +51,6 @@ const actions = {
       })
       .then(response => {
         if (response.status == 201) {
-          console.log(response.data)
           response.data.childMsg = []
           commit("addMessage", {newMsg: response.data, parentId: payload.parentMsg});
         } else {
@@ -55,6 +59,7 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while creating message.")
       });
     },
       
@@ -72,7 +77,49 @@ const actions = {
       })
       .catch(error => {
         console.log(error);
+        dispatch("displayError", "error while fetching votes.")
       });
+    },
+    
+    async voteMsg ({commit, dispatch, getters}, {msg, type}) {
+      if (type != getters.vote(msg.id)) {
+        const newVote = {
+          upVote: type == "up" ? true : false,
+          messageID: msg.id,
+          utilisateurID: getters.user.utilisateurID
+        }
+        await axios
+        .post(getters.apiURL + "votes/create", newVote)
+        .then(response => {
+          if (response.status == 201) {
+            const diff = getters.vote(msg.id) == "no" ? 1 : 2
+            msg.score += (type == 'up' ? diff : -diff)
+            commit("checkAndAddVote", newVote)
+          } else {
+            dispatch("displayError", "error while creating vote.")
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          dispatch("displayError", "error while creating vote.")
+        });
+      }
+    },
+    async deleteMsg ({commit, dispatch, getters}, msgId) {
+      
+        await axios
+        .delete(getters.apiURL + "messages/"+ msgId)
+        .then(response => {
+          if (response.status == 202) {
+            commit("deleteMsg", msgId)
+          } else {
+            dispatch("displayError", "error while deleting message.")
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          dispatch("displayError", "error while deleting message.")
+        });
     }
 };
 
@@ -90,13 +137,18 @@ function addMsgRec (newMsg, currentMsg, parentId) {
   }
 }
 
-//function sortChildMsgRec (childsTab) {
-//  if (childsTab.length != 0) {
-//    childsTab.sort((a,b) => { return b.score - a.score || a.date - b.date})
-//    for (let child of childsTab)
-//      sortChildMsgRec(child.childMsg)
-//  }
-//}
+// fonction qui parcourt l'arbre pour supprimer le message localement, au lieu de refetcher tous les messages
+function deleteMsgRec (msgId, currentMsg) {
+  for (let i = 0; i < currentMsg.childMsg.length; i++) {
+        // no check if message still has childs
+        if (currentMsg.childMsg[i].id === msgId) {
+          currentMsg.childMsg.splice(i,1)
+          break
+        }
+        else
+          deleteMsgRec(msgId, currentMsg.childMsg[i])
+  }
+}
 
 // mutations
 const mutations = {
@@ -105,10 +157,9 @@ const mutations = {
 
       for (let message of state.messages)
         addMsgRec (newMsg, message, parentId)
-    },
-
+  },
+  deleteMsg: (state, msgId) => state.messages.forEach(msg => deleteMsgRec (msgId, msg)),
   clearMsg: (state) => state.messages = [],
-  
   
   // payload format for votes: as in api response.
   setVotes: (state, payload) => state.votes = payload,

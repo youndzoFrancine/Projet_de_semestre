@@ -23,8 +23,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * The type Discussion controller.
@@ -103,7 +104,7 @@ public class DiscussionController {
         for (Integer tagid :payload.getTags()) {
             Tag tag = tagRepository.findById(tagid).get();
 
-            System.out.println(tag.getNom());
+//            System.out.println(tag.getNom());
 
             discussion.getTagList().add(tag);
         }
@@ -115,10 +116,20 @@ public class DiscussionController {
 
     // TODO: add /{sort} in route, use for Sort.by()
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Page<Discussion> getAll (@RequestParam("page") int page) {
+    public Page<Discussion> getAll (@RequestParam("page") int page,
+                                    @RequestParam(value = "sort", required = false) String sort) {
 
-        Pageable tstPage = PageRequest.of(page, 7, Sort.by("msgracine.date"));
-        return discussionRepository.findAll(tstPage);
+        Pageable tstPage = PageRequest.of(page, 7);
+        Page<Discussion> liste;
+
+        if(sort != null && sort.equals("score")) {
+            liste = discussionRepository.findAllByOrderByMsgracine_ScoreDesc(tstPage);
+        } else { //elif sort.equals("date")
+            liste = discussionRepository.findAllByOrderByMsgracine_DateDesc(tstPage);
+        }
+
+
+        return liste;
     }
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
@@ -126,10 +137,42 @@ public class DiscussionController {
         return discussionRepository.findById(id).get().getSujet();
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public Page<Discussion> fetchByPage(Pageable page) {
         return discussionRepository.findAll(page);
 
     }
 
+=======
+    @RequestMapping(value="/tags", method = RequestMethod.GET)
+    public List<Discussion> getByTags(@RequestParam(value = "tag", required = false) List<String> tagNames,
+                                      @RequestParam(value = "sort", required = false) String sort) {
+
+        if (tagNames == null) tagNames = new ArrayList<>();
+
+        // Les tags à trouver
+        List<Tag> tagList = tagRepository.findAllByNomIsIn(tagNames);
+
+        List<Discussion> listeDoublon;
+        if(sort != null && sort.equals("score"))
+            listeDoublon = discussionRepository.findAllByTagListInOrderByMsgracine_ScoreDesc(tagList);
+        else
+            listeDoublon = discussionRepository.findAllByTagListInOrderByMsgracine_DateDesc(tagList);
+
+
+
+        // On filtre ceux qui apparaissent à la fréquence souhaitée
+        return listeDoublon.stream()
+                .filter(e -> Collections.frequency(listeDoublon, e) == tagList.size())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public List<Discussion> getContains (@RequestParam(value = "string", required = false) String s) {
+
+        return discussionRepository.findDistinctBySujetContainingOrMsgracine_TextContaining(s,s);
+    }
+>>>>>>> 5fcf99b3a46bfda4dfd01433edf417aba0d4cd0d
 }
