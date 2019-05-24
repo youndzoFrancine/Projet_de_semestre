@@ -48,6 +48,12 @@ npm install pour ajouter les dépendances du package.json.
 
 ## Run
 
+### Spring boot
+mvn package
+java -jar api.jar
+
+### Vue
+npm run serve pour l'exécuter en mode dev. Sinon npm run build pour avoir le dist/
 
 
 ## Documentation
