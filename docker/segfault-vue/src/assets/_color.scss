@@ -1,0 +1,23 @@
+/* Couleurs https://flatuicolors.com/palette/de */
+$fusion-red: #fc5c65;
+$high-blue: #45aaf2;
+$orange-hibiscus: #fd9644;
+$blue-ntsc: #4b7bec;
+$lighter-purple: #a55eea;
+$reptile-green: #26de81;
+$algal-fuel: #20bf6b;
+$blue-green: #2bcbba;
+$twinkle-blue: #d1d8e0;
+
+/* Redéfinitions de Bulma */
+$turquoise: $blue-green;
+$blue: $blue-ntsc;
+$green: $reptile-green;
+$green-invert: white;
+
+$gradient-sunrise: linear-gradient(
+  to top,
+  $lighter-purple -10%,
+  $fusion-red 25%,
+  $orange-hibiscus 70%
+);
