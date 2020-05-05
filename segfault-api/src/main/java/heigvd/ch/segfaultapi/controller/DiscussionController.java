@@ -10,9 +10,13 @@ import heigvd.ch.segfaultapi.repositories.TagRepository;
 import heigvd.ch.segfaultapi.repositories.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+<<<<<<< HEAD
+import org.springframework.data.domain.Pageable;
+=======
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,14 +38,28 @@ public class DiscussionController {
     @Autowired
     private DiscussionRepository discussionRepository;
 
+
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
     @Autowired
     private MessageRepository messageRepository;
 
+<<<<<<< HEAD
+    /*
+        @RequestMapping(value = "/all", method = RequestMethod.GET)
+        public ResponseEntity<?> getAll() {
+            List<Discussion> discussions = discussionRepository.findAll();
+            if (discussions.isEmpty()) {
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<List<Discussion>>(discussions, HttpStatus.OK);
+    @Autowired
+    private MessageRepository messageRepository;
+=======
     @Autowired
     private TagRepository tagRepository;
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
 
 /*
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -51,6 +69,8 @@ public class DiscussionController {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Discussion>>(discussions, HttpStatus.OK);
+
+        }
 
     }
 */
@@ -117,6 +137,14 @@ public class DiscussionController {
         return discussionRepository.findById(id).get().getSujet();
     }
 
+<<<<<<< HEAD
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public Page<Discussion> fetchByPage(Pageable page) {
+        return discussionRepository.findAll(page);
+
+    }
+
+=======
     @RequestMapping(value="/tags", method = RequestMethod.GET)
     public List<Discussion> getByTags(@RequestParam(value = "tag", required = false) List<String> tagNames,
                                       @RequestParam(value = "sort", required = false) String sort) {
@@ -146,4 +174,5 @@ public class DiscussionController {
 
         return discussionRepository.findDistinctBySujetContainingOrMsgracine_TextContaining(s,s);
     }
+>>>>>>> 5fcf99b3a46bfda4dfd01433edf417aba0d4cd0d
 }

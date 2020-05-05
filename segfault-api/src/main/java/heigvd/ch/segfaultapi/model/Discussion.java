@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -11,9 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+<<<<<<< HEAD
+
+=======
 /**
  * The type Discussion.
  */
+>>>>>>> e18e06b90b6fc4f2c658da4b7bf6095f1599a902
  // Obligatoire pour JPA
 @NoArgsConstructor // Obligatoire pour JPA
 @Entity
@@ -64,5 +69,7 @@ public class Discussion {
     public Discussion (String sujet) {
         this.sujet = sujet;
     }
+
+
 
 }
